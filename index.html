@@ -106,10 +106,12 @@
 
 <div class="header">
   <h1>🩱 Trending Bra Products Dashboard</h1>
-  <p>Amazon & Temu — Best Sellers Analysis · June 2026</p>
+  <p>Amazon · Temu · 6 Brand Sites — Best Sellers Analysis · June 2026</p>
+  <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Live data refreshed: June 10, 2026 · Amazon · Temu · 6 Brand Sites</span>
   <div class="header-meta">
-    <span>📦 Amazon: Top 8 Best Sellers (March 2026)</span>
+    <span>📦 Amazon: Top 15 Best Sellers (June 10, 2026)</span>
     <span>🛍️ Temu: Trending Bras Category</span>
+    <span>🌐 ThirdLove · HoneyLove · Knix · Savage X · Wacoal · Soma</span>
     <span>🔍 "Jelly bras for women" = 119,942 searches/week</span>
   </div>
 </div>
@@ -126,7 +128,7 @@
 
   <!-- KPI -->
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">26</div><div class="kpi-sub">8 Amazon · 8 Temu · 10 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">42</div><div class="kpi-sub">15 Amazon · 10 Temu · 17 Brand Sites</div></div>
     <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
     <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 · Temu ~$9.62</div></div>
     <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
@@ -387,6 +389,15 @@ const braIcons = ['🩱','👙','🩲','🩱','🏋️','👙','🩱','🏃'];
 
 // ── Product Data ──
 const allProducts = [
+  // ── NEW TODAY June 10 2026 ──
+  { rank:0, platform:'brand', name:'Silhouette Bra — Seamless Everyday Comfort', brand:'HoneyLove', price:69.00, rating:4.5, reviews:0, sales:'BEST SELLER 🔥', salesNum:0, features:['Wireless','Seamless','Silhouette','Everyday'], imgUrl:'https://cdn.shopify.com/s/files/1/0965/6676/files/Crossover_Bra-Mannequin-Runway-Front.png', grad:['#C9873F','#F0C080'], icon:'✨', url:'https://www.honeylove.com/products/silhouette-bra' },
+  { rank:0, platform:'brand', name:'Basic Beauty Spacer Underwire T-Shirt Bra — Bungee Cord', brand:'Wacoal', price:62.00, rating:4.3, reviews:0, sales:'NEW ARRIVAL 🔥', salesNum:0, features:['Underwire','T-Shirt','Spacer Cup','Seamless'], imgUrl:'https://wacoal-america.com/cdn/shop/files/1_on_model_853192_D_304_07598ddc-8385-4601-a48a-bc1f9b85f4ec_1024x.progressive.jpg', grad:['#6B1F3F','#A04060'], icon:'👑', url:'https://wacoal-america.com/collections/new-arrivals/products/basic-beauty-spacer-underwire-t-shirt-bra-bungee-cord' },
+  // ── NEW TODAY June 9 2026 ──
+  { rank:0, platform:'brand', name:'Zero Edge™ Wireless Push-Up Bra — Daydream', brand:'ThirdLove', price:68.00, rating:4.5, reviews:0, sales:'NEW ARRIVAL 🔥', salesNum:0, features:['Wireless','Push-Up','Zero Edge','Seamless'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q226_PDP_OF_ZEWPBRA_ZETUW_DAYDREAM_0134.jpg', grad:['#8B2252','#E8607A'], icon:'🩱', url:'https://www.thirdlove.com/products/zero-edge-wireless-push-up-bra-daydream' },
+  { rank:0, platform:'brand', name:'CloudEmbrace Bra — Wireless Cloud-Like Support', brand:'HoneyLove', price:69.00, rating:4.5, reviews:0, sales:'NEW ARRIVAL 🔥', salesNum:0, features:['Wireless','Cloud Support','Seamless','Everyday'], imgUrl:'https://cdn.shopify.com/s/files/1/0965/6676/files/CloudEmbraceBra-Mannequin-Sand-Front.png', grad:['#C9873F','#F0C080'], icon:'☁️', url:'https://www.honeylove.com/products/cloudembrace-bra' },
+  { rank:0, platform:'brand', name:'Shape & Smooth Bra — New Colours Drop', brand:'Knix', price:48.00, rating:4.5, reviews:0, sales:'NEW DROP 🔥', salesNum:0, features:['Wireless','Smoothing','Full Coverage','Everyday'], imgUrl:'https://knix.com/cdn/shop/files/KW_Q226_New_Colours_Drop_1_Nav_Tiles_Bras_New_Arrivals_2x_18386960-a7a8-42ab-b11d-402d53030445.webp', grad:['#1A5C5C','#34a87a'], icon:'🌿', url:'https://knix.com/products/shape-smooth-bra' },
+  { rank:0, platform:'brand', name:'Back Appeal® Underwire Bra — Dark Slate', brand:'Wacoal', price:74.00, rating:4.3, reviews:0, sales:'NEW ARRIVAL 🔥', salesNum:0, features:['Underwire','Back Appeal','Full Coverage','Support'], imgUrl:'https://wacoal-america.com/cdn/shop/files/1_on_model_855303_D_010_1024x.progressive.jpg', grad:['#6B1F3F','#A04060'], icon:'👑', url:'https://wacoal-america.com/collections/new-arrivals/products/855303-bra-u-w-back-appeal-dark-slate' },
+  // ── Existing Products ──
   // Amazon
   { rank:1, platform:'amazon', name:'OEAK Deep V Wireless Bra', brand:'OEAK', price:19.96, rating:4.0, reviews:10401, sales:'7,000+', salesNum:7000, features:['Wireless','Deep V','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', grad:gradients[0], icon:'🩱', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
   { rank:2, platform:'amazon', name:'PoseFree Seamless Wireless Bra', brand:'PoseFree', price:17.98, rating:4.0, reviews:12966, sales:'5,000+', salesNum:5000, features:['Wireless','Seamless','Full Coverage','T-Shirt'], imgUrl:'https://m.media-amazon.com/images/I/61mxpfsyudL._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0FX98KPQB' },
@@ -410,12 +421,16 @@ const allProducts = [
   { rank:2, platform:'brand', name:'Catalyst Sports Bra — High Support, Eliminates Bounce 76%', brand:'Knix', price:78.00, rating:4.5, reviews:5277, sales:'Top Rated', salesNum:0, features:['High Support','Sports','Full Coverage','Wireless'], imgUrl:'https://knix.com/cdn/shop/files/CatalystSportsBra_Black_01_f13d06ec-7762-41ef-9706-15f41b5397d1.webp', grad:['#1A5C5C','#2A8C8C'], icon:'🌿', url:'https://knix.com/products/catalyst-sports-bra' },
   { rank:3, platform:'brand', name:'CrossOver Wireless Bra — Bonded Cradle Support', brand:'HoneyLove', price:69.00, rating:4.5, reviews:1023, sales:'#1 Best Seller', salesNum:0, features:['Wireless','CrossOver','Bonded Support','No Underwire'], imgUrl:'https://cdn.shopify.com/s/files/1/0965/6676/files/crossover_bra-runway-34DD-nicki_0436_R1_front.jpg', grad:['#C9873F','#E8A85C'], icon:'🍯', url:'https://www.honeylove.com/products/crossover-bra' },
   { rank:4, platform:'brand', name:'Savage Unlined Triangle Bralette', brand:'Savage X Fenty', price:15.00, rating:4.5, reviews:3200, sales:'—', salesNum:0, features:['Unlined','Triangle','Inclusive Sizing','Lightweight'], imgUrl:'https://m.media-amazon.com/images/I/61cfKqtF6mL._AC_UY300_.jpg', grad:['#1A1A1A','#4A4A4A'], icon:'💋', url:'https://www.savagex.com/features/best-sellers' },
-  { rank:5, platform:'brand', name:'B.Smooth Seamless Wireless Bra', brand:'Wacoal', price:40.00, rating:4.1, reviews:1336, sales:'—', salesNum:0, features:['Seamless','Wireless','Smooth','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/711zt8dm0HL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'👑', url:'https://www.wacoal-america.com' },
+  { rank:5, platform:'brand', name:'B.Smooth Seamless Wireless Bra', brand:'Wacoal', price:40.00, rating:4.1, reviews:1336, sales:'—', salesNum:0, features:['Seamless','Wireless','Smooth','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/711zt8dm0HL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'👑', url:'https://www.wacoal-america.com/collections/bras' },
   { rank:6, platform:'brand', name:'Enbliss Wireless T-Shirt Bra', brand:'Soma', price:52.00, rating:4.4, reviews:4500, sales:'Fan Fave', salesNum:0, features:['Wireless','T-Shirt','Full Coverage','Everyday'], imgUrl:'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTpQVuuXifzJ2BFWUAQdvxhW1P6Hf836OgPrvzggSeEVClHiY0AZPteXOiJzZrJ4vvwjygEvPVm7zeFGXtgVKwBscwSXBQ-_g', grad:['#B76E79','#D49BA5'], icon:'🌸', url:'https://www.soma.com/en/c/bras' },
   { rank:7, platform:'brand', name:'Wireless Lightly Lined J-Hook Plunge Bra', brand:'Lively', price:35.00, rating:4.3, reviews:3200, sales:'—', salesNum:0, features:['Wireless','Lightly Lined','Plunge','J-Hook'], imgUrl:'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRB99P234oMlVf7QMFcihfwYa9djxJW1yhtN7KEt3yzCXG-j-8YbparikTMR1tc1esKRRMgSGYNjUMtp4ifcegdnlq2bXFbeHFuKU6A-kVKd8l0MQeD0-s8', grad:['#E8907A','#F0B0A0'], icon:'🦋', url:'https://wearlively.com' },
   { rank:8, platform:'brand', name:'True Body Lift Wireless Bra', brand:'True & Co', price:68.00, rating:4.4, reviews:533, sales:'—', salesNum:0, features:['Wireless','Lifting','Body Hugging','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/61k-fsrHlIL._AC_UY300_.jpg', grad:['#4A3728','#7A5740'], icon:'✨', url:'https://trueandco.com/collections/bras' },
   { rank:9, platform:'brand', name:'Feathers Contour Wireless Bra', brand:'Natori', price:60.85, rating:4.2, reviews:2219, sales:'—', salesNum:0, features:['Wireless','Feather-Light','Contour','Premium'], imgUrl:'https://m.media-amazon.com/images/I/717+l0mWoHL._AC_UY300_.jpg', grad:['#2C3E50','#4A6080'], icon:'🪶', url:'https://www.natori.com/collections/bras' },
   { rank:10, platform:'brand', name:'Bra-llelujah! Wireless Full Coverage Bra', brand:'SPANX', price:46.80, rating:4.2, reviews:240, sales:'—', salesNum:0, features:['Wireless','Full Coverage','Smoothing','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/71fYnnWsXXL._AC_UY300_.jpg', grad:['#1A1A1A','#555555'], icon:'🖤', url:'https://www.spanx.com/collections/bras' },
+  { rank:11, platform:'brand', name:'Longevity Sports Bra — Founder\'s Pick', brand:'Knix', price:68.00, rating:4.5, reviews:0, sales:'Founder\'s Pick', salesNum:0, features:['High Support','Sports','Wireless','Longline'], imgUrl:'https://knix.com/cdn/shop/files/KW-Joanna_s_Picks-2026-Merch-WK_23_LongevityBra_NavTile.jpg', grad:['#1A5C5C','#2A8C8C'], icon:'🏃', url:'https://knix.com/products/longevity-sports-bra' },
+  { rank:12, platform:'brand', name:'Uplift Wireless Push-Up Bra — Adds One Cup Size', brand:'Knix', price:68.00, rating:4.4, reviews:0, sales:'Top Pick', salesNum:0, features:['Wireless','Push-up','Uplift','Full Coverage'], imgUrl:'https://knix.com/cdn/shop/files/UpliftWirelessPushUpBra_RoseWater_01_1x_74e9176b-3c48-4365-bb99-486e3aa265b2.webp', grad:['#be185d','#f9a8d4'], icon:'🔼', url:'https://knix.com/products/uplift-push-up-bra' },
+  { rank:13, platform:'brand', name:'Soft N Savage Wireless Push-Up Bra', brand:'Savage X Fenty', price:42.00, rating:4.5, reviews:0, sales:'Best Seller', salesNum:0, features:['Wireless','Push-up','Soft','Inclusive Sizing'], imgUrl:'https://cdn.savagex.com/assets/images/skus/BA2500572-1533', grad:['#1A1A1A','#4A4A4A'], icon:'💋', url:'https://www.savagex.com/products/SOFT-N-SAVAGE-WIRELESS-PUSH-UP-BRA-BA2500572-1533' },
+  { rank:14, platform:'brand', name:'24/7 Classic T-Shirt Bra — Apricot New Shade', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['T-Shirt','Wireless','Full Coverage','Seamless'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q226_PDP_OF_TSBRA_ZEHUW_APRICOT_484.jpg', grad:['#8B2252','#C06080'], icon:'🩱', url:'https://www.thirdlove.com/products/24-7-classic-t-shirt-bra-apricot' },
 ];
 
 let currentPlatform = 'all';
