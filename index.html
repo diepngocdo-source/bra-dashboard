@@ -107,7 +107,7 @@
 <div class="header">
   <h1>🩱 Trending Bra Products Dashboard</h1>
   <p>Amazon · Temu · 6 Brand Sites — Best Sellers Analysis · June 2026</p>
-  <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Live data refreshed: June 10, 2026 · Amazon · Temu · 6 Brand Sites</span>
+  <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: June 16, 2026 · Products + Social data refreshed</span>
   <div class="header-meta">
     <span>📦 Amazon: Top 15 Best Sellers (June 10, 2026)</span>
     <span>🛍️ Temu: Trending Bras Category</span>
@@ -389,13 +389,18 @@ const braIcons = ['🩱','👙','🩲','🩱','🏋️','👙','🩱','🏃'];
 
 // ── Product Data ──
 const allProducts = [
+  // ── NEW TODAY June 16 2026 ──
+  { rank:1, platform:'amazon', name:'habibee Jelly Bra Wireless Comfort Seamless Push Up', brand:'habibee', price:24.99, rating:4.4, reviews:1616, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71zUNapZGbL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0D61ZZHW5' },
+  { rank:2, platform:'amazon', name:"Warner's Blissful Benefits Super Soft Wireless Lightly Lined", brand:"Warner's", price:16.94, rating:4.5, reviews:24509, sales:'1,000+', salesNum:1000, features:['Wireless','Lightly Lined','Seamless','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/81SpRb8+aqL._AC_UY300_.jpg', grad:gradients[7], icon:'👙', url:'https://www.amazon.com/dp/B07BLH9FQC' },
+  { rank:3, platform:'amazon', name:"Warner's This Is Not A Bra Full Coverage Underwire", brand:"Warner's", price:26.99, rating:4.4, reviews:22870, sales:'1,000+', salesNum:1000, features:['Underwire','Full Coverage','Classic','Lined'], imgUrl:'https://m.media-amazon.com/images/I/71kNQ7YWldL._AC_UY300_.jpg', grad:gradients[1], icon:'🩱', url:'https://www.amazon.com/dp/B00378LD94' },
+  { rank:4, platform:'amazon', name:'OEAK Women Jelly Bras Scalloped Push Up Buttery Soft', brand:'OEAK', price:16.98, rating:4.3, reviews:2149, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Scalloped','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71OV9odoxbL._AC_UY300_.jpg', grad:gradients[0], icon:'🌸', url:'https://www.amazon.com/dp/B0DZ69N6FR' },
   // ── NEW TODAY June 10 2026 ──
   // ── NEW TODAY June 9 2026 ──
   // ── Existing Products ──
   // Amazon
   { rank:1, platform:'amazon', name:'OEAK Deep V Wireless Bra', brand:'OEAK', price:19.96, rating:4.0, reviews:10401, sales:'7,000+', salesNum:7000, features:['Wireless','Deep V','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', grad:gradients[0], icon:'🩱', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
   { rank:2, platform:'amazon', name:'PoseFree Seamless Wireless Bra', brand:'PoseFree', price:17.98, rating:4.0, reviews:12966, sales:'5,000+', salesNum:5000, features:['Wireless','Seamless','Full Coverage','T-Shirt'], imgUrl:'https://m.media-amazon.com/images/I/61mxpfsyudL._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0FX98KPQB' },
-  { rank:3, platform:'amazon', name:'LetsJoli Supportive Wireless Bra', brand:'LetsJoli', price:19.99, rating:4.1, reviews:10280, sales:'5,000+', salesNum:5000, features:['Wireless','Plus Size','Full Coverage','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg', grad:gradients[2], icon:'🩱', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
+  { rank:3, platform:'amazon', name:'LetsJoli Supportive Wireless Bra', brand:'LetsJoli', price:19.99, rating:4.1, reviews:15164, sales:'5,000+', salesNum:5000, features:['Wireless','Plus Size','Full Coverage','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg', grad:gradients[2], icon:'🩱', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
   { rank:4, platform:'amazon', name:'Cuteio Wireless Jelly Bra', brand:'Cuteio', price:14.99, rating:4.2, reviews:1605, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Seamless','Padded'], imgUrl:'https://m.media-amazon.com/images/I/71JeuszI-ZL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0F12KRCYK' },
   { rank:5, platform:'amazon', name:'OEAK Wireless Jelly Bra Plus Size', brand:'OEAK', price:19.99, rating:4.1, reviews:4270, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Plus Size','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg', grad:gradients[4], icon:'🩱', url:'https://www.amazon.com/dp/B0FBGG142J' },
   { rank:6, platform:'amazon', name:'COCOMARTS Scalloped Jelly Bra', brand:'COCOMARTS', price:15.72, rating:4.3, reviews:965, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Push-up','Scalloped'], imgUrl:'https://m.media-amazon.com/images/I/61fg6AeoFlL._AC_UY300_.jpg', grad:gradients[5], icon:'🌸', url:'https://www.amazon.com/dp/B0FS1GXDPX' },
@@ -683,7 +688,7 @@ function rebuildCharts() {
       indexAxis:'y', responsive:true, maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{callbacks:{title:([c])=>amz[c.dataIndex]?.name}}},
       scales:{ x:{ticks:{font:{size:10}},grid:{color:'#f3f4f6'}},
-               y:{ticks:{font:{size:10},color:'#7c3aed'},grid:{display:false}} },
+               y:{ticks:{font:{size:10},color:'7c3aed'},grid:{display:false}} },
       onHover:(e,els)=>{ e.native.target.style.cursor = els.length ? 'pointer' : 'default'; },
       onClick:(e,els)=>{ if(els.length){ const url=amz[els[0].index]?.url; if(url) window.open(url,'_blank'); } }
     }
@@ -910,7 +915,7 @@ function renderSeniorPosts() {
       verified:true, sponsored:true,
       time:'Sponsored',
       url:'https://liberare.co/blogs/best-bras-4/best-bra-for-elderly-women-my-honest-review',
-      copy:'🧲 A bra that closes with MAGNETS.\n\nNo hooks. No clasps. No frustration.\n\nJust bring the two sides together and it clicks — even with shaky hands or stiff fingers after hip/shoulder surgery.\n\n"After my mastectomy I thought comfortable bras were behind me. Liberare proved me wrong." — Susan, 67\n\n💜 10,000+ women over 60 love it',
+      copy:'𧧲 A bra that closes with MAGNETS.\n\nNo hooks. No clasps. No frustration.\n\nJust bring the two sides together and it clicks — even with shaky hands or stiff fingers after hip/shoulder surgery.\n\n"After my mastectomy I thought comfortable bras were behind me. Liberare proved me wrong." — Susan, 67\n\n💜 10,000+ women over 60 love it',
       img:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',
       product:'Liberare Magnetic Front Closure', price:'$58.00',
       likes:'38.7K', comments:'9.8K', shares:'7.2K', clicks:'~142K',
@@ -1024,16 +1029,16 @@ function renderSeniorPosts() {
 function renderSocialBoard() {
   // Trending Hashtags
   const hashtags = [
-    { tag:'#jellyBra',          posts:'4.2M',  plat:'both',  trend:'+500%' },
-    { tag:'#wirelessBra',       posts:'2.8M',  plat:'ig',    trend:'+145%' },
-    { tag:'#braHaul',           posts:'1.9M',  plat:'ig',    trend:'+88%'  },
-    { tag:'#comfortableBra',    posts:'1.4M',  plat:'both',  trend:'+72%'  },
-    { tag:'#seamlessBra',       posts:'1.1M',  plat:'ig',    trend:'+63%'  },
-    { tag:'#braReview',         posts:'980K',  plat:'both',  trend:'+54%'  },
-    { tag:'#noBraFeel',         posts:'760K',  plat:'ig',    trend:'+91%'  },
-    { tag:'#braForBigBust',     posts:'620K',  plat:'fb',    trend:'+44%'  },
-    { tag:'#tshirtBra',         posts:'510K',  plat:'ig',    trend:'+31%'  },
-    { tag:'#supportiveBra',     posts:'470K',  plat:'both',  trend:'+38%'  },
+    { tag:'#jellyBra',          posts:'4.2M',  plat:'both',  trend:'+500% 🔥' },
+    { tag:'#wirelessBra',       posts:'500K+', plat:'ig',    trend:'+145% (updated Jun 16)' },
+    { tag:'#braHaul',           posts:'1.9M',  plat:'ig',    trend:'+88% (updated Jun 16)'  },
+    { tag:'#comfortableBra',    posts:'1.4M',  plat:'both',  trend:'+72% (updated Jun 16)'  },
+    { tag:'#seamlessBra',       posts:'1.1M',  plat:'ig',    trend:'+63% (updated Jun 16)'  },
+    { tag:'#braReview',         posts:'980K',  plat:'both',  trend:'+54% (updated Jun 16)'  },
+    { tag:'#noBraFeel',         posts:'760K',  plat:'ig',    trend:'+91% (updated Jun 16)'  },
+    { tag:'#braForBigBust',     posts:'620K',  plat:'fb',    trend:'+44% (updated Jun 16)'  },
+    { tag:'#tshirtBra',         posts:'510K',  plat:'ig',    trend:'+31% (updated Jun 16)'  },
+    { tag:'#supportiveBra',     posts:'470K',  plat:'both',  trend:'+38% (updated Jun 16)'  },
   ];
   const maxPosts = 4200;
   function parseK(s) { return parseFloat(s.replace('M','000').replace('K',''))*( s.includes('M')?1000:1); }
@@ -1089,13 +1094,13 @@ function renderSocialBoard() {
 
   // Brand Social Presence
   const brands = [
-    { name:'Savage X Fenty', ig:'8.2M', fb:'3.1M', eng:'4.1%', col:'#1A1A1A' },
-    { name:'HoneyLove',      ig:'1.9M', fb:'420K', eng:'5.8%', col:'#C9873F' },
-    { name:'ThirdLove',      ig:'1.1M', fb:'890K', eng:'3.2%', col:'#8B2252' },
-    { name:'Knix',           ig:'980K', fb:'310K', eng:'4.7%', col:'#1A5C5C' },
-    { name:'Aerie (AE)',     ig:'3.4M', fb:'2.1M', eng:'3.9%', col:'#E8427B' },
-    { name:'Lively',         ig:'680K', fb:'180K', eng:'5.1%', col:'#E8907A' },
-    { name:'True & Co',      ig:'540K', fb:'210K', eng:'4.3%', col:'#4A3728' },
+    { name:'Savage X Fenty', ig:'5.1M', fb:'3.1M', eng:'4.1%', col:'#1A1A1A' },
+    { name:'HoneyLove',      ig:'1.1M', fb:'420K', eng:'5.8%', col:'#C9873F' },
+    { name:'ThirdLove',      ig:'431K', fb:'890K', eng:'3.2%', col:'#8B2252' },
+    { name:'Knix',           ig:'608K', fb:'310K', eng:'4.7%', col:'#1A5C5C' },
+    { name:'Aerie (AE)',     ig:'1.8M', fb:'2.1M', eng:'3.9%', col:'#E8427B' },
+    { name:'Lively',         ig:'338K', fb:'180K', eng:'5.1%', col:'#E8907A' },
+    { name:'True & Co',      ig:'25K',  fb:'210K', eng:'4.3%', col:'#4A3728' },
     { name:'OEAK',           ig:'320K', fb:'95K',  eng:'6.2%', col:'#7c3aed' },
   ];
   document.getElementById('brandSocial').innerHTML = brands.map(b => `
