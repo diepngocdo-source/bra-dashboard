@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trending Bra Products Dashboard â Amazon & Temu</title>
+<title>Trending Bra Products Dashboard — Amazon & Temu</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
   :root { color-scheme: light; }
@@ -37,7 +37,7 @@
   .kpi-sub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
   .kpi-icon { font-size: 22px; float: right; margin-top: -2px; }
 
-  /* ââ Featured Product Cards ââ */
+  /* ── Featured Product Cards ── */
   .section-title { font-size: 15px; font-weight: 700; color: #374151; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
   .cards-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 24px; scrollbar-width: thin; }
   .cards-scroll::-webkit-scrollbar { height: 5px; }
@@ -105,14 +105,14 @@
 <body>
 
 <div class="header">
-  <h1>ð©± Trending Bra Products Dashboard</h1>
-  <p>Amazon Â· Temu Â· 6 Brand Sites â Best Sellers Analysis Â· June 2026</p>
-  <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">ð Updated: June 17, 2026 Â· 50 products tracked (20 Amazon Â· 15 Temu Â· 15 Brand Sites)</span>
+  <h1>🩱 Trending Bra Products Dashboard</h1>
+  <p>Amazon · Temu · 6 Brand Sites — Best Sellers Analysis · June 2026</p>
+  <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: June 17, 2026 · 50 products tracked (20 Amazon · 15 Temu · 15 Brand Sites)</span>
   <div class="header-meta">
-    <span>ð¦ Amazon: Top 15 Best Sellers (June 10, 2026)</span>
-    <span>ðï¸ Temu: Trending Bras Category</span>
-    <span>ð ThirdLove Â· HoneyLove Â· Knix Â· Savage X Â· Wacoal Â· Soma</span>
-    <span>ð "Jelly bras for women" = 119,942 searches/week</span>
+    <span>📦 Amazon: Top 15 Best Sellers (June 10, 2026)</span>
+    <span>🛍️ Temu: Trending Bras Category</span>
+    <span>🌐 ThirdLove · HoneyLove · Knix · Savage X · Wacoal · Soma</span>
+    <span>🔍 "Jelly bras for women" = 119,942 searches/week</span>
   </div>
 </div>
 
@@ -120,71 +120,71 @@
 
   <div class="filter-bar">
     <button class="tab-btn active" onclick="filterPlatform('all', this)">All Platforms</button>
-    <button class="tab-btn" onclick="filterPlatform('amazon', this)">ð¡ Amazon</button>
-    <button class="tab-btn" onclick="filterPlatform('temu', this)">ð´ Temu</button>
-    <button class="tab-btn" onclick="filterPlatform('brand', this)">ð Brand Website</button>
-    <span class="note-badge">â¡ Amazon data: ASInsight March 2026 Â· Temu: estimated from listings</span>
+    <button class="tab-btn" onclick="filterPlatform('amazon', this)">🟡 Amazon</button>
+    <button class="tab-btn" onclick="filterPlatform('temu', this)">🔴 Temu</button>
+    <button class="tab-btn" onclick="filterPlatform('brand', this)">🌐 Brand Website</button>
+    <span class="note-badge">⚡ Amazon data: ASInsight March 2026 · Temu: estimated from listings</span>
   </div>
 
   <!-- KPI -->
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-icon">ð¦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">50</div><div class="kpi-sub">20 Amazon Â· 15 Temu Â· 15 Brand Sites</div></div>
-    <div class="kpi-card"><div class="kpi-icon">â­</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
-    <div class="kpi-card"><div class="kpi-icon">ð°</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 Â· Temu ~$9.62</div></div>
-    <div class="kpi-card"><div class="kpi-icon">ð¥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">50</div><div class="kpi-sub">20 Amazon · 15 Temu · 15 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
+    <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 · Temu ~$9.62</div></div>
+    <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
   </div>
 
   <!-- Featured Product Cards -->
-  <div class="section-title">ð¼ï¸ Featured Trending Products</div>
+  <div class="section-title">🖼️ Featured Trending Products</div>
   <div class="cards-scroll" id="featuredCards"></div>
 
   <!-- Charts Row 1 -->
   <div class="charts-grid">
-    <div class="chart-card"><h3>ð° Most Trending Bra Price Range</h3><div class="chart-wrapper"><canvas id="priceRangeChart"></canvas></div></div>
+    <div class="chart-card"><h3>💰 Most Trending Bra Price Range</h3><div class="chart-wrapper"><canvas id="priceRangeChart"></canvas></div></div>
     <div class="chart-card">
-      <h3>ð Best vs Worst Reviewed Bra</h3>
+      <h3>🏆 Best vs Worst Reviewed Bra</h3>
       <div id="bestWorstCard" style="display:flex;gap:12px;flex-wrap:wrap;padding-top:4px"></div>
     </div>
   </div>
-  <!-- Trending Feedback Board â moved below Best vs Worst -->
+  <!-- Trending Feedback Board — moved below Best vs Worst -->
   <div class="table-card" style="margin-bottom:24px">
     <div class="table-header" style="margin-bottom:6px">
-      <h3>ð¬ Trending Customer Feedback Keywords</h3>
+      <h3>💬 Trending Customer Feedback Keywords</h3>
       <div style="display:flex;gap:6px">
-        <span style="background:#ede9fe;color:#5b21b6;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600">ð¡ Amazon (n=35,000+ reviews)</span>
-        <span style="background:#fce7f3;color:#9d174d;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600">ð´ Temu (n=800+ reviews)</span>
+        <span style="background:#ede9fe;color:#5b21b6;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600">🟡 Amazon (n=35,000+ reviews)</span>
+        <span style="background:#fce7f3;color:#9d174d;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600">🔴 Temu (n=800+ reviews)</span>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px">
       <div>
-        <div style="font-size:13px;font-weight:700;color:#166534;margin-bottom:12px;display:flex;align-items:center;gap:6px">â Positive Keywords</div>
+        <div style="font-size:13px;font-weight:700;color:#166534;margin-bottom:12px;display:flex;align-items:center;gap:6px">✅ Positive Keywords</div>
         <div id="posKeywords"></div>
       </div>
       <div>
-        <div style="font-size:13px;font-weight:700;color:#991b1b;margin-bottom:12px;display:flex;align-items:center;gap:6px">â Negative Keywords</div>
+        <div style="font-size:13px;font-weight:700;color:#991b1b;margin-bottom:12px;display:flex;align-items:center;gap:6px">❌ Negative Keywords</div>
         <div id="negKeywords"></div>
       </div>
     </div>
     <div style="margin-top:16px;border-top:1px solid #f3f4f6;padding-top:14px">
-      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:10px">ð Platform Feedback Comparison</div>
+      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:10px">📊 Platform Feedback Comparison</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px" id="platformMetrics"></div>
     </div>
   </div>
 
   <div class="charts-grid">
-    <div class="chart-card"><h3>ð Amazon Monthly Sales Volume</h3><div class="chart-wrapper"><canvas id="salesChart"></canvas></div></div>
-    <div class="chart-card"><h3>ð Top Feature Tags â % of Products</h3><div class="chart-wrapper" style="height:260px"><canvas id="featureChart"></canvas></div></div>
+    <div class="chart-card"><h3>📊 Amazon Monthly Sales Volume</h3><div class="chart-wrapper"><canvas id="salesChart"></canvas></div></div>
+    <div class="chart-card"><h3>🔖 Top Feature Tags — % of Products</h3><div class="chart-wrapper" style="height:260px"><canvas id="featureChart"></canvas></div></div>
   </div>
 
   <!-- Trending Features by Category Market Insight -->
   <div class="table-card" style="margin-bottom:24px">
     <div class="table-header" style="margin-bottom:16px">
-      <h3>ð Market Insight â Trending Features by Bra Category</h3>
-      <span style="font-size:11px;color:#6b7280;background:#f3f4f6;padding:4px 10px;border-radius:8px">Based on all 26 tracked products Â· Amazon, Temu & Brand sites</span>
+      <h3>📐 Market Insight — Trending Features by Bra Category</h3>
+      <span style="font-size:11px;color:#6b7280;background:#f3f4f6;padding:4px 10px;border-radius:8px">Based on all 26 tracked products · Amazon, Temu & Brand sites</span>
     </div>
     <div id="categoryFeatureInsight" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px"></div>
     <div style="margin-top:18px;border-top:1px solid #f3f4f6;padding-top:16px">
-      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:12px">ð Cross-Category Trend Signals (2026)</div>
+      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:12px">🚀 Cross-Category Trend Signals (2026)</div>
       <div id="crossTrendSignals" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px"></div>
     </div>
   </div>
@@ -192,20 +192,20 @@
   <!-- Table -->
   <div class="table-card">
     <div class="table-header">
-      <h3>ð Full Product List</h3>
-      <input class="search-input" type="text" placeholder="ð Search..." oninput="searchTable(this.value)">
+      <h3>📋 Full Product List</h3>
+      <input class="search-input" type="text" placeholder="🔍 Search..." oninput="searchTable(this.value)">
     </div>
     <div style="overflow-x:auto">
       <table id="productTable">
         <thead>
           <tr>
-            <th onclick="sortTable(0)">Rank â</th>
+            <th onclick="sortTable(0)">Rank ↕</th>
             <th>Platform</th>
             <th>Image</th>
-            <th onclick="sortTable(3)">Product â</th>
-            <th onclick="sortTable(4)">Price â</th>
-            <th onclick="sortTable(5)">Rating â</th>
-            <th onclick="sortTable(6)">Reviews â</th>
+            <th onclick="sortTable(3)">Product ↕</th>
+            <th onclick="sortTable(4)">Price ↕</th>
+            <th onclick="sortTable(5)">Rating ↕</th>
+            <th onclick="sortTable(6)">Reviews ↕</th>
             <th>Sales/mo</th>
             <th>Features</th>
           </tr>
@@ -218,42 +218,42 @@
   <!-- Insights -->
   <div class="insights-grid">
     <div class="insight-card">
-      <h3>ð Amazon Price Range Distribution</h3>
-      <div class="dist-row"><span class="dist-label">$0â10</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:2.28%"></div></div><span class="dist-pct">2.3%</span></div>
-      <div class="dist-row"><span class="dist-label">$10â20</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:43.06%"></div></div><span class="dist-pct">43%</span></div>
-      <div class="dist-row"><span class="dist-label">$20â50</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:51.71%"></div></div><span class="dist-pct">52%</span></div>
-      <div class="dist-row"><span class="dist-label">$50â100</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:2.93%"></div></div><span class="dist-pct">2.9%</span></div>
-      <div style="font-size:11px;color:#9ca3af;margin-top:10px">Based on 152 ASINs Â· Keyword: "womens bra"</div>
+      <h3>📈 Amazon Price Range Distribution</h3>
+      <div class="dist-row"><span class="dist-label">$0–10</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:2.28%"></div></div><span class="dist-pct">2.3%</span></div>
+      <div class="dist-row"><span class="dist-label">$10–20</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:43.06%"></div></div><span class="dist-pct">43%</span></div>
+      <div class="dist-row"><span class="dist-label">$20–50</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:51.71%"></div></div><span class="dist-pct">52%</span></div>
+      <div class="dist-row"><span class="dist-label">$50–100</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:2.93%"></div></div><span class="dist-pct">2.9%</span></div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:10px">Based on 152 ASINs · Keyword: "womens bra"</div>
     </div>
     <div class="insight-card">
-      <h3>â­ Amazon Rating Distribution</h3>
-      <div class="dist-row"><span class="dist-label">4.8â5.0â</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:1.46%"></div></div><span class="dist-pct">1.5%</span></div>
-      <div class="dist-row"><span class="dist-label">4.3â4.7â</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:35.44%"></div></div><span class="dist-pct">35%</span></div>
-      <div class="dist-row"><span class="dist-label">3.8â4.2â</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:58.39%"></div></div><span class="dist-pct">58%</span></div>
-      <div class="dist-row"><span class="dist-label">3.3â3.7â</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:3.40%"></div></div><span class="dist-pct">3.4%</span></div>
-      <div style="font-size:11px;color:#9ca3af;margin-top:10px">Top 3 click share: 17.68% Â· Conversion: 2.53%</div>
+      <h3>⭐ Amazon Rating Distribution</h3>
+      <div class="dist-row"><span class="dist-label">4.8–5.0★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:1.46%"></div></div><span class="dist-pct">1.5%</span></div>
+      <div class="dist-row"><span class="dist-label">4.3–4.7★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:35.44%"></div></div><span class="dist-pct">35%</span></div>
+      <div class="dist-row"><span class="dist-label">3.8–4.2★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:58.39%"></div></div><span class="dist-pct">58%</span></div>
+      <div class="dist-row"><span class="dist-label">3.3–3.7★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:3.40%"></div></div><span class="dist-pct">3.4%</span></div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:10px">Top 3 click share: 17.68% · Conversion: 2.53%</div>
     </div>
   </div>
   <div class="insights-grid">
     <div class="insight-card">
-      <h3>ð Key Market Insights</h3>
+      <h3>🔑 Key Market Insights</h3>
       <div style="font-size:13px;line-height:1.9;color:#374151">
-        <p>ð <strong>Dominant style:</strong> Wireless jelly bras â soft, seamless, no underwire is the #1 trend for 2026.</p>
-        <p>ðµ <strong>Price gap:</strong> Temu ~48% cheaper than Amazon ($9.62 vs $18.58). Sweet spot on Amazon: $10â20.</p>
-        <p>â­ <strong>Ratings:</strong> Temu avg 4.5â vs Amazon 4.1â â fewer but curated reviews on Temu.</p>
-        <p>ð <strong>Size range:</strong> Plus-size (Sâ3XL) is a key differentiator for top-ranked products.</p>
-        <p>ð¥ <strong>Search surge:</strong> "Jelly bras for women" = 119,942 weekly searches, rank #770 on Amazon ABA.</p>
+        <p>🏆 <strong>Dominant style:</strong> Wireless jelly bras — soft, seamless, no underwire is the #1 trend for 2026.</p>
+        <p>💵 <strong>Price gap:</strong> Temu ~48% cheaper than Amazon ($9.62 vs $18.58). Sweet spot on Amazon: $10–20.</p>
+        <p>⭐ <strong>Ratings:</strong> Temu avg 4.5★ vs Amazon 4.1★ — fewer but curated reviews on Temu.</p>
+        <p>📐 <strong>Size range:</strong> Plus-size (S–3XL) is a key differentiator for top-ranked products.</p>
+        <p>🔥 <strong>Search surge:</strong> "Jelly bras for women" = 119,942 weekly searches, rank #770 on Amazon ABA.</p>
       </div>
     </div>
     <div class="insight-card">
-      <h3>ð Trending Features 2026</h3>
+      <h3>🛒 Trending Features 2026</h3>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
-        <span style="background:#ede9fe;color:#5b21b6;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">ð® Jelly / Seamless</span>
-        <span style="background:#fce7f3;color:#9d174d;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">ð¡ Wireless / No Underwire</span>
-        <span style="background:#dcfce7;color:#166534;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">ð Plus Size</span>
-        <span style="background:#dbeafe;color:#1d4ed8;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">ð¼ Push-Up</span>
-        <span style="background:#fef9c3;color:#854d0e;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">ð Full Coverage</span>
-        <span style="background:#f0fdf4;color:#15803d;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">ð High Impact Sports</span>
+        <span style="background:#ede9fe;color:#5b21b6;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">🍮 Jelly / Seamless</span>
+        <span style="background:#fce7f3;color:#9d174d;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">📡 Wireless / No Underwire</span>
+        <span style="background:#dcfce7;color:#166534;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">📏 Plus Size</span>
+        <span style="background:#dbeafe;color:#1d4ed8;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">🔼 Push-Up</span>
+        <span style="background:#fef9c3;color:#854d0e;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">👕 Full Coverage</span>
+        <span style="background:#f0fdf4;color:#15803d;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">🏃 High Impact Sports</span>
         <span style="background:#fff1f2;color:#be123c;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">Deep V Plunge</span>
         <span style="background:#f0f9ff;color:#0369a1;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">Nude-Feel</span>
         <span style="background:#fdf4ff;color:#7e22ce;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">Front Closure</span>
@@ -262,11 +262,11 @@
     </div>
   </div>
 
-  <!-- ââ SENIOR PLUS SIZE WOMEN 50+ COMPETITOR SECTION ââ -->
+  <!-- ══ SENIOR PLUS SIZE WOMEN 50+ COMPETITOR SECTION ══ -->
   <div class="table-card" style="margin-bottom:24px">
     <div class="table-header" style="margin-bottom:4px">
-      <h3>ðµ Senior Plus Size Women 50+ â Best Selling Bras by Category</h3>
-      <span style="font-size:11px;color:#6b7280;background:#f3f4f6;padding:4px 10px;border-radius:8px">Target: Women 50+ Â· Comfort &amp; Support Focused Â· Amazon June 2026</span>
+      <h3>👵 Senior Plus Size Women 50+ — Best Selling Bras by Category</h3>
+      <span style="font-size:11px;color:#6b7280;background:#f3f4f6;padding:4px 10px;border-radius:8px">Target: Women 50+ · Comfort &amp; Support Focused · Amazon June 2026</span>
     </div>
     <p style="font-size:12px;color:#9ca3af;margin-bottom:12px">Best-selling bras mapped to the needs of women 50+: easy wear, full support, wireless comfort, and adaptive designs</p>
 
@@ -274,7 +274,7 @@
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
       <div style="background:#fff7ed;border-radius:10px;padding:10px 12px;border-left:3px solid #f97316">
         <div style="font-size:10px;color:#9a3412;font-weight:700;margin-bottom:2px">AGE TARGET</div>
-        <div style="font-size:16px;font-weight:800;color:#c2410c">50â75+</div>
+        <div style="font-size:16px;font-weight:800;color:#c2410c">50–75+</div>
         <div style="font-size:10px;color:#9ca3af">Primary segment</div>
       </div>
       <div style="background:#f0fdf4;border-radius:10px;padding:10px 12px;border-left:3px solid #22c55e">
@@ -284,7 +284,7 @@
       </div>
       <div style="background:#eff6ff;border-radius:10px;padding:10px 12px;border-left:3px solid #3b82f6">
         <div style="font-size:10px;color:#1e40af;font-weight:700;margin-bottom:2px">AVG SPEND</div>
-        <div style="font-size:16px;font-weight:800;color:#1d4ed8">$22â$45</div>
+        <div style="font-size:16px;font-weight:800;color:#1d4ed8">$22–$45</div>
         <div style="font-size:10px;color:#9ca3af">Sweet spot price range</div>
       </div>
       <div style="background:#fdf4ff;border-radius:10px;padding:10px 12px;border-left:3px solid #a855f7">
@@ -295,24 +295,24 @@
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px" id="catTabs">
       <button class="tab-btn active" onclick="filterCat('all',this)">All Categories</button>
-      <button class="tab-btn" onclick="filterCat('active',this)">ð Active &amp; Low-Impact</button>
-      <button class="tab-btn" onclick="filterCat('comfort',this)">ð Comfort &amp; Easy-Wear</button>
-      <button class="tab-btn" onclick="filterCat('support',this)">ðª Full Support</button>
-      <button class="tab-btn" onclick="filterCat('specialty',this)">â¨ Adaptive &amp; Specialty</button>
+      <button class="tab-btn" onclick="filterCat('active',this)">🏃 Active &amp; Low-Impact</button>
+      <button class="tab-btn" onclick="filterCat('comfort',this)">😊 Comfort &amp; Easy-Wear</button>
+      <button class="tab-btn" onclick="filterCat('support',this)">💪 Full Support</button>
+      <button class="tab-btn" onclick="filterCat('specialty',this)">✨ Adaptive &amp; Specialty</button>
     </div>
     <div id="plusSizeGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px"></div>
   </div>
 
-  <!-- ââ FACEBOOK & INSTAGRAM TRENDING BOARD ââ -->
+  <!-- ══ FACEBOOK & INSTAGRAM TRENDING BOARD ══ -->
   <div class="table-card" style="margin-bottom:24px">
     <div class="table-header" style="margin-bottom:16px">
       <div>
-        <h3 style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:17px">ð± Trending Bra on Facebook & Instagram â 2026</h3>
-        <p style="font-size:12px;color:#9ca3af;margin-top:2px">Viral products Â· Trending hashtags Â· Brand social presence Â· Content insights</p>
+        <h3 style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:17px">📱 Trending Bra on Facebook & Instagram — 2026</h3>
+        <p style="font-size:12px;color:#9ca3af;margin-top:2px">Viral products · Trending hashtags · Brand social presence · Content insights</p>
       </div>
       <div style="display:flex;gap:6px">
         <span style="background:#1877F2;color:white;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700">f Facebook</span>
-        <span style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700">ð· Instagram</span>
+        <span style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700">📷 Instagram</span>
       </div>
     </div>
 
@@ -341,19 +341,19 @@
 
       <!-- Trending Hashtags -->
       <div style="background:#fafafa;border-radius:12px;padding:16px">
-        <div style="font-size:13px;font-weight:700;margin-bottom:12px">ð¥ Trending Hashtags</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">🔥 Trending Hashtags</div>
         <div id="hashtagList"></div>
       </div>
 
       <!-- Viral Products -->
       <div style="background:#fafafa;border-radius:12px;padding:16px">
-        <div style="font-size:13px;font-weight:700;margin-bottom:12px">ð Most Viral Products</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">🚀 Most Viral Products</div>
         <div id="viralProducts"></div>
       </div>
 
       <!-- Brand Social Presence -->
       <div style="background:#fafafa;border-radius:12px;padding:16px">
-        <div style="font-size:13px;font-weight:700;margin-bottom:12px">ð·ï¸ Brand Social Presence</div>
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">🏷️ Brand Social Presence</div>
         <div id="brandSocial"></div>
       </div>
     </div>
@@ -364,7 +364,7 @@
       <!-- Instagram Content Trends -->
       <div style="background:#fdf4ff;border-radius:12px;padding:16px;border:1px solid #e9d5ff">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-          <span style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:15px">ð·</span>
+          <span style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:15px">📷</span>
           <span style="font-size:13px;font-weight:700;color:#6b21a8">Instagram Trends</span>
         </div>
         <div id="instaInsights"></div>
@@ -373,7 +373,7 @@
       <!-- Facebook Content Trends -->
       <div style="background:#eff6ff;border-radius:12px;padding:16px;border:1px solid #bfdbfe">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-          <span style="font-size:15px">ð</span>
+          <span style="font-size:15px">📘</span>
           <span style="font-size:13px;font-weight:700;color:#1d4ed8">Facebook Trends</span>
         </div>
         <div id="fbInsights"></div>
@@ -384,12 +384,12 @@
     <div style="border-top:1px solid #f3f4f6;padding-top:18px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
         <div>
-          <div style="font-size:14px;font-weight:700;color:#374151">ðµ Most Clicked & Engaged Bra Buying Posts â Senior Women (55+)</div>
-          <div style="font-size:11px;color:#9ca3af;margin-top:2px">Top-performing Facebook & Instagram posts targeting women aged 55â75 Â· Sorted by engagement</div>
+          <div style="font-size:14px;font-weight:700;color:#374151">👵 Most Clicked & Engaged Bra Buying Posts — Senior Women (55+)</div>
+          <div style="font-size:11px;color:#9ca3af;margin-top:2px">Top-performing Facebook & Instagram posts targeting women aged 55–75 · Sorted by engagement</div>
         </div>
         <div style="display:flex;gap:6px">
-          <span style="background:#fdf4ff;color:#7e22ce;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600">ð¥ Target: Women 55â75</span>
-          <span style="background:#fff7ed;color:#c2410c;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600">ð¯ High Purchase Intent</span>
+          <span style="background:#fdf4ff;color:#7e22ce;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600">👥 Target: Women 55–75</span>
+          <span style="background:#fff7ed;color:#c2410c;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600">🎯 High Purchase Intent</span>
         </div>
       </div>
       <div id="seniorFeedPosts" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px"></div>
@@ -397,82 +397,82 @@
   </div>
 
   <div class="footer-note">
-    ð¸ <strong>Images:</strong> Temu product photos captured live from temu.com (June 2026). Amazon images load from Amazon CDN. In sandboxed viewers, gradient placeholders are shown as fallback. <strong>Data:</strong> Amazon from ASInsight (March 2026); Temu prices/reviews from live listings. Sales volume available for Amazon only.
+    📸 <strong>Images:</strong> Temu product photos captured live from temu.com (June 2026). Amazon images load from Amazon CDN. In sandboxed viewers, gradient placeholders are shown as fallback. <strong>Data:</strong> Amazon from ASInsight (March 2026); Temu prices/reviews from live listings. Sales volume available for Amazon only.
   </div>
 
 </div>
 
 <script>
-// ââ Gradient palette per product ââ
+// ── Gradient palette per product ──
 const gradients = [
   ['#7c3aed','#a855f7'], ['#db2777','#f472b6'], ['#0ea5e9','#38bdf8'],
   ['#059669','#34d399'], ['#d97706','#fbbf24'], ['#dc2626','#f87171'],
   ['#7c3aed','#db2777'], ['#0369a1','#38bdf8']
 ];
-const braIcons = ['ð©±','ð','ð©²','ð©±','ðï¸','ð','ð©±','ð'];
+const braIcons = ['🩱','👙','🩲','🩱','🏋️','👙','🩱','🏃'];
 
-// ââ Product Data ââ
+// ── Product Data ──
 const allProducts = [
-  // ââ NEW TODAY June 16 2026 ââ
-  { rank:1, platform:'amazon', name:'habibee Jelly Bra Wireless Comfort Seamless Push Up', brand:'habibee', price:24.99, rating:4.4, reviews:1616, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71zUNapZGbL._AC_UY300_.jpg', grad:gradients[3], icon:'ð®', url:'https://www.amazon.com/dp/B0D61ZZHW5' },
-  { rank:2, platform:'amazon', name:"Warner's Blissful Benefits Super Soft Wireless Lightly Lined", brand:"Warner's", price:16.94, rating:4.5, reviews:24509, sales:'1,000+', salesNum:1000, features:['Wireless','Lightly Lined','Seamless','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/81SpRb8+aqL._AC_UY300_.jpg', grad:gradients[7], icon:'ð', url:'https://www.amazon.com/dp/B07BLH9FQC' },
-  { rank:3, platform:'amazon', name:"Warner's This Is Not A Bra Full Coverage Underwire", brand:"Warner's", price:26.99, rating:4.4, reviews:22870, sales:'1,000+', salesNum:1000, features:['Underwire','Full Coverage','Classic','Lined'], imgUrl:'https://m.media-amazon.com/images/I/71kNQ7YWldL._AC_UY300_.jpg', grad:gradients[1], icon:'ð©±', url:'https://www.amazon.com/dp/B00378LD94' },
-  { rank:4, platform:'amazon', name:'OEAK Women Jelly Bras Scalloped Push Up Buttery Soft', brand:'OEAK', price:16.98, rating:4.3, reviews:2149, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Scalloped','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71OV9odoxbL._AC_UY300_.jpg', grad:gradients[0], icon:'ð¸', url:'https://www.amazon.com/dp/B0DZ69N6FR' },
-  // ââ NEW TODAY June 10 2026 ââ
-  // ââ NEW TODAY June 9 2026 ââ
-  // ââ Existing Products ââ
+  // ── NEW TODAY June 16 2026 ──
+  { rank:1, platform:'amazon', name:'habibee Jelly Bra Wireless Comfort Seamless Push Up', brand:'habibee', price:24.99, rating:4.4, reviews:1616, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71zUNapZGbL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0D61ZZHW5' },
+  { rank:2, platform:'amazon', name:"Warner's Blissful Benefits Super Soft Wireless Lightly Lined", brand:"Warner's", price:16.94, rating:4.5, reviews:24509, sales:'1,000+', salesNum:1000, features:['Wireless','Lightly Lined','Seamless','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/81SpRb8+aqL._AC_UY300_.jpg', grad:gradients[7], icon:'👙', url:'https://www.amazon.com/dp/B07BLH9FQC' },
+  { rank:3, platform:'amazon', name:"Warner's This Is Not A Bra Full Coverage Underwire", brand:"Warner's", price:26.99, rating:4.4, reviews:22870, sales:'1,000+', salesNum:1000, features:['Underwire','Full Coverage','Classic','Lined'], imgUrl:'https://m.media-amazon.com/images/I/71kNQ7YWldL._AC_UY300_.jpg', grad:gradients[1], icon:'🩱', url:'https://www.amazon.com/dp/B00378LD94' },
+  { rank:4, platform:'amazon', name:'OEAK Women Jelly Bras Scalloped Push Up Buttery Soft', brand:'OEAK', price:16.98, rating:4.3, reviews:2149, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Scalloped','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71OV9odoxbL._AC_UY300_.jpg', grad:gradients[0], icon:'🌸', url:'https://www.amazon.com/dp/B0DZ69N6FR' },
+  // ── NEW TODAY June 10 2026 ──
+  // ── NEW TODAY June 9 2026 ──
+  // ── Existing Products ──
   // Amazon
-  { rank:1, platform:'amazon', name:'OEAK Deep V Wireless Bra', brand:'OEAK', price:19.96, rating:4.0, reviews:10401, sales:'7,000+', salesNum:7000, features:['Wireless','Deep V','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', grad:gradients[0], icon:'ð©±', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
-  { rank:2, platform:'amazon', name:'PoseFree Seamless Wireless Bra', brand:'PoseFree', price:17.98, rating:4.0, reviews:12966, sales:'5,000+', salesNum:5000, features:['Wireless','Seamless','Full Coverage','T-Shirt'], imgUrl:'https://m.media-amazon.com/images/I/61mxpfsyudL._AC_UY300_.jpg', grad:gradients[1], icon:'ð', url:'https://www.amazon.com/dp/B0FX98KPQB' },
-  { rank:3, platform:'amazon', name:'LetsJoli Supportive Wireless Bra', brand:'LetsJoli', price:19.99, rating:4.1, reviews:15164, sales:'5,000+', salesNum:5000, features:['Wireless','Plus Size','Full Coverage','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg', grad:gradients[2], icon:'ð©±', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
-  { rank:4, platform:'amazon', name:'Cuteio Wireless Jelly Bra', brand:'Cuteio', price:14.99, rating:4.2, reviews:1605, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Seamless','Padded'], imgUrl:'https://m.media-amazon.com/images/I/71JeuszI-ZL._AC_UY300_.jpg', grad:gradients[3], icon:'ð®', url:'https://www.amazon.com/dp/B0F12KRCYK' },
-  { rank:5, platform:'amazon', name:'OEAK Wireless Jelly Bra Plus Size', brand:'OEAK', price:19.99, rating:4.1, reviews:4270, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Plus Size','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg', grad:gradients[4], icon:'ð©±', url:'https://www.amazon.com/dp/B0FBGG142J' },
-  { rank:6, platform:'amazon', name:'COCOMARTS Scalloped Jelly Bra', brand:'COCOMARTS', price:15.72, rating:4.3, reviews:965, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Push-up','Scalloped'], imgUrl:'https://m.media-amazon.com/images/I/61fg6AeoFlL._AC_UY300_.jpg', grad:gradients[5], icon:'ð¸', url:'https://www.amazon.com/dp/B0FS1GXDPX' },
-  { rank:7, platform:'amazon', name:'COCOMARTS Classic Jelly Bra', brand:'COCOMARTS', price:14.58, rating:4.3, reviews:965, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Seamless','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/61urOKZuFcL._AC_UY300_.jpg', grad:gradients[6], icon:'ð', url:'https://www.amazon.com/dp/B0FNMFCJ29' },
-  { rank:8, platform:'amazon', name:'RUNNING GIRL High Impact Sports Bra', brand:'RUNNING GIRL', price:23.99, rating:4.4, reviews:6645, sales:'2,000+', salesNum:2000, features:['Sports','High Impact','Racerback','Longline'], imgUrl:'https://m.media-amazon.com/images/I/611cOiwl+XL._AC_UY300_.jpg', grad:gradients[7], icon:'ð', url:'https://www.amazon.com/dp/B0CBRYTVYL' },
+  { rank:1, platform:'amazon', name:'OEAK Deep V Wireless Bra', brand:'OEAK', price:19.96, rating:4.0, reviews:10401, sales:'7,000+', salesNum:7000, features:['Wireless','Deep V','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', grad:gradients[0], icon:'🩱', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
+  { rank:2, platform:'amazon', name:'PoseFree Seamless Wireless Bra', brand:'PoseFree', price:17.98, rating:4.0, reviews:12966, sales:'5,000+', salesNum:5000, features:['Wireless','Seamless','Full Coverage','T-Shirt'], imgUrl:'https://m.media-amazon.com/images/I/61mxpfsyudL._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0FX98KPQB' },
+  { rank:3, platform:'amazon', name:'LetsJoli Supportive Wireless Bra', brand:'LetsJoli', price:19.99, rating:4.1, reviews:15164, sales:'5,000+', salesNum:5000, features:['Wireless','Plus Size','Full Coverage','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg', grad:gradients[2], icon:'🩱', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
+  { rank:4, platform:'amazon', name:'Cuteio Wireless Jelly Bra', brand:'Cuteio', price:14.99, rating:4.2, reviews:1605, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Seamless','Padded'], imgUrl:'https://m.media-amazon.com/images/I/71JeuszI-ZL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0F12KRCYK' },
+  { rank:5, platform:'amazon', name:'OEAK Wireless Jelly Bra Plus Size', brand:'OEAK', price:19.99, rating:4.1, reviews:4270, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Plus Size','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg', grad:gradients[4], icon:'🩱', url:'https://www.amazon.com/dp/B0FBGG142J' },
+  { rank:6, platform:'amazon', name:'COCOMARTS Scalloped Jelly Bra', brand:'COCOMARTS', price:15.72, rating:4.3, reviews:965, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Push-up','Scalloped'], imgUrl:'https://m.media-amazon.com/images/I/61fg6AeoFlL._AC_UY300_.jpg', grad:gradients[5], icon:'🌸', url:'https://www.amazon.com/dp/B0FS1GXDPX' },
+  { rank:7, platform:'amazon', name:'COCOMARTS Classic Jelly Bra', brand:'COCOMARTS', price:14.58, rating:4.3, reviews:965, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Seamless','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/61urOKZuFcL._AC_UY300_.jpg', grad:gradients[6], icon:'👙', url:'https://www.amazon.com/dp/B0FNMFCJ29' },
+  { rank:8, platform:'amazon', name:'RUNNING GIRL High Impact Sports Bra', brand:'RUNNING GIRL', price:23.99, rating:4.4, reviews:6645, sales:'2,000+', salesNum:2000, features:['Sports','High Impact','Racerback','Longline'], imgUrl:'https://m.media-amazon.com/images/I/611cOiwl+XL._AC_UY300_.jpg', grad:gradients[7], icon:'🏃', url:'https://www.amazon.com/dp/B0CBRYTVYL' },
   // Temu
-  { rank:1, platform:'temu', name:'Posture-Correcting Push-Up Bra', brand:'Temu', price:8.46, rating:4.3, reviews:699, sales:'699 sold', salesNum:0, features:['Push-up','Wireless','Back Support','Seamless'], imgUrl:'https://img.kwcdn.com/product/fancy/0c3e1c01-1a2b-485c-9a04-2d37ce694eb0.jpg?imageView2/2/w/400/q/70', grad:['#9333ea','#c084fc'], icon:'ð©±', url:'https://www.temu.com/search_result.html?search_key=posture+correcting+push+up+bra+wireless+seamless' },
-  { rank:2, platform:'temu', name:'Posture-Correcting Seamless Bra', brand:'Temu', price:8.46, rating:3.9, reviews:699, sales:'699 sold', salesNum:0, features:['Wireless','Seamless','Posture','Push-up'], imgUrl:'https://img.kwcdn.com/product/fancy/f97c7db3-52e5-43aa-920d-a5f173342166.jpg?imageView2/2/w/400/q/70', grad:['#db2777','#fb7185'], icon:'ð®', url:'https://www.temu.com/search_result.html?search_key=womens+posture+correcting+seamless+bra' },
-  { rank:3, platform:'temu', name:'EssElegance Wireless Sports Bra', brand:'EssElegance', price:10.85, rating:4.4, reviews:293, sales:'3.2K+ sold', salesNum:0, features:['Sports','Wireless','Push-up','Smooth'], imgUrl:'https://img.kwcdn.com/product/fancy/955898cb-266c-4e73-99a1-de632584396b.jpg?imageView2/2/w/400/q/70', grad:['#b45309','#fbbf24'], icon:'ð¸', url:'https://www.temu.com/search_result.html?search_key=EssElegance+wireless+sports+bra+push+up' },
-  { rank:4, platform:'temu', name:'5pcs Wire-Free Bras Plaid Mesh', brand:'Temu', price:14.76, rating:4.0, reviews:31, sales:'31 sold', salesNum:0, features:['Wireless','Multi-pack','Plaid Mesh','Adjustable'], imgUrl:'https://img.kwcdn.com/product/fancy/6e3f0482-8d2f-438a-847a-50dfd7f72535.jpg?imageView2/2/w/400/q/70', grad:['#0e7490','#22d3ee'], icon:'ð¼', url:'https://www.temu.com/search_result.html?search_key=5pcs+wire+free+bras+plaid+mesh' },
-  { rank:5, platform:'temu', name:'3pcs Strapless Bra (Non-Steel Ring)', brand:'Temu', price:13.78, rating:4.2, reviews:90, sales:'90 sold', salesNum:0, features:['Strapless','Wireless','Non-slip','Detachable'], imgUrl:'https://img.kwcdn.com/product/fancy/f3d7231c-9269-4a40-a549-51664ae383c9.jpg?imageView2/2/w/400/q/70', grad:['#7c3aed','#a78bfa'], icon:'ð', url:'https://www.temu.com/search_result.html?search_key=3pcs+strapless+bra+non+steel+ring' },
-  { rank:6, platform:'temu', name:'Seamless Underwear Lifting Shaper Bra', brand:'Temu', price:7.15, rating:4.3, reviews:2700, sales:'2.7K+ sold', salesNum:0, features:['Seamless','Lifting','Full Coverage','Shaper'], imgUrl:'https://img.kwcdn.com/product/fancy/8441c840-e396-46ca-b12d-4fcb4cd421bd.jpg?imageView2/2/w/400/q/70', grad:['#065f46','#34d399'], icon:'ð', url:'https://www.temu.com/search_result.html?search_key=seamless+lifting+shaper+bra+women' },
-  { rank:7, platform:'temu', name:'3pcs Seamless Breathable Hollow Bra', brand:'Temu', price:14.03, rating:4.1, reviews:368, sales:'368 sold', salesNum:0, features:['Seamless','Breathable','Hollow','Sports'], imgUrl:'https://img.kwcdn.com/product/fancy/9817fc24-4fb6-4072-9ada-a47f68fef022.jpg?imageView2/2/w/400/q/70', grad:['#1d4ed8','#60a5fa'], icon:'ðï¸', url:'https://www.temu.com/search_result.html?search_key=3pcs+seamless+breathable+hollow+sports+bra' },
-  { rank:8, platform:'temu', name:'4pcs Elegant Ladies Seamless Bra', brand:'Temu', price:17.56, rating:4.4, reviews:368, sales:'368 sold', salesNum:0, features:['Seamless','Multi-pack','Full Coverage','Elegant'], imgUrl:'https://img.kwcdn.com/product/fancy/99da8458-237c-4364-9a0d-266bcbb67e38.jpg?imageView2/2/w/400/q/70', grad:['#be185d','#f9a8d4'], icon:'ð', url:'https://www.temu.com/search_result.html?search_key=4pcs+elegant+ladies+seamless+bra' },
+  { rank:1, platform:'temu', name:'Posture-Correcting Push-Up Bra', brand:'Temu', price:8.46, rating:4.3, reviews:699, sales:'699 sold', salesNum:0, features:['Push-up','Wireless','Back Support','Seamless'], imgUrl:'https://img.kwcdn.com/product/fancy/0c3e1c01-1a2b-485c-9a04-2d37ce694eb0.jpg?imageView2/2/w/400/q/70', grad:['#9333ea','#c084fc'], icon:'🩱', url:'https://www.temu.com/search_result.html?search_key=posture+correcting+push+up+bra+wireless+seamless' },
+  { rank:2, platform:'temu', name:'Posture-Correcting Seamless Bra', brand:'Temu', price:8.46, rating:3.9, reviews:699, sales:'699 sold', salesNum:0, features:['Wireless','Seamless','Posture','Push-up'], imgUrl:'https://img.kwcdn.com/product/fancy/f97c7db3-52e5-43aa-920d-a5f173342166.jpg?imageView2/2/w/400/q/70', grad:['#db2777','#fb7185'], icon:'🍮', url:'https://www.temu.com/search_result.html?search_key=womens+posture+correcting+seamless+bra' },
+  { rank:3, platform:'temu', name:'EssElegance Wireless Sports Bra', brand:'EssElegance', price:10.85, rating:4.4, reviews:293, sales:'3.2K+ sold', salesNum:0, features:['Sports','Wireless','Push-up','Smooth'], imgUrl:'https://img.kwcdn.com/product/fancy/955898cb-266c-4e73-99a1-de632584396b.jpg?imageView2/2/w/400/q/70', grad:['#b45309','#fbbf24'], icon:'🌸', url:'https://www.temu.com/search_result.html?search_key=EssElegance+wireless+sports+bra+push+up' },
+  { rank:4, platform:'temu', name:'5pcs Wire-Free Bras Plaid Mesh', brand:'Temu', price:14.76, rating:4.0, reviews:31, sales:'31 sold', salesNum:0, features:['Wireless','Multi-pack','Plaid Mesh','Adjustable'], imgUrl:'https://img.kwcdn.com/product/fancy/6e3f0482-8d2f-438a-847a-50dfd7f72535.jpg?imageView2/2/w/400/q/70', grad:['#0e7490','#22d3ee'], icon:'🔼', url:'https://www.temu.com/search_result.html?search_key=5pcs+wire+free+bras+plaid+mesh' },
+  { rank:5, platform:'temu', name:'3pcs Strapless Bra (Non-Steel Ring)', brand:'Temu', price:13.78, rating:4.2, reviews:90, sales:'90 sold', salesNum:0, features:['Strapless','Wireless','Non-slip','Detachable'], imgUrl:'https://img.kwcdn.com/product/fancy/f3d7231c-9269-4a40-a549-51664ae383c9.jpg?imageView2/2/w/400/q/70', grad:['#7c3aed','#a78bfa'], icon:'💜', url:'https://www.temu.com/search_result.html?search_key=3pcs+strapless+bra+non+steel+ring' },
+  { rank:6, platform:'temu', name:'Seamless Underwear Lifting Shaper Bra', brand:'Temu', price:7.15, rating:4.3, reviews:2700, sales:'2.7K+ sold', salesNum:0, features:['Seamless','Lifting','Full Coverage','Shaper'], imgUrl:'https://img.kwcdn.com/product/fancy/8441c840-e396-46ca-b12d-4fcb4cd421bd.jpg?imageView2/2/w/400/q/70', grad:['#065f46','#34d399'], icon:'🔒', url:'https://www.temu.com/search_result.html?search_key=seamless+lifting+shaper+bra+women' },
+  { rank:7, platform:'temu', name:'3pcs Seamless Breathable Hollow Bra', brand:'Temu', price:14.03, rating:4.1, reviews:368, sales:'368 sold', salesNum:0, features:['Seamless','Breathable','Hollow','Sports'], imgUrl:'https://img.kwcdn.com/product/fancy/9817fc24-4fb6-4072-9ada-a47f68fef022.jpg?imageView2/2/w/400/q/70', grad:['#1d4ed8','#60a5fa'], icon:'🏋️', url:'https://www.temu.com/search_result.html?search_key=3pcs+seamless+breathable+hollow+sports+bra' },
+  { rank:8, platform:'temu', name:'4pcs Elegant Ladies Seamless Bra', brand:'Temu', price:17.56, rating:4.4, reviews:368, sales:'368 sold', salesNum:0, features:['Seamless','Multi-pack','Full Coverage','Elegant'], imgUrl:'https://img.kwcdn.com/product/fancy/99da8458-237c-4364-9a0d-266bcbb67e38.jpg?imageView2/2/w/400/q/70', grad:['#be185d','#f9a8d4'], icon:'💖', url:'https://www.temu.com/search_result.html?search_key=4pcs+elegant+ladies+seamless+bra' },
   // Brand Websites
-  { rank:1, platform:'brand', name:'24/7 Classic Wireless Crossover Minimizer Bra', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['Wireless','Crossover','Minimizer','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg', grad:['#8B2252','#C06080'], icon:'ð©±', url:'https://www.thirdlove.com/products/24-7-wireless-bra-black' },
-  { rank:2, platform:'brand', name:'Catalyst Sports Bra â High Support, Eliminates Bounce 76%', brand:'Knix', price:78.00, rating:4.5, reviews:5277, sales:'Top Rated', salesNum:0, features:['High Support','Sports','Full Coverage','Wireless'], imgUrl:'https://knix.com/cdn/shop/files/CatalystSportsBra_Black_01_f13d06ec-7762-41ef-9706-15f41b5397d1.webp', grad:['#1A5C5C','#2A8C8C'], icon:'ð¿', url:'https://knix.com/products/catalyst-sports-bra' },
-  { rank:3, platform:'brand', name:'CrossOver Wireless Bra â Bonded Cradle Support', brand:'HoneyLove', price:69.00, rating:4.5, reviews:1023, sales:'#1 Best Seller', salesNum:0, features:['Wireless','CrossOver','Bonded Support','No Underwire'], imgUrl:'https://cdn.shopify.com/s/files/1/0965/6676/files/crossover_bra-runway-34DD-nicki_0436_R1_front.jpg', grad:['#C9873F','#E8A85C'], icon:'ð¯', url:'https://www.honeylove.com/products/crossover-bra' },
-  { rank:4, platform:'brand', name:'Savage Unlined Triangle Bralette', brand:'Savage X Fenty', price:15.00, rating:4.5, reviews:3200, sales:'â', salesNum:0, features:['Unlined','Triangle','Inclusive Sizing','Lightweight'], imgUrl:'https://m.media-amazon.com/images/I/61cfKqtF6mL._AC_UY300_.jpg', grad:['#1A1A1A','#4A4A4A'], icon:'ð', url:'https://www.savagex.com/features/best-sellers' },
-  { rank:5, platform:'brand', name:'B.Smooth Seamless Wireless Bra', brand:'Wacoal', price:40.00, rating:4.1, reviews:1336, sales:'â', salesNum:0, features:['Seamless','Wireless','Smooth','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/711zt8dm0HL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'ð', url:'https://www.wacoal-america.com/collections/bras' },
-  { rank:6, platform:'brand', name:'Enbliss Wireless T-Shirt Bra', brand:'Soma', price:52.00, rating:4.4, reviews:4500, sales:'Fan Fave', salesNum:0, features:['Wireless','T-Shirt','Full Coverage','Everyday'], imgUrl:'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTpQVuuXifzJ2BFWUAQdvxhW1P6Hf836OgPrvzggSeEVClHiY0AZPteXOiJzZrJ4vvwjygEvPVm7zeFGXtgVKwBscwSXBQ-_g', grad:['#B76E79','#D49BA5'], icon:'ð¸', url:'https://www.soma.com/en/c/bras' },
-  { rank:7, platform:'brand', name:'Wireless Lightly Lined J-Hook Plunge Bra', brand:'Lively', price:35.00, rating:4.3, reviews:3200, sales:'â', salesNum:0, features:['Wireless','Lightly Lined','Plunge','J-Hook'], imgUrl:'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRB99P234oMlVf7QMFcihfwYa9djxJW1yhtN7KEt3yzCXG-j-8YbparikTMR1tc1esKRRMgSGYNjUMtp4ifcegdnlq2bXFbeHFuKU6A-kVKd8l0MQeD0-s8', grad:['#E8907A','#F0B0A0'], icon:'ð¦', url:'https://wearlively.com' },
-  { rank:8, platform:'brand', name:'True Body Lift Wireless Bra', brand:'True & Co', price:68.00, rating:4.4, reviews:533, sales:'â', salesNum:0, features:['Wireless','Lifting','Body Hugging','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/61k-fsrHlIL._AC_UY300_.jpg', grad:['#4A3728','#7A5740'], icon:'â¨', url:'https://trueandco.com/collections/bras' },
-  { rank:9, platform:'brand', name:'Feathers Contour Wireless Bra', brand:'Natori', price:60.85, rating:4.2, reviews:2219, sales:'â', salesNum:0, features:['Wireless','Feather-Light','Contour','Premium'], imgUrl:'https://m.media-amazon.com/images/I/717+l0mWoHL._AC_UY300_.jpg', grad:['#2C3E50','#4A6080'], icon:'ðª¶', url:'https://www.natori.com/collections/bras' },
-  { rank:10, platform:'brand', name:'Bra-llelujah! Wireless Full Coverage Bra', brand:'SPANX', price:46.80, rating:4.2, reviews:240, sales:'â', salesNum:0, features:['Wireless','Full Coverage','Smoothing','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/71fYnnWsXXL._AC_UY300_.jpg', grad:['#1A1A1A','#555555'], icon:'ð¤', url:'https://www.spanx.com/collections/bras' },
-  { rank:14, platform:'brand', name:'24/7 Classic T-Shirt Bra â Apricot New Shade', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['T-Shirt','Wireless','Full Coverage','Seamless'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q226_PDP_OF_TSBRA_ZEHUW_APRICOT_484.jpg', grad:['#8B2252','#C06080'], icon:'ð©±', url:'https://www.thirdlove.com/products/24-7-classic-t-shirt-bra-apricot' },
-  // ââ NEW June 17 2026 â Amazon ââ
-  { rank:5, platform:'amazon', name:'Jelly Bras for Women Deep V Wireless Seamless Push Up', brand:'Generic', price:14.99, rating:4.9, reviews:520, sales:'1,000+', salesNum:1000, features:['Jelly','Wireless','Deep V','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/61AS6i0j7iL._AC_UY300_.jpg', grad:gradients[0], icon:'ð®', url:'https://www.amazon.com/dp/B0H3MVJSM5' },
-  { rank:6, platform:'amazon', name:'VRCOMFY Jelly Bras Mesh Lace Wireless Deep V', brand:'VRCOMFY', price:17.99, rating:4.9, reviews:410, sales:'500+', salesNum:500, features:['Jelly','Wireless','Mesh Lace','Deep V'], imgUrl:'https://m.media-amazon.com/images/I/71s5GgJpIbL._AC_UY300_.jpg', grad:gradients[1], icon:'ð®', url:'https://www.amazon.com/dp/B0GLP51YGN' },
-  { rank:7, platform:'amazon', name:'Women Jelly Deep V Push Up Bra Mesh Plunge Wireless Seamless', brand:'Generic', price:18.99, rating:4.7, reviews:360, sales:'500+', salesNum:500, features:['Jelly','Deep V','Push-up','Mesh Plunge'], imgUrl:'https://m.media-amazon.com/images/I/71TL5wIAaQL._AC_UY300_.jpg', grad:gradients[2], icon:'ð®', url:'https://www.amazon.com/dp/B0GT2NQP2N' },
-  { rank:8, platform:'amazon', name:'Jelly Bras for Women Push Up Deep V Wireless Seamless', brand:'Generic', price:19.99, rating:4.8, reviews:310, sales:'500+', salesNum:500, features:['Jelly','Push-up','Deep V','Wireless'], imgUrl:'https://m.media-amazon.com/images/I/71WXbCgxHiL._AC_UY300_.jpg', grad:gradients[3], icon:'ð®', url:'https://www.amazon.com/dp/B0GQSYDMS9' },
-  { rank:9, platform:'amazon', name:"Warner's Women's Blissful Benefits Wireless Lightly Lined", brand:"Warner's", price:17.94, rating:4.5, reviews:15200, sales:'2,000+', salesNum:2000, features:['Wireless','Lightly Lined','Comfort','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/71IVdvxXwLL._AC_UY300_.jpg', grad:gradients[4], icon:'ð', url:'https://www.amazon.com/dp/B076GZ6N7M' },
-  { rank:10, platform:'amazon', name:"Warner's Easy Does It Underarm-Smoothing Wireless Comfort Bra", brand:"Warner's", price:21.99, rating:4.4, reviews:18500, sales:'1,000+', salesNum:1000, features:['Wireless','Underarm Smoothing','Comfort','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71Ph3LyBctL._AC_UY300_.jpg', grad:gradients[5], icon:'ð', url:'https://www.amazon.com/dp/B01MS650TC' },
-  { rank:11, platform:'amazon', name:"Hanes Women's Wireless Bra Smooth Comfort Full-Coverage", brand:'Hanes', price:13.10, rating:4.2, reviews:8200, sales:'3,000+', salesNum:3000, features:['Wireless','Smooth Comfort','Full Coverage','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/81oGpwX2UQL._AC_UY300_.jpg', grad:gradients[6], icon:'ð', url:'https://www.amazon.com/dp/B00T6TSL2U' },
-  { rank:12, platform:'amazon', name:'Gailife 3PACK Jelly Wireless Bras for Women No Underwire', brand:'Gailife', price:26.99, rating:4.4, reviews:460, sales:'500+', salesNum:500, features:['Jelly','Wireless','Multi-pack','No Underwire'], imgUrl:'https://m.media-amazon.com/images/I/612UjUzx2bL._AC_UY300_.jpg', grad:gradients[7], icon:'ð®', url:'https://www.amazon.com/dp/B0GD4J4465' },
-  // ââ NEW June 17 2026 â Temu ââ
-  { rank:9, platform:'temu', name:'Sexy Lace Underwear Gathered Wide Shoulder Bra', brand:'Temu', price:9.18, rating:4.8, reviews:562, sales:'3.3K+ sold', salesNum:0, features:['Lace','Gathered','Wide Shoulder','Wireless'], imgUrl:'https://img.kwcdn.com/product/fancy/148bf4c5-c5c9-4314-913e-d9b41f49381e.jpg?imageView2/2/w/400/q/70', grad:['#9333ea','#c084fc'], icon:'ð¸', url:'https://www.temu.com/search_result.html?search_key=sexy+lace+gathered+wide+shoulder+bra' },
-  { rank:10, platform:'temu', name:"Ladies' Seamless Satin Smooth Bra", brand:'Temu', price:5.42, rating:4.6, reviews:611, sales:'4.7K+ sold', salesNum:0, features:['Seamless','Satin','Smooth','Wireless'], imgUrl:'https://img.kwcdn.com/product/open/d5ad635b781d408fb9b1a8699da2f0f7-goods.jpeg?imageView2/2/w/400/q/70', grad:['#db2777','#fb7185'], icon:'â¨', url:'https://www.temu.com/search_result.html?search_key=ladies+seamless+satin+smooth+bra' },
-  { rank:11, platform:'temu', name:'4pcs Elegant Fully Covered Underwire Front Buckle Bra', brand:'Temu', price:12.75, rating:4.6, reviews:196, sales:'1.4K+ sold', salesNum:0, features:['Underwire','Full Coverage','Front Buckle','Multi-pack'], imgUrl:'https://img.kwcdn.com/product/fancy/77686305-4f4a-4b7a-a875-36981348c046.jpg?imageView2/2/w/400/q/70', grad:['#b45309','#fbbf24'], icon:'ð', url:'https://www.temu.com/search_result.html?search_key=4pcs+elegant+underwire+front+buckle+bra' },
-  { rank:12, platform:'temu', name:'Posture Correction Invisible Back Bra', brand:'Temu', price:4.56, rating:4.5, reviews:1972, sales:'55K+ sold', salesNum:0, features:['Posture Correction','Invisible Back','Wireless','Seamless'], imgUrl:'https://img.kwcdn.com/product/1e65f7010e/592a5545-0fec-4919-8798-9212589848ab_1350x1800.png?imageView2/2/w/400/q/70', grad:['#0e7490','#22d3ee'], icon:'ð§', url:'https://www.temu.com/search_result.html?search_key=posture+correction+invisible+back+bra' },
-  { rank:13, platform:'temu', name:'5pcs Wire-Free Sports & Everyday Bra Full Coverage', brand:'Temu', price:14.78, rating:4.7, reviews:238, sales:'1K+ sold', salesNum:0, features:['Wireless','Sports','Full Coverage','Multi-pack'], imgUrl:'https://img.kwcdn.com/product/fancy/9aad24e3-c0b0-4077-9a83-dc0ad1f60f64.jpg?imageView2/2/w/400/q/70', grad:['#065f46','#34d399'], icon:'ðï¸', url:'https://www.temu.com/search_result.html?search_key=5pcs+wire+free+sports+everyday+bra+full+coverage' },
-  { rank:14, platform:'temu', name:"Women's Front-Closure Vertical Stripe 5pcs Set", brand:'Temu', price:15.84, rating:4.5, reviews:728, sales:'6K+ sold', salesNum:0, features:['Front Closure','Multi-pack','Vertical Stripe','Wireless'], imgUrl:'https://img.kwcdn.com/product/open/f565b5898e1847fc8ef02ea400716075-goods.jpeg?imageView2/2/w/400/q/70', grad:['#1d4ed8','#60a5fa'], icon:'ðµ', url:'https://www.temu.com/search_result.html?search_key=womens+front+closure+5pcs+bra+set' },
-  { rank:15, platform:'temu', name:'Set of Two Wireless Padded Strapless Bras', brand:'Temu', price:6.96, rating:4.6, reviews:249, sales:'2.6K+ sold', salesNum:0, features:['Strapless','Wireless','Padded','Multi-pack'], imgUrl:'https://img.kwcdn.com/product/fancy/3d652d6e-0cdb-4496-9bc1-d22bafc68c97.jpg?imageView2/2/w/400/q/70', grad:['#be185d','#f9a8d4'], icon:'ð', url:'https://www.temu.com/search_result.html?search_key=2pcs+wireless+padded+strapless+bra' },
-  // ââ NEW June 17 2026 â Brand Sites ââ
-  { rank:15, platform:'brand', name:'ThirdLove 24/7 Perfect Coverage Bra', brand:'ThirdLove', price:74.00, rating:4.4, reviews:62000, sales:'Best Seller', salesNum:0, features:['Full Coverage','Wireless','Everyday','T-Shirt'], imgUrl:'https://m.media-amazon.com/images/I/71hcg6ATOYL._AC_UY300_.jpg', grad:['#8B2252','#C06080'], icon:'ð', url:'https://www.thirdlove.com/products/24-7-perfect-coverage-bra-7-black' },
-  { rank:16, platform:'brand', name:'ThirdLove 24/7 Uplift Plunge Bra', brand:'ThirdLove', price:74.00, rating:4.3, reviews:9800, sales:'Best Seller', salesNum:0, features:['Plunge','Underwire','Uplift','T-Shirt'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q324_PDP_OF_TSBRA_247HUW_TAUPE_1972_b55611c2-13d4-475c-be38-8efa20e88e47.jpg?v=177403', grad:['#8B2252','#C06080'], icon:'ð', url:'https://www.thirdlove.com/products/24-7-classic-contour-plunge-bra-taupe' },
-  { rank:17, platform:'brand', name:'Wacoal Perfect Primer Underwire Bra', brand:'Wacoal', price:70.00, rating:4.6, reviews:3200, sales:'Best Seller', salesNum:0, features:['Underwire','Full Coverage','Premium','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/71a69qqD+GL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'ð', url:'https://www.amazon.com/dp/B09QV7M2TQ' },
-  { rank:18, platform:'brand', name:'Wacoal Surreal Comfort Underwire Bra', brand:'Wacoal', price:69.00, rating:4.5, reviews:2800, sales:'Top Rated', salesNum:0, features:['Underwire','Comfort','Seamless','Premium'], imgUrl:'https://m.media-amazon.com/images/I/7139PcQRudL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'ð', url:'https://www.amazon.com/dp/B08MWT15R3' },
+  { rank:1, platform:'brand', name:'24/7 Classic Wireless Crossover Minimizer Bra', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['Wireless','Crossover','Minimizer','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg', grad:['#8B2252','#C06080'], icon:'🩱', url:'https://www.thirdlove.com/products/24-7-wireless-bra-black' },
+  { rank:2, platform:'brand', name:'Catalyst Sports Bra — High Support, Eliminates Bounce 76%', brand:'Knix', price:78.00, rating:4.5, reviews:5277, sales:'Top Rated', salesNum:0, features:['High Support','Sports','Full Coverage','Wireless'], imgUrl:'https://knix.com/cdn/shop/files/CatalystSportsBra_Black_01_f13d06ec-7762-41ef-9706-15f41b5397d1.webp', grad:['#1A5C5C','#2A8C8C'], icon:'🌿', url:'https://knix.com/products/catalyst-sports-bra' },
+  { rank:3, platform:'brand', name:'CrossOver Wireless Bra — Bonded Cradle Support', brand:'HoneyLove', price:69.00, rating:4.5, reviews:1023, sales:'#1 Best Seller', salesNum:0, features:['Wireless','CrossOver','Bonded Support','No Underwire'], imgUrl:'https://cdn.shopify.com/s/files/1/0965/6676/files/crossover_bra-runway-34DD-nicki_0436_R1_front.jpg', grad:['#C9873F','#E8A85C'], icon:'🍯', url:'https://www.honeylove.com/products/crossover-bra' },
+  { rank:4, platform:'brand', name:'Savage Unlined Triangle Bralette', brand:'Savage X Fenty', price:15.00, rating:4.5, reviews:3200, sales:'—', salesNum:0, features:['Unlined','Triangle','Inclusive Sizing','Lightweight'], imgUrl:'https://m.media-amazon.com/images/I/61cfKqtF6mL._AC_UY300_.jpg', grad:['#1A1A1A','#4A4A4A'], icon:'💋', url:'https://www.savagex.com/features/best-sellers' },
+  { rank:5, platform:'brand', name:'B.Smooth Seamless Wireless Bra', brand:'Wacoal', price:40.00, rating:4.1, reviews:1336, sales:'—', salesNum:0, features:['Seamless','Wireless','Smooth','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/711zt8dm0HL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'👑', url:'https://www.wacoal-america.com/collections/bras' },
+  { rank:6, platform:'brand', name:'Enbliss Wireless T-Shirt Bra', brand:'Soma', price:52.00, rating:4.4, reviews:4500, sales:'Fan Fave', salesNum:0, features:['Wireless','T-Shirt','Full Coverage','Everyday'], imgUrl:'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTpQVuuXifzJ2BFWUAQdvxhW1P6Hf836OgPrvzggSeEVClHiY0AZPteXOiJzZrJ4vvwjygEvPVm7zeFGXtgVKwBscwSXBQ-_g', grad:['#B76E79','#D49BA5'], icon:'🌸', url:'https://www.soma.com/en/c/bras' },
+  { rank:7, platform:'brand', name:'Wireless Lightly Lined J-Hook Plunge Bra', brand:'Lively', price:35.00, rating:4.3, reviews:3200, sales:'—', salesNum:0, features:['Wireless','Lightly Lined','Plunge','J-Hook'], imgUrl:'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRB99P234oMlVf7QMFcihfwYa9djxJW1yhtN7KEt3yzCXG-j-8YbparikTMR1tc1esKRRMgSGYNjUMtp4ifcegdnlq2bXFbeHFuKU6A-kVKd8l0MQeD0-s8', grad:['#E8907A','#F0B0A0'], icon:'🦋', url:'https://wearlively.com' },
+  { rank:8, platform:'brand', name:'True Body Lift Wireless Bra', brand:'True & Co', price:68.00, rating:4.4, reviews:533, sales:'—', salesNum:0, features:['Wireless','Lifting','Body Hugging','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/61k-fsrHlIL._AC_UY300_.jpg', grad:['#4A3728','#7A5740'], icon:'✨', url:'https://trueandco.com/collections/bras' },
+  { rank:9, platform:'brand', name:'Feathers Contour Wireless Bra', brand:'Natori', price:60.85, rating:4.2, reviews:2219, sales:'—', salesNum:0, features:['Wireless','Feather-Light','Contour','Premium'], imgUrl:'https://m.media-amazon.com/images/I/717+l0mWoHL._AC_UY300_.jpg', grad:['#2C3E50','#4A6080'], icon:'🪶', url:'https://www.natori.com/collections/bras' },
+  { rank:10, platform:'brand', name:'Bra-llelujah! Wireless Full Coverage Bra', brand:'SPANX', price:46.80, rating:4.2, reviews:240, sales:'—', salesNum:0, features:['Wireless','Full Coverage','Smoothing','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/71fYnnWsXXL._AC_UY300_.jpg', grad:['#1A1A1A','#555555'], icon:'🖤', url:'https://www.spanx.com/collections/bras' },
+  { rank:14, platform:'brand', name:'24/7 Classic T-Shirt Bra — Apricot New Shade', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['T-Shirt','Wireless','Full Coverage','Seamless'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q226_PDP_OF_TSBRA_ZEHUW_APRICOT_484.jpg', grad:['#8B2252','#C06080'], icon:'🩱', url:'https://www.thirdlove.com/products/24-7-classic-t-shirt-bra-apricot' },
+  // ── NEW June 17 2026 — Amazon ──
+  { rank:5, platform:'amazon', name:'Jelly Bras for Women Deep V Wireless Seamless Push Up', brand:'Generic', price:14.99, rating:4.9, reviews:520, sales:'1,000+', salesNum:1000, features:['Jelly','Wireless','Deep V','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/61AS6i0j7iL._AC_UY300_.jpg', grad:gradients[0], icon:'🍮', url:'https://www.amazon.com/dp/B0H3MVJSM5' },
+  { rank:6, platform:'amazon', name:'VRCOMFY Jelly Bras Mesh Lace Wireless Deep V', brand:'VRCOMFY', price:17.99, rating:4.9, reviews:410, sales:'500+', salesNum:500, features:['Jelly','Wireless','Mesh Lace','Deep V'], imgUrl:'https://m.media-amazon.com/images/I/71s5GgJpIbL._AC_UY300_.jpg', grad:gradients[1], icon:'🍮', url:'https://www.amazon.com/dp/B0GLP51YGN' },
+  { rank:7, platform:'amazon', name:'Women Jelly Deep V Push Up Bra Mesh Plunge Wireless Seamless', brand:'Generic', price:18.99, rating:4.7, reviews:360, sales:'500+', salesNum:500, features:['Jelly','Deep V','Push-up','Mesh Plunge'], imgUrl:'https://m.media-amazon.com/images/I/71TL5wIAaQL._AC_UY300_.jpg', grad:gradients[2], icon:'🍮', url:'https://www.amazon.com/dp/B0GT2NQP2N' },
+  { rank:8, platform:'amazon', name:'Jelly Bras for Women Push Up Deep V Wireless Seamless', brand:'Generic', price:19.99, rating:4.8, reviews:310, sales:'500+', salesNum:500, features:['Jelly','Push-up','Deep V','Wireless'], imgUrl:'https://m.media-amazon.com/images/I/71WXbCgxHiL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0GQSYDMS9' },
+  { rank:9, platform:'amazon', name:"Warner's Women's Blissful Benefits Wireless Lightly Lined", brand:"Warner's", price:17.94, rating:4.5, reviews:15200, sales:'2,000+', salesNum:2000, features:['Wireless','Lightly Lined','Comfort','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/71IVdvxXwLL._AC_UY300_.jpg', grad:gradients[4], icon:'👙', url:'https://www.amazon.com/dp/B076GZ6N7M' },
+  { rank:10, platform:'amazon', name:"Warner's Easy Does It Underarm-Smoothing Wireless Comfort Bra", brand:"Warner's", price:21.99, rating:4.4, reviews:18500, sales:'1,000+', salesNum:1000, features:['Wireless','Underarm Smoothing','Comfort','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71Ph3LyBctL._AC_UY300_.jpg', grad:gradients[5], icon:'👙', url:'https://www.amazon.com/dp/B01MS650TC' },
+  { rank:11, platform:'amazon', name:"Hanes Women's Wireless Bra Smooth Comfort Full-Coverage", brand:'Hanes', price:13.10, rating:4.2, reviews:8200, sales:'3,000+', salesNum:3000, features:['Wireless','Smooth Comfort','Full Coverage','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/81oGpwX2UQL._AC_UY300_.jpg', grad:gradients[6], icon:'👙', url:'https://www.amazon.com/dp/B00T6TSL2U' },
+  { rank:12, platform:'amazon', name:'Gailife 3PACK Jelly Wireless Bras for Women No Underwire', brand:'Gailife', price:26.99, rating:4.4, reviews:460, sales:'500+', salesNum:500, features:['Jelly','Wireless','Multi-pack','No Underwire'], imgUrl:'https://m.media-amazon.com/images/I/612UjUzx2bL._AC_UY300_.jpg', grad:gradients[7], icon:'🍮', url:'https://www.amazon.com/dp/B0GD4J4465' },
+  // ── NEW June 17 2026 — Temu ──
+  { rank:9, platform:'temu', name:'Sexy Lace Underwear Gathered Wide Shoulder Bra', brand:'Temu', price:9.18, rating:4.8, reviews:562, sales:'3.3K+ sold', salesNum:0, features:['Lace','Gathered','Wide Shoulder','Wireless'], imgUrl:'https://img.kwcdn.com/product/fancy/148bf4c5-c5c9-4314-913e-d9b41f49381e.jpg?imageView2/2/w/400/q/70', grad:['#9333ea','#c084fc'], icon:'🌸', url:'https://www.temu.com/search_result.html?search_key=sexy+lace+gathered+wide+shoulder+bra' },
+  { rank:10, platform:'temu', name:"Ladies' Seamless Satin Smooth Bra", brand:'Temu', price:5.42, rating:4.6, reviews:611, sales:'4.7K+ sold', salesNum:0, features:['Seamless','Satin','Smooth','Wireless'], imgUrl:'https://img.kwcdn.com/product/open/d5ad635b781d408fb9b1a8699da2f0f7-goods.jpeg?imageView2/2/w/400/q/70', grad:['#db2777','#fb7185'], icon:'✨', url:'https://www.temu.com/search_result.html?search_key=ladies+seamless+satin+smooth+bra' },
+  { rank:11, platform:'temu', name:'4pcs Elegant Fully Covered Underwire Front Buckle Bra', brand:'Temu', price:12.75, rating:4.6, reviews:196, sales:'1.4K+ sold', salesNum:0, features:['Underwire','Full Coverage','Front Buckle','Multi-pack'], imgUrl:'https://img.kwcdn.com/product/fancy/77686305-4f4a-4b7a-a875-36981348c046.jpg?imageView2/2/w/400/q/70', grad:['#b45309','#fbbf24'], icon:'💛', url:'https://www.temu.com/search_result.html?search_key=4pcs+elegant+underwire+front+buckle+bra' },
+  { rank:12, platform:'temu', name:'Posture Correction Invisible Back Bra', brand:'Temu', price:4.56, rating:4.5, reviews:1972, sales:'55K+ sold', salesNum:0, features:['Posture Correction','Invisible Back','Wireless','Seamless'], imgUrl:'https://img.kwcdn.com/product/1e65f7010e/592a5545-0fec-4919-8798-9212589848ab_1350x1800.png?imageView2/2/w/400/q/70', grad:['#0e7490','#22d3ee'], icon:'🔧', url:'https://www.temu.com/search_result.html?search_key=posture+correction+invisible+back+bra' },
+  { rank:13, platform:'temu', name:'5pcs Wire-Free Sports & Everyday Bra Full Coverage', brand:'Temu', price:14.78, rating:4.7, reviews:238, sales:'1K+ sold', salesNum:0, features:['Wireless','Sports','Full Coverage','Multi-pack'], imgUrl:'https://img.kwcdn.com/product/fancy/9aad24e3-c0b0-4077-9a83-dc0ad1f60f64.jpg?imageView2/2/w/400/q/70', grad:['#065f46','#34d399'], icon:'🏋️', url:'https://www.temu.com/search_result.html?search_key=5pcs+wire+free+sports+everyday+bra+full+coverage' },
+  { rank:14, platform:'temu', name:"Women's Front-Closure Vertical Stripe 5pcs Set", brand:'Temu', price:15.84, rating:4.5, reviews:728, sales:'6K+ sold', salesNum:0, features:['Front Closure','Multi-pack','Vertical Stripe','Wireless'], imgUrl:'https://img.kwcdn.com/product/open/f565b5898e1847fc8ef02ea400716075-goods.jpeg?imageView2/2/w/400/q/70', grad:['#1d4ed8','#60a5fa'], icon:'🔵', url:'https://www.temu.com/search_result.html?search_key=womens+front+closure+5pcs+bra+set' },
+  { rank:15, platform:'temu', name:'Set of Two Wireless Padded Strapless Bras', brand:'Temu', price:6.96, rating:4.6, reviews:249, sales:'2.6K+ sold', salesNum:0, features:['Strapless','Wireless','Padded','Multi-pack'], imgUrl:'https://img.kwcdn.com/product/fancy/3d652d6e-0cdb-4496-9bc1-d22bafc68c97.jpg?imageView2/2/w/400/q/70', grad:['#be185d','#f9a8d4'], icon:'💗', url:'https://www.temu.com/search_result.html?search_key=2pcs+wireless+padded+strapless+bra' },
+  // ── NEW June 17 2026 — Brand Sites ──
+  { rank:15, platform:'brand', name:'ThirdLove 24/7 Perfect Coverage Bra', brand:'ThirdLove', price:74.00, rating:4.4, reviews:62000, sales:'Best Seller', salesNum:0, features:['Full Coverage','Wireless','Everyday','T-Shirt'], imgUrl:'https://m.media-amazon.com/images/I/71hcg6ATOYL._AC_UY300_.jpg', grad:['#8B2252','#C06080'], icon:'👙', url:'https://www.thirdlove.com/products/24-7-perfect-coverage-bra-7-black' },
+  { rank:16, platform:'brand', name:'ThirdLove 24/7 Uplift Plunge Bra', brand:'ThirdLove', price:74.00, rating:4.3, reviews:9800, sales:'Best Seller', salesNum:0, features:['Plunge','Underwire','Uplift','T-Shirt'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q324_PDP_OF_TSBRA_247HUW_TAUPE_1972_b55611c2-13d4-475c-be38-8efa20e88e47.jpg?v=177403', grad:['#8B2252','#C06080'], icon:'👙', url:'https://www.thirdlove.com/products/24-7-classic-contour-plunge-bra-taupe' },
+  { rank:17, platform:'brand', name:'Wacoal Perfect Primer Underwire Bra', brand:'Wacoal', price:70.00, rating:4.6, reviews:3200, sales:'Best Seller', salesNum:0, features:['Underwire','Full Coverage','Premium','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/71a69qqD+GL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'👑', url:'https://www.amazon.com/dp/B09QV7M2TQ' },
+  { rank:18, platform:'brand', name:'Wacoal Surreal Comfort Underwire Bra', brand:'Wacoal', price:69.00, rating:4.5, reviews:2800, sales:'Top Rated', salesNum:0, features:['Underwire','Comfort','Seamless','Premium'], imgUrl:'https://m.media-amazon.com/images/I/7139PcQRudL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'👑', url:'https://www.amazon.com/dp/B08MWT15R3' },
 ];
 
 let currentPlatform = 'all';
@@ -487,7 +487,7 @@ function getFiltered() {
   });
 }
 
-// ââ Build product image element ââ
+// ── Build product image element ──
 function makeThumbHTML(p, size = 52) {
   if (p.imgUrl) {
     // Try real image; fall back to SVG placeholder on error
@@ -501,7 +501,7 @@ function makeThumbHTML(p, size = 52) {
 
 function makeSVGPlaceholder(p, w, h) {
   const [c1, c2] = p.grad;
-  const icon = p.icon || 'ð©±';
+  const icon = p.icon || '🩱';
   const short = p.brand.slice(0, 7);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" style="border-radius:8px;display:block">
     <defs><linearGradient id="g${w}" x1="0" y1="0" x2="1" y2="1">
@@ -516,7 +516,7 @@ function makeSVGPlaceholder(p, w, h) {
 
 function makeLargeCardSVG(p) {
   const [c1, c2] = p.grad;
-  const icon = p.icon || 'ð©±';
+  const icon = p.icon || '🩱';
   return `<svg xmlns="http://www.w3.org/2000/svg" width="210" height="200" style="display:block">
     <defs><linearGradient id="cg_${p.rank}_${p.platform}" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="${c1}"/>
@@ -526,20 +526,20 @@ function makeLargeCardSVG(p) {
     <text x="105" y="90" text-anchor="middle" dominant-baseline="central" font-size="60">${icon}</text>
     <rect x="0" y="155" width="210" height="45" fill="rgba(0,0,0,0.28)"/>
     <text x="105" y="171" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="600">${p.brand.slice(0,20)}</text>
-    <text x="105" y="188" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)" font-family="sans-serif">â­ ${p.rating} Â· $${p.price}</text>
+    <text x="105" y="188" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)" font-family="sans-serif">⭐ ${p.rating} · $${p.price}</text>
   </svg>`;
 }
 
-// ââ Render Featured Cards ââ
+// ── Render Featured Cards ──
 function renderCards() {
   const data = getFiltered();
   const container = document.getElementById('featuredCards');
   container.innerHTML = data.map(p => {
     const badge = p.platform === 'amazon'
-      ? '<span class="platform-badge amazon-badge">ð¡ Amazon</span>'
+      ? '<span class="platform-badge amazon-badge">🟡 Amazon</span>'
       : p.platform === 'temu'
-      ? '<span class="platform-badge temu-badge">ð´ Temu</span>'
-      : `<span class="platform-badge brand-badge">ð ${p.brand}</span>`;
+      ? '<span class="platform-badge temu-badge">🔴 Temu</span>'
+      : `<span class="platform-badge brand-badge">🌐 ${p.brand}</span>`;
 
     let imgContent;
     if (p.imgUrl) {
@@ -562,7 +562,7 @@ function renderCards() {
         <div class="card-brand">${p.brand}</div>
         <div class="card-bottom">
           <span class="card-price">$${p.price.toFixed(2)}</span>
-          <span class="card-rating">â ${p.rating}</span>
+          <span class="card-rating">★ ${p.rating}</span>
         </div>
       </div>
       </a>
@@ -570,7 +570,7 @@ function renderCards() {
   }).join('');
 }
 
-// ââ Render Table ââ
+// ── Render Table ──
 function renderTable() {
   const data = getFiltered();
   data.sort((a, b) => {
@@ -590,10 +590,10 @@ function renderTable() {
   tbody.innerHTML = data.map(p => {
     const rankCls = p.rank <= 3 ? 'top3' : '';
     const badge = p.platform === 'amazon'
-      ? '<span class="platform-badge amazon-badge">ð¡ Amazon</span>'
+      ? '<span class="platform-badge amazon-badge">🟡 Amazon</span>'
       : p.platform === 'temu'
-      ? '<span class="platform-badge temu-badge">ð´ Temu</span>'
-      : `<span class="platform-badge brand-badge">ð ${p.brand}</span>`;
+      ? '<span class="platform-badge temu-badge">🔴 Temu</span>'
+      : `<span class="platform-badge brand-badge">🌐 ${p.brand}</span>`;
     const tags = p.features.map(f => {
       let cls = 'tag';
       if (['Sports','High Impact','High Support'].includes(f)) cls += ' sport';
@@ -611,7 +611,7 @@ function renderTable() {
       <td>${makeThumbHTML(p, 90)}</td>
       <td><div class="product-name"><a href="${p.url||'#'}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#a78bfa">${p.name}</a></div><div class="product-brand">${p.brand}</div></td>
       <td><strong>$${p.price.toFixed(2)}</strong></td>
-      <td>â­ ${p.rating.toFixed(1)}</td>
+      <td>⭐ ${p.rating.toFixed(1)}</td>
       <td>${p.reviews.toLocaleString()}</td>
       <td>${salesDisp}</td>
       <td>${tags}</td>
@@ -646,7 +646,7 @@ function sortTable(col) {
   renderTable();
 }
 
-// ââ Charts ââ
+// ── Charts ──
 let charts = [];
 function rebuildCharts() {
   charts.forEach(c => c.destroy());
@@ -655,8 +655,8 @@ function rebuildCharts() {
   const temu = allProducts.filter(p => p.platform==='temu');
   const vis  = getFiltered();
 
-  // ââ Price Range Distribution ââ
-  const pBuckets = ['$0â5','$5â10','$10â15','$15â20','$20â25','$25+'];
+  // ── Price Range Distribution ──
+  const pBuckets = ['$0–5','$5–10','$10–15','$15–20','$20–25','$25+'];
   function bucketCount(products, ranges) {
     return ranges.map(([lo,hi]) => products.filter(p=>p.price>=lo && p.price<hi).length);
   }
@@ -680,7 +680,7 @@ function rebuildCharts() {
     }
   }));
 
-  // ââ Best vs Worst Bra cards â Top 5 each ââ
+  // ── Best vs Worst Bra cards — Top 5 each ──
   const sorted = [...vis].sort((a,b) => (b.rating*1000+b.reviews) - (a.rating*1000+a.reviews));
   const top5 = sorted.slice(0,5);
   const bottom5 = [...vis].sort((a,b) => (a.rating*1000+a.reviews) - (b.rating*1000+b.reviews)).slice(0,5);
@@ -690,7 +690,7 @@ function rebuildCharts() {
       : p.platform==='temu'
       ? '<span style="background:#fce7f3;color:#9d174d;padding:1px 6px;border-radius:6px;font-size:9px;font-weight:600">Temu</span>'
       : '<span style="background:#e0f2fe;color:#075985;padding:1px 6px;border-radius:6px;font-size:9px;font-weight:600">Brand</span>';
-    const stars = 'â'.repeat(Math.floor(p.rating)) + 'â'.repeat(5-Math.floor(p.rating));
+    const stars = '★'.repeat(Math.floor(p.rating)) + '☆'.repeat(5-Math.floor(p.rating));
     const imgEl = p.imgUrl
       ? `<img src="${p.imgUrl}" onerror="this.style.display='none'" style="width:44px;height:44px;object-fit:contain;background:#f8f5f9;border-radius:8px;flex-shrink:0">`
       : `<div style="width:44px;height:44px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,${p.grad[0]},${p.grad[1]});display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon}</div>`;
@@ -700,7 +700,7 @@ function rebuildCharts() {
       ${imgEl}
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:4px;margin-bottom:1px">
-          <span style="font-size:11px;font-weight:600;color:#111;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#d1d5db">${p.name.length>32?p.name.slice(0,32)+'â¦':p.name}</span>
+          <span style="font-size:11px;font-weight:600;color:#111;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#d1d5db">${p.name.length>32?p.name.slice(0,32)+'…':p.name}</span>
           ${platBadge}
         </div>
         <div style="display:flex;gap:8px;align-items:center">
@@ -713,20 +713,20 @@ function rebuildCharts() {
   }
   document.getElementById('bestWorstCard').innerHTML = `
     <div style="flex:1;min-width:220px">
-      <div style="font-size:12px;font-weight:700;color:#16a34a;margin-bottom:8px;display:flex;align-items:center;gap:5px">ð¥ Top 5 Best Reviewed</div>
-      ${top5.map((p,i) => bwRow(p, ['ð¥','ð¥','ð¥','4','5'][i], '#16a34a')).join('')}
+      <div style="font-size:12px;font-weight:700;color:#16a34a;margin-bottom:8px;display:flex;align-items:center;gap:5px">🥇 Top 5 Best Reviewed</div>
+      ${top5.map((p,i) => bwRow(p, ['🥇','🥈','🥉','4','5'][i], '#16a34a')).join('')}
     </div>
     <div style="flex:1;min-width:220px">
-      <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:8px;display:flex;align-items:center;gap:5px">â ï¸ Bottom 5 Lowest Reviewed</div>
+      <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:8px;display:flex;align-items:center;gap:5px">⚠️ Bottom 5 Lowest Reviewed</div>
       ${bottom5.map((p,i) => bwRow(p, i+1, '#dc2626')).join('')}
     </div>`;
 
-  // ââ Sales (clickable bars) ââ
+  // ── Sales (clickable bars) ──
   const sCtx = document.getElementById('salesChart').getContext('2d');
   const salesChart = new Chart(sCtx, {
     type:'bar',
     data:{
-      labels: amz.map(p=>p.name.length>22?p.name.slice(0,22)+'â¦':p.name),
+      labels: amz.map(p=>p.name.length>22?p.name.slice(0,22)+'…':p.name),
       datasets:[{ label:'Est. Monthly Orders', data:amz.map(p=>p.salesNum),
         backgroundColor: amz.map((_,i)=>i<3?'#7c3aed':'#a78bfa'), borderRadius:4 }]
     },
@@ -741,7 +741,7 @@ function rebuildCharts() {
   });
   charts.push(salesChart);
 
-  // ââ Feature % horizontal bar chart ââ
+  // ── Feature % horizontal bar chart ──
   const fCtx = document.getElementById('featureChart').getContext('2d');
   const fMap = {};
   vis.forEach(p => p.features.forEach(f => { fMap[f] = (fMap[f] || 0) + 1; }));
@@ -775,7 +775,7 @@ function rebuildCharts() {
   }));
 }
 
-// ââ Trending Feedback ââ
+// ── Trending Feedback ──
 function renderFeedback() {
   const posKeywords = [
     { kw:'Comfortable / Soft',    amz:88, temu:61 },
@@ -826,10 +826,10 @@ function renderFeedback() {
   document.getElementById('negKeywords').innerHTML = negKeywords.map(k=>kwRow(k,negMax)).join('');
 
   const metrics = [
-    { label:'Sizing Accuracy', amz:'69%', temu:'52%', icon:'ð', good:'amz' },
-    { label:'Avg Wear Life',   amz:'12+ wks', temu:'3.7 wks', icon:'â³', good:'amz' },
-    { label:'Comfort Rate',    amz:'88%', temu:'61%', icon:'ð', good:'amz' },
-    { label:'Skin Safety',     amz:'91%', temu:'74%', icon:'ð¡ï¸', good:'amz' },
+    { label:'Sizing Accuracy', amz:'69%', temu:'52%', icon:'📏', good:'amz' },
+    { label:'Avg Wear Life',   amz:'12+ wks', temu:'3.7 wks', icon:'⏳', good:'amz' },
+    { label:'Comfort Rate',    amz:'88%', temu:'61%', icon:'😊', good:'amz' },
+    { label:'Skin Safety',     amz:'91%', temu:'74%', icon:'🛡️', good:'amz' },
   ];
   document.getElementById('platformMetrics').innerHTML = metrics.map(m => `
     <div style="background:#f9fafb;border-radius:10px;padding:12px;text-align:center">
@@ -848,74 +848,74 @@ function renderFeedback() {
     </div>`).join('');
 }
 
-// ââ Plus Size Competitor Data ââ
+// ══ Plus Size Competitor Data ══
 const plusSizeProducts = [
-  // ââ ACTIVE BRA ââ
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:1,  brand:'Tmeefee',         name:'3-Pack High Support Padded Racerback Sport Bra',          price:23.98, rating:4.3, reviews:1047,  sales:'4,000+/mo', features:['High Support','Racerback','3-Pack','Large Bust'],       imgUrl:'https://m.media-amazon.com/images/I/71cTP94h2wL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0FFVR51X5' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:2,  brand:'Fruit of the Loom',name:'Front Close Racerback Sport Bra 2 Pack',                  price:23.82, rating:4.3, reviews:55355, sales:'1,000+/mo', features:['Front Closure','Racerback','Wireless','Breathable'],       imgUrl:'https://m.media-amazon.com/images/I/71y6smZVolL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B072MNSZ17' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:3,  brand:'Wingslove',        name:'High Impact Adjustable Wireless Plus Size Sports Bra',     price:34.99, rating:4.3, reviews:3200,  sales:'â',         features:['High Impact','Adjustable','Wireless','Full Coverage'],     imgUrl:'https://m.media-amazon.com/images/I/71Ezon3KBKL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B06XSDKYVJ' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:4,  brand:'Yvette',           name:'Zip Front High Impact Sports Bra â Posture Support',       price:42.99, rating:4.4, reviews:2100,  sales:'â',         features:['Zip Front','High Impact','Posture Support','Plus Size'],   imgUrl:'https://m.media-amazon.com/images/I/61LLUnIHvnL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0CJ7T6HJX' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:5,  brand:'FITTIN',           name:'Racerback Sports Bras â Padded Seamless Supportive',       price:29.99, rating:4.5, reviews:32800, sales:'â',         features:['Racerback','Padded','Seamless','Multi-Pack'],              imgUrl:'https://m.media-amazon.com/images/I/71+7MShU0-L._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B09TB59DWY' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:6,  brand:'VEQKING',          name:'Strappy Cross Back Running Bra â Removable Padded',        price:25.99, rating:4.5, reviews:8200,  sales:'â',         features:['Strappy','Cross Back','Removable Pad','Workout'],          imgUrl:'https://m.media-amazon.com/images/I/61F5cgzTZ5L._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B08HH8TTNL' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:7,  brand:'FITTIN',           name:'Adjustable Sports Bra for Large Bust â Multi-Level Support',price:31.99, rating:4.5, reviews:2400,  sales:'â',         features:['Adjustable','Large Bust','High Impact','Moisture-Wicking'], imgUrl:'https://m.media-amazon.com/images/I/71HhbmHLorL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0DQ8GGRPF' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:8,  brand:'VEQKING',          name:'High Support Running Bra â Adjustable Strappy Padded',     price:21.99, rating:4.5, reviews:1800,  sales:'â',         features:['High Support','Strappy','Padded','Running'],               imgUrl:'https://m.media-amazon.com/images/I/816yJpH7WqL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0GH5JL7DZ' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:9,  brand:'Yvette',           name:'Plus Size Comfortable Racerback Supportive Sports Bra',    price:33.99, rating:4.5, reviews:1200,  sales:'â',         features:['Racerback','Supportive','Breathable','Plus Size'],          imgUrl:'https://m.media-amazon.com/images/I/710aTUIkUpL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0FHKL1JB6' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:10, brand:'Under Control',    name:'Plus Size 2-Pack High Support Racerback Sport Bra',         price:22.99, rating:4.3, reviews:3500,  sales:'â',         features:['2-Pack','Racerback','High Support','Wireless'],             imgUrl:'https://m.media-amazon.com/images/I/712fnXPwEOL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B08SDVS73J' },
-  // ââ COMFORT BRA ââ
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:1,  brand:'LetsJoli',      name:'Supportive Wireless Push Up Bra â Full Coverage Plus Size',  price:18.99, rating:4.1, reviews:10555, sales:'6,000+/mo', features:['Wireless','Push-Up','Full Coverage','Seamless'],          imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:2,  brand:"Warner's",      name:"Easy Does It Underarm-Smoothing Wireless Comfort Bra",      price:21.99, rating:4.3, reviews:49849, sales:'1,000+/mo', features:['Wireless','Side Smoothing','Seamless','Lightly Lined'],  imgUrl:'https://m.media-amazon.com/images/I/71AhyjVNXLL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B01N5O3NYM' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:3,  brand:'DELIMIRA',      name:'Front Closure Wireless Posture Bra â Full Coverage',        price:28.99, rating:4.2, reviews:7800,  sales:'â',         features:['Front Closure','Wireless','Full Coverage','Adjustable'],  imgUrl:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0G3GBQLPV' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:4,  brand:'Playtex',       name:'18 Hour Plus-Size Wireless Full Coverage Bra',              price:29.99, rating:4.2, reviews:18500, sales:'â',         features:['Wireless','Full Coverage','Comfort','Side Smoothing'],    imgUrl:'https://m.media-amazon.com/images/I/81vQiC8dvdL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0F79HFJQS' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:5,  brand:'BESTENA',       name:'Wireless Front Closure Minimizer Bra â No Underwire',      price:22.99, rating:4.6, reviews:3200,  sales:'â',         features:['Front Closure','Wireless','Minimizer','Full Coverage'],   imgUrl:'https://m.media-amazon.com/images/I/81kzH3r3eTL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0G3GBQLPV' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:6,  brand:'HSIA',          name:'Minimizer Unlined Lace Sexy Plus Size Underwire Bra',       price:28.99, rating:4.4, reviews:12500, sales:'â',         features:['Minimizer','Unlined Lace','Full Coverage','Underwire'],   imgUrl:'https://m.media-amazon.com/images/I/71rIP6lKxcL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B07WHPZFXS' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:7,  brand:"Warner's",      name:"Simply Perfect Super Soft Wireless Lightly Lined Comfort",  price:21.99, rating:4.4, reviews:8600,  sales:'â',         features:['Wireless','Soft','Lightly Lined','Seamless'],             imgUrl:'https://m.media-amazon.com/images/I/71nqlnh1uaL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0FHY716BB' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:8,  brand:'Smart & Sexy',  name:'Plus Size Wireless Seamless Soft & Comfortable Bra',        price:26.00, rating:4.4, reviews:7400,  sales:'â',         features:['Wireless','Seamless','Soft','Plus Size'],                 imgUrl:'https://m.media-amazon.com/images/I/81MHlz2WjPL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0CP75WSNW' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:9,  brand:'Werena',        name:'Jelly Wireless Plus Size Minimizer Push Up Bra',            price:24.99, rating:4.4, reviews:2100,  sales:'â',         features:['Jelly','Wireless','Minimizer','Push Up'],                 imgUrl:'https://m.media-amazon.com/images/I/71DDo0ImDUL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0GWTPT1B1' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:10, brand:'Glamorise',     name:'MagicLift Active Support Wireless Bra Plus Size',           price:38.99, rating:4.3, reviews:18000, sales:'â',         features:['Wireless','Lifting','Active','Full Support'],             imgUrl:'https://m.media-amazon.com/images/I/91zadU1TyLL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B000VK3YBG' },
-  // ââ SUPPORT BRA ââ
-  { cat:'support', catLabel:'ðª Full Support', rank:1,  brand:'OEAK',          name:'Wireless Jelly Bra Plus Size â Full Coverage Push Up',      price:18.99, rating:4.1, reviews:4480,  sales:'3,000+/mo', features:['Jelly','Wireless','Full Coverage','Lifting'],            imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0FBGG142J' },
-  { cat:'support', catLabel:'ðª Full Support', rank:2,  brand:'Vanity Fair',   name:'Beauty Back Smoothing Minimizer â Lifting & Shaping',       price:32.99, rating:4.3, reviews:24500, sales:'â',         features:['Back Smoothing','Lifting','Side Shaping','Lined'],        imgUrl:'https://m.media-amazon.com/images/I/71Cz8-dMiGL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B06WP9Q98P' },
-  { cat:'support', catLabel:'ðª Full Support', rank:3,  brand:'HSIA',          name:'Enchante Minimizer Full Coverage Lace Bra',                 price:34.99, rating:4.3, reviews:11200, sales:'â',         features:['Minimizer','Full Coverage','Lace','Underwire'],           imgUrl:'https://m.media-amazon.com/images/I/711QsHnc+TL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0DHG9B84J' },
-  { cat:'support', catLabel:'ðª Full Support', rank:4,  brand:'Bali',          name:'Comfort Revolution Wireless Smoothing Bra',                 price:26.99, rating:4.2, reviews:15400, sales:'â',         features:['Wireless','Back Smoothing','Comfort','Adjustable'],       imgUrl:'https://m.media-amazon.com/images/I/71Gi-giZnDL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B009YRMZVM' },
-  { cat:'support', catLabel:'ðª Full Support', rank:5,  brand:'HSIA',          name:'Wireless Minimizer V-Neck Lace Bralette â No Underwire',    price:28.99, rating:4.8, reviews:1800,  sales:'â',         features:['Wireless','V-Neck','Lace','Minimizer'],                   imgUrl:'https://m.media-amazon.com/images/I/71g1OfAll7L._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GGB9BQV3' },
-  { cat:'support', catLabel:'ðª Full Support', rank:6,  brand:'Ilusion',       name:'Plus Size Full Support Bra â Wide Back, Side Reinforcement', price:30.40, rating:4.6, reviews:4200,  sales:'â',         features:['Full Support','Wide Back','Side Reinforcement','Plus Size'],imgUrl:'https://m.media-amazon.com/images/I/71K3sKOLLXL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B07J9JBWVV' },
-  { cat:'support', catLabel:'ðª Full Support', rank:7,  brand:"Warner's",      name:"Signature Support Cushioned Underwire Plus Size Bra",       price:29.99, rating:4.5, reviews:11200, sales:'â',         features:['Underwire','Cushioned','Side Smoothing','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71-Ueqr4rtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0B7K9XMKY' },
-  { cat:'support', catLabel:'ðª Full Support', rank:8,  brand:'HSIA',          name:'Wireless Push Up Bra â Support & Lift Comfort Jelly',       price:28.99, rating:4.6, reviews:2300,  sales:'â',         features:['Wireless','Push Up','Lifting','Jelly Comfort'],           imgUrl:'https://m.media-amazon.com/images/I/713Qcn2VJAL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GKWQ4N7N' },
-  { cat:'support', catLabel:'ðª Full Support', rank:9,  brand:'OEAK',          name:'Seamless Jelly Wireless Full Coverage T-Shirt Support Bra',  price:24.99, rating:4.5, reviews:1500,  sales:'â',         features:['Seamless','Jelly','Wireless','Full Coverage'],            imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GXW5VMWP' },
-  { cat:'support', catLabel:'ðª Full Support', rank:10, brand:'Elomi',         name:'Cate Full Coverage Underwire Plus Size Bra',                price:59.00, rating:4.4, reviews:5800,  sales:'â',         features:['Full Coverage','Underwire','Premium','Shaping'],          imgUrl:'https://m.media-amazon.com/images/I/814oJg9A7UL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B07DL9PJ4C' },
-  // ââ SPECIALTY BRA ââ
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:1,  brand:'As Fairy',  name:'Seamless Nursing Bra for Breastfeeding â Soft Wireless Sleep', price:19.99, rating:4.4, reviews:8200,  sales:'â',         features:['Nursing','Wireless','Seamless','Breastfeeding'],         imgUrl:'https://m.media-amazon.com/images/I/61dkawo5H8L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CHMD8VMJ' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:2,  brand:'Daisy Bras',name:'Front Snap Bra for Seniors â Easy Wear No Underwire',       price:22.99, rating:4.3, reviews:6800,  sales:'â',         features:['Front Closure','Wireless','Easy Wear','Senior-Friendly'], imgUrl:'https://m.media-amazon.com/images/I/51DtKwX4jbL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0D5YBZ828' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:3,  brand:'DELIMIRA',  name:'Strapless Plus Size Bra â Anti-Slip Side Shaping',          price:35.99, rating:4.2, reviews:3200,  sales:'â',         features:['Strapless','Full Coverage','Anti-Slip','Side Shaping'],   imgUrl:'https://m.media-amazon.com/images/I/61HuxLUK4OL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B083HY4C26' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:4,  brand:'Panache',   name:'Dana Strapless Convertible Bra â Optional Straps',          price:65.00, rating:4.4, reviews:1800,  sales:'â',         features:['Strapless','Convertible','Optional Straps','High Support'],imgUrl:'https://m.media-amazon.com/images/I/719omp9UlUL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B07SSRJKFD' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:5,  brand:'HSIA',      name:'Longline Corset Strapless Bra â Large Bust Plus Size',      price:44.99, rating:4.4, reviews:3500,  sales:'â',         features:['Longline','Corset','Strapless','Large Bust'],             imgUrl:'https://m.media-amazon.com/images/I/61Go0-x2VyL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0G8K4XJBZ' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:6,  brand:'SEA BBOT',  name:'Longline Strapless Corset Bra â Hide Back Fat Full Coverage', price:46.99, rating:4.2, reviews:2800,  sales:'â',         features:['Longline','Strapless','Back Fat Control','Corset'],       imgUrl:'https://m.media-amazon.com/images/I/61wO3r64n6L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0BXN4GZ8L' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:7,  brand:'Wingslove', name:'Low-Back Multiway Strapless Full Figure Bra â U/V/Halter',   price:35.99, rating:4.1, reviews:2800,  sales:'â',         features:['Low-Back','Multiway','Strapless','Full Figure'],          imgUrl:'https://m.media-amazon.com/images/I/81cUl9UZBxL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CTPSLQSF' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:8,  brand:'CALVENA',   name:'Strapless Multiway Plus Size Full Coverage Bra Underwire',   price:29.99, rating:4.1, reviews:6400,  sales:'â',         features:['Strapless','Multiway','Full Coverage','Underwire'],       imgUrl:'https://m.media-amazon.com/images/I/717ghOCxiYL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B084SZMNYG' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:9,  brand:'SEA BBOT',  name:'Longline Full Figure Corset Strapless â Hide Back Fat',      price:42.99, rating:4.3, reviews:2100,  sales:'â',         features:['Longline','Full Figure','Corset','Strapless'],            imgUrl:'https://m.media-amazon.com/images/I/61XGCbMzJYL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CGZN3PRD' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:10, brand:'Invisilift', name:'Sticky Push Up Adhesive Bra â Backless Strapless Plus Size',  price:26.99, rating:4.3, reviews:3400,  sales:'â',         features:['Adhesive','Backless','Strapless','Reusable'],             imgUrl:'https://m.media-amazon.com/images/I/91V7p6+uQ1L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0GYY91Q8M' },
-  // ââ NEW June 2026 â Active Bra ââ
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:11, brand:'Generic',          name:'Front Zipper High Impact Sports Bra U Back Adjustable Support',    price:27.99, rating:4.8, reviews:900,   sales:'â', features:['Front Zipper','High Impact','U Back','Adjustable'],       imgUrl:'https://m.media-amazon.com/images/I/81oL0g0II4L._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0H2H4CZHT' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:12, brand:'RUNNING GIRL',     name:'RUNNING GIRL Molded Cup Strappy High Impact Sports Bra',            price:24.99, rating:4.6, reviews:1800,  sales:'â', features:['Molded Cup','Strappy','High Impact','Running'],           imgUrl:'https://m.media-amazon.com/images/I/71kMTbbcaML._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0DNZD5KMY' },
-  { cat:'active', catLabel:'ð Active — High & Low Impact', rank:13, brand:'Evercute',         name:'Evercute High Impact Sports Bras Multi-Pack Adjustable Padded',     price:47.99, rating:4.5, reviews:1200,  sales:'â', features:['Multi-Pack','Adjustable','Padded','High Impact'],         imgUrl:'https://m.media-amazon.com/images/I/81kBoZyCPtL._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0CKF2HQRK' },
+  // ── ACTIVE BRA ──
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:1,  brand:'Tmeefee',         name:'3-Pack High Support Padded Racerback Sport Bra',          price:23.98, rating:4.3, reviews:1047,  sales:'4,000+/mo', features:['High Support','Racerback','3-Pack','Large Bust'],       imgUrl:'https://m.media-amazon.com/images/I/71cTP94h2wL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0FFVR51X5' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:2,  brand:'Fruit of the Loom',name:'Front Close Racerback Sport Bra 2 Pack',                  price:23.82, rating:4.3, reviews:55355, sales:'1,000+/mo', features:['Front Closure','Racerback','Wireless','Breathable'],       imgUrl:'https://m.media-amazon.com/images/I/71y6smZVolL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B072MNSZ17' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:3,  brand:'Wingslove',        name:'High Impact Adjustable Wireless Plus Size Sports Bra',     price:34.99, rating:4.3, reviews:3200,  sales:'—',         features:['High Impact','Adjustable','Wireless','Full Coverage'],     imgUrl:'https://m.media-amazon.com/images/I/71Ezon3KBKL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B06XSDKYVJ' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:4,  brand:'Yvette',           name:'Zip Front High Impact Sports Bra — Posture Support',       price:42.99, rating:4.4, reviews:2100,  sales:'—',         features:['Zip Front','High Impact','Posture Support','Plus Size'],   imgUrl:'https://m.media-amazon.com/images/I/61LLUnIHvnL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0CJ7T6HJX' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:5,  brand:'FITTIN',           name:'Racerback Sports Bras — Padded Seamless Supportive',       price:29.99, rating:4.5, reviews:32800, sales:'—',         features:['Racerback','Padded','Seamless','Multi-Pack'],              imgUrl:'https://m.media-amazon.com/images/I/71+7MShU0-L._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B09TB59DWY' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:6,  brand:'VEQKING',          name:'Strappy Cross Back Running Bra — Removable Padded',        price:25.99, rating:4.5, reviews:8200,  sales:'—',         features:['Strappy','Cross Back','Removable Pad','Workout'],          imgUrl:'https://m.media-amazon.com/images/I/61F5cgzTZ5L._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B08HH8TTNL' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:7,  brand:'FITTIN',           name:'Adjustable Sports Bra for Large Bust — Multi-Level Support',price:31.99, rating:4.5, reviews:2400,  sales:'—',         features:['Adjustable','Large Bust','High Impact','Moisture-Wicking'], imgUrl:'https://m.media-amazon.com/images/I/71HhbmHLorL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0DQ8GGRPF' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:8,  brand:'VEQKING',          name:'High Support Running Bra — Adjustable Strappy Padded',     price:21.99, rating:4.5, reviews:1800,  sales:'—',         features:['High Support','Strappy','Padded','Running'],               imgUrl:'https://m.media-amazon.com/images/I/816yJpH7WqL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0GH5JL7DZ' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:9,  brand:'Yvette',           name:'Plus Size Comfortable Racerback Supportive Sports Bra',    price:33.99, rating:4.5, reviews:1200,  sales:'—',         features:['Racerback','Supportive','Breathable','Plus Size'],          imgUrl:'https://m.media-amazon.com/images/I/710aTUIkUpL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0FHKL1JB6' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:10, brand:'Under Control',    name:'Plus Size 2-Pack High Support Racerback Sport Bra',         price:22.99, rating:4.3, reviews:3500,  sales:'—',         features:['2-Pack','Racerback','High Support','Wireless'],             imgUrl:'https://m.media-amazon.com/images/I/712fnXPwEOL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B08SDVS73J' },
+  // ── COMFORT BRA ──
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:1,  brand:'LetsJoli',      name:'Supportive Wireless Push Up Bra — Full Coverage Plus Size',  price:18.99, rating:4.1, reviews:10555, sales:'6,000+/mo', features:['Wireless','Push-Up','Full Coverage','Seamless'],          imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:2,  brand:"Warner's",      name:"Easy Does It Underarm-Smoothing Wireless Comfort Bra",      price:21.99, rating:4.3, reviews:49849, sales:'1,000+/mo', features:['Wireless','Side Smoothing','Seamless','Lightly Lined'],  imgUrl:'https://m.media-amazon.com/images/I/71AhyjVNXLL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B01N5O3NYM' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:3,  brand:'DELIMIRA',      name:'Front Closure Wireless Posture Bra — Full Coverage',        price:28.99, rating:4.2, reviews:7800,  sales:'—',         features:['Front Closure','Wireless','Full Coverage','Adjustable'],  imgUrl:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0G3GBQLPV' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:4,  brand:'Playtex',       name:'18 Hour Plus-Size Wireless Full Coverage Bra',              price:29.99, rating:4.2, reviews:18500, sales:'—',         features:['Wireless','Full Coverage','Comfort','Side Smoothing'],    imgUrl:'https://m.media-amazon.com/images/I/81vQiC8dvdL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0F79HFJQS' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:5,  brand:'BESTENA',       name:'Wireless Front Closure Minimizer Bra — No Underwire',      price:22.99, rating:4.6, reviews:3200,  sales:'—',         features:['Front Closure','Wireless','Minimizer','Full Coverage'],   imgUrl:'https://m.media-amazon.com/images/I/81kzH3r3eTL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0G3GBQLPV' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:6,  brand:'HSIA',          name:'Minimizer Unlined Lace Sexy Plus Size Underwire Bra',       price:28.99, rating:4.4, reviews:12500, sales:'—',         features:['Minimizer','Unlined Lace','Full Coverage','Underwire'],   imgUrl:'https://m.media-amazon.com/images/I/71rIP6lKxcL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B07WHPZFXS' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:7,  brand:"Warner's",      name:"Simply Perfect Super Soft Wireless Lightly Lined Comfort",  price:21.99, rating:4.4, reviews:8600,  sales:'—',         features:['Wireless','Soft','Lightly Lined','Seamless'],             imgUrl:'https://m.media-amazon.com/images/I/71nqlnh1uaL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0FHY716BB' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:8,  brand:'Smart & Sexy',  name:'Plus Size Wireless Seamless Soft & Comfortable Bra',        price:26.00, rating:4.4, reviews:7400,  sales:'—',         features:['Wireless','Seamless','Soft','Plus Size'],                 imgUrl:'https://m.media-amazon.com/images/I/81MHlz2WjPL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0CP75WSNW' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:9,  brand:'Werena',        name:'Jelly Wireless Plus Size Minimizer Push Up Bra',            price:24.99, rating:4.4, reviews:2100,  sales:'—',         features:['Jelly','Wireless','Minimizer','Push Up'],                 imgUrl:'https://m.media-amazon.com/images/I/71DDo0ImDUL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0GWTPT1B1' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:10, brand:'Glamorise',     name:'MagicLift Active Support Wireless Bra Plus Size',           price:38.99, rating:4.3, reviews:18000, sales:'—',         features:['Wireless','Lifting','Active','Full Support'],             imgUrl:'https://m.media-amazon.com/images/I/91zadU1TyLL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B000VK3YBG' },
+  // ── SUPPORT BRA ──
+  { cat:'support', catLabel:'💪 Full Support', rank:1,  brand:'OEAK',          name:'Wireless Jelly Bra Plus Size — Full Coverage Push Up',      price:18.99, rating:4.1, reviews:4480,  sales:'3,000+/mo', features:['Jelly','Wireless','Full Coverage','Lifting'],            imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0FBGG142J' },
+  { cat:'support', catLabel:'💪 Full Support', rank:2,  brand:'Vanity Fair',   name:'Beauty Back Smoothing Minimizer — Lifting & Shaping',       price:32.99, rating:4.3, reviews:24500, sales:'—',         features:['Back Smoothing','Lifting','Side Shaping','Lined'],        imgUrl:'https://m.media-amazon.com/images/I/71Cz8-dMiGL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B06WP9Q98P' },
+  { cat:'support', catLabel:'💪 Full Support', rank:3,  brand:'HSIA',          name:'Enchante Minimizer Full Coverage Lace Bra',                 price:34.99, rating:4.3, reviews:11200, sales:'—',         features:['Minimizer','Full Coverage','Lace','Underwire'],           imgUrl:'https://m.media-amazon.com/images/I/711QsHnc+TL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0DHG9B84J' },
+  { cat:'support', catLabel:'💪 Full Support', rank:4,  brand:'Bali',          name:'Comfort Revolution Wireless Smoothing Bra',                 price:26.99, rating:4.2, reviews:15400, sales:'—',         features:['Wireless','Back Smoothing','Comfort','Adjustable'],       imgUrl:'https://m.media-amazon.com/images/I/71Gi-giZnDL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B009YRMZVM' },
+  { cat:'support', catLabel:'💪 Full Support', rank:5,  brand:'HSIA',          name:'Wireless Minimizer V-Neck Lace Bralette — No Underwire',    price:28.99, rating:4.8, reviews:1800,  sales:'—',         features:['Wireless','V-Neck','Lace','Minimizer'],                   imgUrl:'https://m.media-amazon.com/images/I/71g1OfAll7L._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GGB9BQV3' },
+  { cat:'support', catLabel:'💪 Full Support', rank:6,  brand:'Ilusion',       name:'Plus Size Full Support Bra — Wide Back, Side Reinforcement', price:30.40, rating:4.6, reviews:4200,  sales:'—',         features:['Full Support','Wide Back','Side Reinforcement','Plus Size'],imgUrl:'https://m.media-amazon.com/images/I/71K3sKOLLXL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B07J9JBWVV' },
+  { cat:'support', catLabel:'💪 Full Support', rank:7,  brand:"Warner's",      name:"Signature Support Cushioned Underwire Plus Size Bra",       price:29.99, rating:4.5, reviews:11200, sales:'—',         features:['Underwire','Cushioned','Side Smoothing','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71-Ueqr4rtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0B7K9XMKY' },
+  { cat:'support', catLabel:'💪 Full Support', rank:8,  brand:'HSIA',          name:'Wireless Push Up Bra — Support & Lift Comfort Jelly',       price:28.99, rating:4.6, reviews:2300,  sales:'—',         features:['Wireless','Push Up','Lifting','Jelly Comfort'],           imgUrl:'https://m.media-amazon.com/images/I/713Qcn2VJAL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GKWQ4N7N' },
+  { cat:'support', catLabel:'💪 Full Support', rank:9,  brand:'OEAK',          name:'Seamless Jelly Wireless Full Coverage T-Shirt Support Bra',  price:24.99, rating:4.5, reviews:1500,  sales:'—',         features:['Seamless','Jelly','Wireless','Full Coverage'],            imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GXW5VMWP' },
+  { cat:'support', catLabel:'💪 Full Support', rank:10, brand:'Elomi',         name:'Cate Full Coverage Underwire Plus Size Bra',                price:59.00, rating:4.4, reviews:5800,  sales:'—',         features:['Full Coverage','Underwire','Premium','Shaping'],          imgUrl:'https://m.media-amazon.com/images/I/814oJg9A7UL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B07DL9PJ4C' },
+  // ── SPECIALTY BRA ──
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:1,  brand:'As Fairy',  name:'Seamless Nursing Bra for Breastfeeding — Soft Wireless Sleep', price:19.99, rating:4.4, reviews:8200,  sales:'—',         features:['Nursing','Wireless','Seamless','Breastfeeding'],         imgUrl:'https://m.media-amazon.com/images/I/61dkawo5H8L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CHMD8VMJ' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:2,  brand:'Daisy Bras',name:'Front Snap Bra for Seniors — Easy Wear No Underwire',       price:22.99, rating:4.3, reviews:6800,  sales:'—',         features:['Front Closure','Wireless','Easy Wear','Senior-Friendly'], imgUrl:'https://m.media-amazon.com/images/I/51DtKwX4jbL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0D5YBZ828' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:3,  brand:'DELIMIRA',  name:'Strapless Plus Size Bra — Anti-Slip Side Shaping',          price:35.99, rating:4.2, reviews:3200,  sales:'—',         features:['Strapless','Full Coverage','Anti-Slip','Side Shaping'],   imgUrl:'https://m.media-amazon.com/images/I/61HuxLUK4OL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B083HY4C26' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:4,  brand:'Panache',   name:'Dana Strapless Convertible Bra — Optional Straps',          price:65.00, rating:4.4, reviews:1800,  sales:'—',         features:['Strapless','Convertible','Optional Straps','High Support'],imgUrl:'https://m.media-amazon.com/images/I/719omp9UlUL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B07SSRJKFD' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:5,  brand:'HSIA',      name:'Longline Corset Strapless Bra — Large Bust Plus Size',      price:44.99, rating:4.4, reviews:3500,  sales:'—',         features:['Longline','Corset','Strapless','Large Bust'],             imgUrl:'https://m.media-amazon.com/images/I/61Go0-x2VyL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0G8K4XJBZ' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:6,  brand:'SEA BBOT',  name:'Longline Strapless Corset Bra — Hide Back Fat Full Coverage', price:46.99, rating:4.2, reviews:2800,  sales:'—',         features:['Longline','Strapless','Back Fat Control','Corset'],       imgUrl:'https://m.media-amazon.com/images/I/61wO3r64n6L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0BXN4GZ8L' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:7,  brand:'Wingslove', name:'Low-Back Multiway Strapless Full Figure Bra — U/V/Halter',   price:35.99, rating:4.1, reviews:2800,  sales:'—',         features:['Low-Back','Multiway','Strapless','Full Figure'],          imgUrl:'https://m.media-amazon.com/images/I/81cUl9UZBxL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CTPSLQSF' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:8,  brand:'CALVENA',   name:'Strapless Multiway Plus Size Full Coverage Bra Underwire',   price:29.99, rating:4.1, reviews:6400,  sales:'—',         features:['Strapless','Multiway','Full Coverage','Underwire'],       imgUrl:'https://m.media-amazon.com/images/I/717ghOCxiYL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B084SZMNYG' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:9,  brand:'SEA BBOT',  name:'Longline Full Figure Corset Strapless — Hide Back Fat',      price:42.99, rating:4.3, reviews:2100,  sales:'—',         features:['Longline','Full Figure','Corset','Strapless'],            imgUrl:'https://m.media-amazon.com/images/I/61XGCbMzJYL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CGZN3PRD' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:10, brand:'Invisilift', name:'Sticky Push Up Adhesive Bra — Backless Strapless Plus Size',  price:26.99, rating:4.3, reviews:3400,  sales:'—',         features:['Adhesive','Backless','Strapless','Reusable'],             imgUrl:'https://m.media-amazon.com/images/I/91V7p6+uQ1L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0GYY91Q8M' },
+  // ── NEW June 2026 — Active Bra ──
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:11, brand:'Generic',          name:'Front Zipper High Impact Sports Bra U Back Adjustable Support',    price:27.99, rating:4.8, reviews:900,   sales:'—', features:['Front Zipper','High Impact','U Back','Adjustable'],       imgUrl:'https://m.media-amazon.com/images/I/81oL0g0II4L._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0H2H4CZHT' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:12, brand:'RUNNING GIRL',     name:'RUNNING GIRL Molded Cup Strappy High Impact Sports Bra',            price:24.99, rating:4.6, reviews:1800,  sales:'—', features:['Molded Cup','Strappy','High Impact','Running'],           imgUrl:'https://m.media-amazon.com/images/I/71kMTbbcaML._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0DNZD5KMY' },
+  { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:13, brand:'Evercute',         name:'Evercute High Impact Sports Bras Multi-Pack Adjustable Padded',     price:47.99, rating:4.5, reviews:1200,  sales:'—', features:['Multi-Pack','Adjustable','Padded','High Impact'],         imgUrl:'https://m.media-amazon.com/images/I/81kBoZyCPtL._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0CKF2HQRK' },
   // ── NEW June 2026 — Active: Low Impact ──
   { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:14, brand:'Generic',  name:'Y Back Butter Soft Low Impact Workout Bra — Yoga & Walking',  price:28.00, rating:4.5, reviews:900,  sales:'—', features:['Low Impact','Yoga','Butter Soft','Y Back'],  imgUrl:'https://m.media-amazon.com/images/I/71Fn-BUqq5L._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0DTGMXY9C' },
   { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:15, brand:'BRXL',     name:'BRXL Y Back Low Impact Sports Bra Adjustable Padded — Yoga',   price:24.99, rating:4.4, reviews:700,  sales:'—', features:['Low Impact','Y Back','Adjustable','Yoga'],  imgUrl:'https://m.media-amazon.com/images/I/716DJ7XwMZL._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0GFWFMHQH' },
   { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:16, brand:'ODODOS',   name:'ODODOS Seamless Ribbed Non-Pad Yoga Bra — Low Impact',          price:29.98, rating:4.5, reviews:1100, sales:'—', features:['Low Impact','Seamless','Yoga','Non-Padded'], imgUrl:'https://m.media-amazon.com/images/I/71lPk4w1koL._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0CPS9XP9J' },
   { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:17, brand:'Evercute', name:'Evercute Cross Back Low Impact Yoga Bra — Criss Cross',         price:39.99, rating:4.4, reviews:2200, sales:'—', features:['Low Impact','Yoga','Cross Back','Padded'],  imgUrl:'https://m.media-amazon.com/images/I/81swNacJaXL._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B08SVRV74K' },
   { cat:'active', catLabel:'🏃 Active — High & Low Impact', rank:18, brand:'Generic',  name:'Ruched Racerback Longline Yoga Bra — V-Neck Low Impact',        price:9.99,  rating:4.4, reviews:600,  sales:'—', features:['Low Impact','Longline','Yoga','V-Neck'],   imgUrl:'https://m.media-amazon.com/images/I/71nyf0vSr-L._AC_UY300_.jpg', col:'#0ea5e9', url:'https://www.amazon.com/dp/B0DRSGZF66' },
-  // ââ NEW June 2026 â Comfort Bra ââ
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:11, brand:'Juicy Couture',  name:'Juicy Couture Multipack Seamless Comfort Lounge Wirefree Bralette', price:19.99, rating:4.7, reviews:2100,  sales:'â', features:['Multi-pack','Seamless','Wireless','Lounge'],             imgUrl:'https://m.media-amazon.com/images/I/612Rs9FIL6L._AC_UY300_.jpg', col:'#7c3aed', url:'https://www.amazon.com/dp/B0BZT91YV7' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:12, brand:'Momcozy',        name:'Momcozy Seamless US Cotton Wireless Bra Comfortable Full Coverage',  price:39.99, rating:4.6, reviews:1500,  sales:'â', features:['Seamless','Cotton','Wireless','Full Coverage'],           imgUrl:'https://m.media-amazon.com/images/I/71CQae3wrbL._AC_UY300_.jpg', col:'#7c3aed', url:'https://www.amazon.com/dp/B0GCLT8BH7' },
-  { cat:'comfort', catLabel:'ð Comfort & Easy-Wear', rank:13, brand:'Generic',        name:'Wireless Jelly Bras Plus Size No Underwire Seamless Full Coverage',  price:27.99, rating:4.7, reviews:800,   sales:'â', features:['Jelly','Wireless','Plus Size','Seamless'],               imgUrl:'https://m.media-amazon.com/images/I/71adFQhqEuL._AC_UY300_.jpg', col:'#7c3aed', url:'https://www.amazon.com/dp/B0GKX9PJ7K' },
-  // ââ NEW June 2026 â Support Bra ââ
-  { cat:'support', catLabel:'ðª Full Support', rank:11, brand:'Generic',        name:'Cotton Bra Soft Comfort Full Coverage Lace Floral Wireless Everyday',price:19.99, rating:4.9, reviews:600,   sales:'â', features:['Cotton','Wireless','Lace Floral','Full Coverage'],       imgUrl:'https://m.media-amazon.com/images/I/71--APvBBSL._AC_UY300_.jpg', col:'#db2777', url:'https://www.amazon.com/dp/B0FWQLVB35' },
-  { cat:'support', catLabel:'ðª Full Support', rank:12, brand:'Generic',        name:"Women's Minimizer Bra Full Coverage Plus Size Lace Unlined",         price:29.99, rating:4.8, reviews:700,   sales:'â', features:['Minimizer','Full Coverage','Lace','Plus Size'],          imgUrl:'https://m.media-amazon.com/images/I/71axYwoGMxL._AC_UY300_.jpg', col:'#db2777', url:'https://www.amazon.com/dp/B0DPY8R9JZ' },
-  { cat:'support', catLabel:'ðª Full Support', rank:13, brand:'Generic',        name:'Minimizer Bras Full Coverage Underwire Lace Bralette Unlined',       price:19.99, rating:4.7, reviews:1100,  sales:'â', features:['Minimizer','Underwire','Unlined Lace','Full Coverage'],  imgUrl:'https://m.media-amazon.com/images/I/81y+kU-Gr5L._AC_UY300_.jpg', col:'#db2777', url:'https://www.amazon.com/dp/B0FCFV7TJC' },
-  // ââ NEW June 2026 â Specialty Bra ââ
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:11, brand:'HSIA',       name:'HSIA Strapless Bra Large Bust Non-Slip Full Coverage Underwire',     price:39.99, rating:4.4, reviews:1800,  sales:'â', features:['Strapless','Non-Slip','Full Coverage','Large Bust'],      imgUrl:'https://m.media-amazon.com/images/I/71CVwYm0vDL._AC_UY300_.jpg', col:'#059669', url:'https://www.amazon.com/dp/B0FG368QGM' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:12, brand:'Invisilift', name:'Invisilift Sticky Push Up Bra Large Breasts Plus Size Backless',     price:26.99, rating:4.5, reviews:3200,  sales:'â', features:['Adhesive','Backless','Plus Size','Push Up'],              imgUrl:'https://m.media-amazon.com/images/I/61V7p6+uQ1L._AC_UY300_.jpg', col:'#059669', url:'https://www.amazon.com/dp/B0H2DSGVTX' },
-  { cat:'specialty', catLabel:'â¨ Adaptive & Specialty', rank:13, brand:'HSIA',       name:'HSIA Strapless Anti-Slip Full Coverage Bandeau Plus Size',           price:29.99, rating:4.3, reviews:900,   sales:'â', features:['Strapless','Anti-Slip','Bandeau','Plus Size'],            imgUrl:'https://m.media-amazon.com/images/I/71VDLimQRKL._AC_UY300_.jpg', col:'#059669', url:'https://www.amazon.com/dp/B0GFKCYSJV' },
+  // ── NEW June 2026 — Comfort Bra ──
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:11, brand:'Juicy Couture',  name:'Juicy Couture Multipack Seamless Comfort Lounge Wirefree Bralette', price:19.99, rating:4.7, reviews:2100,  sales:'—', features:['Multi-pack','Seamless','Wireless','Lounge'],             imgUrl:'https://m.media-amazon.com/images/I/612Rs9FIL6L._AC_UY300_.jpg', col:'#7c3aed', url:'https://www.amazon.com/dp/B0BZT91YV7' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:12, brand:'Momcozy',        name:'Momcozy Seamless US Cotton Wireless Bra Comfortable Full Coverage',  price:39.99, rating:4.6, reviews:1500,  sales:'—', features:['Seamless','Cotton','Wireless','Full Coverage'],           imgUrl:'https://m.media-amazon.com/images/I/71CQae3wrbL._AC_UY300_.jpg', col:'#7c3aed', url:'https://www.amazon.com/dp/B0GCLT8BH7' },
+  { cat:'comfort', catLabel:'😊 Comfort & Easy-Wear', rank:13, brand:'Generic',        name:'Wireless Jelly Bras Plus Size No Underwire Seamless Full Coverage',  price:27.99, rating:4.7, reviews:800,   sales:'—', features:['Jelly','Wireless','Plus Size','Seamless'],               imgUrl:'https://m.media-amazon.com/images/I/71adFQhqEuL._AC_UY300_.jpg', col:'#7c3aed', url:'https://www.amazon.com/dp/B0GKX9PJ7K' },
+  // ── NEW June 2026 — Support Bra ──
+  { cat:'support', catLabel:'💪 Full Support', rank:11, brand:'Generic',        name:'Cotton Bra Soft Comfort Full Coverage Lace Floral Wireless Everyday',price:19.99, rating:4.9, reviews:600,   sales:'—', features:['Cotton','Wireless','Lace Floral','Full Coverage'],       imgUrl:'https://m.media-amazon.com/images/I/71--APvBBSL._AC_UY300_.jpg', col:'#db2777', url:'https://www.amazon.com/dp/B0FWQLVB35' },
+  { cat:'support', catLabel:'💪 Full Support', rank:12, brand:'Generic',        name:"Women's Minimizer Bra Full Coverage Plus Size Lace Unlined",         price:29.99, rating:4.8, reviews:700,   sales:'—', features:['Minimizer','Full Coverage','Lace','Plus Size'],          imgUrl:'https://m.media-amazon.com/images/I/71axYwoGMxL._AC_UY300_.jpg', col:'#db2777', url:'https://www.amazon.com/dp/B0DPY8R9JZ' },
+  { cat:'support', catLabel:'💪 Full Support', rank:13, brand:'Generic',        name:'Minimizer Bras Full Coverage Underwire Lace Bralette Unlined',       price:19.99, rating:4.7, reviews:1100,  sales:'—', features:['Minimizer','Underwire','Unlined Lace','Full Coverage'],  imgUrl:'https://m.media-amazon.com/images/I/81y+kU-Gr5L._AC_UY300_.jpg', col:'#db2777', url:'https://www.amazon.com/dp/B0FCFV7TJC' },
+  // ── NEW June 2026 — Specialty Bra ──
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:11, brand:'HSIA',       name:'HSIA Strapless Bra Large Bust Non-Slip Full Coverage Underwire',     price:39.99, rating:4.4, reviews:1800,  sales:'—', features:['Strapless','Non-Slip','Full Coverage','Large Bust'],      imgUrl:'https://m.media-amazon.com/images/I/71CVwYm0vDL._AC_UY300_.jpg', col:'#059669', url:'https://www.amazon.com/dp/B0FG368QGM' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:12, brand:'Invisilift', name:'Invisilift Sticky Push Up Bra Large Breasts Plus Size Backless',     price:26.99, rating:4.5, reviews:3200,  sales:'—', features:['Adhesive','Backless','Plus Size','Push Up'],              imgUrl:'https://m.media-amazon.com/images/I/61V7p6+uQ1L._AC_UY300_.jpg', col:'#059669', url:'https://www.amazon.com/dp/B0H2DSGVTX' },
+  { cat:'specialty', catLabel:'✨ Adaptive & Specialty', rank:13, brand:'HSIA',       name:'HSIA Strapless Anti-Slip Full Coverage Bandeau Plus Size',           price:29.99, rating:4.3, reviews:900,   sales:'—', features:['Strapless','Anti-Slip','Bandeau','Plus Size'],            imgUrl:'https://m.media-amazon.com/images/I/71VDLimQRKL._AC_UY300_.jpg', col:'#059669', url:'https://www.amazon.com/dp/B0GFKCYSJV' },
 ];
 
 let currentCat = 'all';
@@ -931,13 +931,13 @@ function renderPlusSize() {
   const catColors = { active:'#0ea5e9', comfort:'#7c3aed', support:'#db2777', specialty:'#059669' };
 
   document.getElementById('plusSizeGrid').innerHTML = filtered.map(p => {
-    const stars = 'â'.repeat(Math.floor(p.rating)) + 'â'.repeat(5 - Math.floor(p.rating));
+    const stars = '★'.repeat(Math.floor(p.rating)) + '☆'.repeat(5 - Math.floor(p.rating));
     const tags = p.features.map(f => `<span style="background:${p.col}18;color:${p.col};padding:2px 7px;border-radius:6px;font-size:10px;font-weight:600;margin:1px;display:inline-block">${f}</span>`).join('');
     const imgEl = p.imgUrl
       ? `<img src="${p.imgUrl}" style="width:100%;height:130px;object-fit:contain;display:block;background:#f8f5f9" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
       : '';
     const svgFallback = `<div style="width:100%;height:130px;background:linear-gradient(135deg,${p.col},${p.col}88);display:${p.imgUrl ? 'none' : 'flex'};align-items:center;justify-content:center;flex-direction:column;gap:6px">
-      <span style="font-size:36px">${p.cat==='active'?'ð':p.cat==='comfort'?'ð':p.cat==='support'?'ðª':'â¨'}</span>
+      <span style="font-size:36px">${p.cat==='active'?'🏃':p.cat==='comfort'?'😊':p.cat==='support'?'💪':'✨'}</span>
       <span style="font-size:10px;color:white;font-weight:700;opacity:.9">${p.brand}</span></div>`;
 
     return `<div style="background:white;border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.08);overflow:hidden;border-top:3px solid ${p.col}">
@@ -945,7 +945,7 @@ function renderPlusSize() {
       <div style="position:relative;overflow:hidden">
         ${imgEl}${svgFallback}
         <span style="position:absolute;top:8px;left:8px;background:${p.col};color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">#${p.rank} ${p.catLabel}</span>
-        ${p.sales !== 'â' ? `<span style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px">ð¥ ${p.sales}</span>` : ''}
+        ${p.sales !== '—' ? `<span style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px">🔥 ${p.sales}</span>` : ''}
       </div>
       <div style="padding:12px">
         <div style="font-size:11px;font-weight:700;color:${p.col};margin-bottom:3px">${p.brand}</div>
@@ -962,100 +962,100 @@ function renderPlusSize() {
   }).join('');
 }
 
-// ââ Senior Women Feed Posts ââ
+// ── Senior Women Feed Posts ──
 function renderSeniorPosts() {
   const posts = [
     {
-      platform:'fb', avatar:'ð©âð¦³', handle:'Daisy Bras Official',
+      platform:'fb', avatar:'👩‍🦳', handle:'Daisy Bras Official',
       verified:true, sponsored:true,
       time:'Sponsored',
       url:'https://www.amazon.com/dp/B0D5YBZ828',
-      copy:'ðµ Tired of struggling with bra clasps behind your back every morning?\n\nOur front-snap bra was designed FOR women 60+ â one-hand close, no underwire, zero back pain.\n\n"I\'m 71 and have arthritis. This bra changed my morning routine completely. I cried the first time I put it on by myself!" â Patricia, 71\n\nâ Front snap close in 2 seconds\nâ Wireless, full coverage\nâ Available up to 4XL',
+      copy:'👵 Tired of struggling with bra clasps behind your back every morning?\n\nOur front-snap bra was designed FOR women 60+ — one-hand close, no underwire, zero back pain.\n\n"I\'m 71 and have arthritis. This bra changed my morning routine completely. I cried the first time I put it on by myself!" — Patricia, 71\n\n✅ Front snap close in 2 seconds\n✅ Wireless, full coverage\n✅ Available up to 4XL',
       img:'https://m.media-amazon.com/images/I/51DtKwX4jbL._AC_UY300_.jpg',
       product:'Daisy Bras Front Snap', price:'$22.99',
       likes:'48.2K', comments:'12.4K', shares:'9.1K', clicks:'~180K',
       ctr:'4.8%', engRate:'6.2%',
-      tag:'ð¥ #1 Senior Bra Post 2026', tagColor:'#dc2626',
+      tag:'🔥 #1 Senior Bra Post 2026', tagColor:'#dc2626',
       why:'Arthritis pain point + personal testimonial + front closure demo = highest CTR in 55+ segment'
     },
     {
-      platform:'fb', avatar:'ð©âð¦³', handle:'Liberare Adaptive Fashion',
+      platform:'fb', avatar:'👩‍🦳', handle:'Liberare Adaptive Fashion',
       verified:true, sponsored:true,
       time:'Sponsored',
       url:'https://liberare.co/blogs/best-bras-4/best-bra-for-elderly-women-my-honest-review',
-      copy:'ð§§² A bra that closes with MAGNETS.\n\nNo hooks. No clasps. No frustration.\n\nJust bring the two sides together and it clicks â even with shaky hands or stiff fingers after hip/shoulder surgery.\n\n"After my mastectomy I thought comfortable bras were behind me. Liberare proved me wrong." â Susan, 67\n\nð 10,000+ women over 60 love it',
+      copy:'𧧲 A bra that closes with MAGNETS.\n\nNo hooks. No clasps. No frustration.\n\nJust bring the two sides together and it clicks — even with shaky hands or stiff fingers after hip/shoulder surgery.\n\n"After my mastectomy I thought comfortable bras were behind me. Liberare proved me wrong." — Susan, 67\n\n💜 10,000+ women over 60 love it',
       img:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',
       product:'Liberare Magnetic Front Closure', price:'$58.00',
       likes:'38.7K', comments:'9.8K', shares:'7.2K', clicks:'~142K',
       ctr:'4.1%', engRate:'5.7%',
-      tag:'ð Post-Surgery Viral', tagColor:'#7c3aed',
-      why:'Magnetic closure + post-surgery/mastectomy angle drives deep emotional connection and shares in 60â75 age group'
+      tag:'💜 Post-Surgery Viral', tagColor:'#7c3aed',
+      why:'Magnetic closure + post-surgery/mastectomy angle drives deep emotional connection and shares in 60–75 age group'
     },
     {
-      platform:'ig', avatar:'ð©âð¦³', handle:'@over60andfabulous',
+      platform:'ig', avatar:'👩‍🦳', handle:'@over60andfabulous',
       verified:false, sponsored:false,
       time:'2 days ago',
       url:'https://www.amazon.com/dp/B0G3GBQLPV',
-      copy:'I have to talk about this bra ð\n\nI\'m 63 and have been suffering in back-clasp bras for DECADES. My daughter showed me this front-closure wireless bra and honestlyâ¦ where has this been all my life??\n\nNo underwire. No digging. You justâ¦ forget you\'re wearing it. ð\n\nLink in bio â it comes in sizes up to 3XL and I FINALLY feel supported ð\n\n#Over60 #SeniorFashion #ComfortBra #FrontClosureBra #WomenOver60',
+      copy:'I have to talk about this bra 👇\n\nI\'m 63 and have been suffering in back-clasp bras for DECADES. My daughter showed me this front-closure wireless bra and honestly… where has this been all my life??\n\nNo underwire. No digging. You just… forget you\'re wearing it. 🙌\n\nLink in bio — it comes in sizes up to 3XL and I FINALLY feel supported 💕\n\n#Over60 #SeniorFashion #ComfortBra #FrontClosureBra #WomenOver60',
       img:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',
       product:'DELIMIRA Front Closure Wireless', price:'$28.99',
       likes:'31.4K', comments:'6.7K', shares:'4.2K', clicks:'~95K',
       ctr:'3.8%', engRate:'7.1%',
-      tag:'ð· UGC Organic Viral', tagColor:'#7e22ce',
-      why:'Authentic UGC from real 60+ woman outperforms paid ads â 7.1% engagement rate, 4Ã saves vs brand posts'
+      tag:'📷 UGC Organic Viral', tagColor:'#7e22ce',
+      why:'Authentic UGC from real 60+ woman outperforms paid ads — 7.1% engagement rate, 4× saves vs brand posts'
     },
     {
-      platform:'fb', avatar:'ð©âð¦³', handle:'Playtex Bras',
+      platform:'fb', avatar:'👩‍🦳', handle:'Playtex Bras',
       verified:true, sponsored:true,
       time:'Sponsored',
       url:'https://www.amazon.com/dp/B0F79HFJQS',
-      copy:'ð "5 Signs You Need a Front-Closure Bra"\n\n1. You struggle with back clasps in the morning\n2. Shoulder or back pain from straps\n3. Recovering from surgery or injury\n4. Arthritis or limited hand mobility\n5. You just want to be comfortable ALL DAY ð\n\nPlaytex 18 Hour has been the #1 comfort bra for women 50+ for over 20 years.\n\nâ¡ Free shipping on first order',
+      copy:'📋 "5 Signs You Need a Front-Closure Bra"\n\n1. You struggle with back clasps in the morning\n2. Shoulder or back pain from straps\n3. Recovering from surgery or injury\n4. Arthritis or limited hand mobility\n5. You just want to be comfortable ALL DAY 😊\n\nPlaytex 18 Hour has been the #1 comfort bra for women 50+ for over 20 years.\n\n➡ Free shipping on first order',
       img:'https://m.media-amazon.com/images/I/81vQiC8dvdL._AC_UY300_.jpg',
       product:'Playtex 18 Hour Wireless', price:'$29.99',
       likes:'22.1K', comments:'8.3K', shares:'5.6K', clicks:'~88K',
       ctr:'3.4%', engRate:'4.9%',
-      tag:'ð Educational Format Win', tagColor:'#1d4ed8',
-      why:'"5 signs" listicle format drives high comment engagement â readers tag friends and share to Facebook groups'
+      tag:'📘 Educational Format Win', tagColor:'#1d4ed8',
+      why:'"5 signs" listicle format drives high comment engagement — readers tag friends and share to Facebook groups'
     },
     {
-      platform:'ig', avatar:'ð©âð¦³', handle:'@thirdlove',
+      platform:'ig', avatar:'👩‍🦳', handle:'@thirdlove',
       verified:true, sponsored:true,
       time:'Sponsored',
       url:'https://www.thirdlove.com/collections/24-7-bras',
-      copy:'We spent 10 years perfecting the most comfortable wireless bra for women 50+.\n\nThe result? Zero underwire. Zero digging. Zero adjusting.\n\nSwipe â to see why 4 million women trust ThirdLove.\n\nð Half-cup sizes available\nð©± Sizes 30AAâ48H\nð° Try free for 60 days',
+      copy:'We spent 10 years perfecting the most comfortable wireless bra for women 50+.\n\nThe result? Zero underwire. Zero digging. Zero adjusting.\n\nSwipe → to see why 4 million women trust ThirdLove.\n\n📐 Half-cup sizes available\n🩱 Sizes 30AA–48H\n💰 Try free for 60 days',
       img:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg',
       product:'ThirdLove 24/7 Classic Wireless', price:'$68.00',
       likes:'19.8K', comments:'4.1K', shares:'2.9K', clicks:'~76K',
       ctr:'3.1%', engRate:'4.2%',
-      tag:'â­ Brand Carousel Win', tagColor:'#8B2252',
-      why:'Carousel "swipe to see why" format + half-cup sizing USP + 60-day trial drives highest premium conversion in 50â65 segment'
+      tag:'⭐ Brand Carousel Win', tagColor:'#8B2252',
+      why:'Carousel "swipe to see why" format + half-cup sizing USP + 60-day trial drives highest premium conversion in 50–65 segment'
     },
     {
-      platform:'fb', avatar:'ð©âð¦³', handle:'Women Over 60 Style Group',
+      platform:'fb', avatar:'👩‍🦳', handle:'Women Over 60 Style Group',
       verified:false, sponsored:false,
       time:'3 days ago',
       url:'https://www.amazon.com/dp/B0D5YBZ828',
-      copy:'ð¬ Ladies â CAN WE TALK about bras for 5 seconds?\n\nI posted about this front-snap bra last month and 400 of you bought it ð\n\nUpdate: I\'m on my 3rd one. The straps NEVER slip. No underwire poking. And putting it on takes literally 3 seconds.\n\nFor my arthritis friends â this is the one. Tag a friend who needs this. â¤ï¸\n\n#WomenOver60 #SeniorFashion #ComfortBra',
+      copy:'💬 Ladies — CAN WE TALK about bras for 5 seconds?\n\nI posted about this front-snap bra last month and 400 of you bought it 😂\n\nUpdate: I\'m on my 3rd one. The straps NEVER slip. No underwire poking. And putting it on takes literally 3 seconds.\n\nFor my arthritis friends — this is the one. Tag a friend who needs this. ❤️\n\n#WomenOver60 #SeniorFashion #ComfortBra',
       img:'https://m.media-amazon.com/images/I/51DtKwX4jbL._AC_UY300_.jpg',
       product:'Daisy Bras Front Snap', price:'$22.99',
       likes:'44.6K', comments:'18.2K', shares:'22.3K', clicks:'~210K',
-      ctr:'â', engRate:'8.4%',
-      tag:'ð Highest Shares 2026', tagColor:'#059669',
-      why:'Facebook Group post â community trust + "tag a friend" call-to-action = 22K shares, highest organic reach in senior bra content 2026'
+      ctr:'—', engRate:'8.4%',
+      tag:'🏆 Highest Shares 2026', tagColor:'#059669',
+      why:'Facebook Group post — community trust + "tag a friend" call-to-action = 22K shares, highest organic reach in senior bra content 2026'
     },
   ];
 
   document.getElementById('seniorFeedPosts').innerHTML = posts.map(p => {
     const isIg = p.platform === 'ig';
     const platBg   = isIg ? 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)' : '#1877F2';
-    const platLabel = isIg ? 'ð· Instagram' : 'ð Facebook';
+    const platLabel = isIg ? '📷 Instagram' : '📘 Facebook';
     const copyHtml = p.copy.replace(/\n/g,'<br>');
     return `<div style="background:white;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.09);overflow:hidden;border:1px solid #f3f4f6;display:flex;flex-direction:column">
       <!-- Post header -->
       <div style="padding:12px 14px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #f9fafb">
         <div style="width:38px;height:38px;border-radius:50%;background:#f3e8ff;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${p.avatar}</div>
         <div style="flex:1;min-width:0">
-          <div style="font-size:12px;font-weight:700;color:#111">${p.handle} ${p.verified?'<span style="color:#1d9bf0;font-size:10px">â</span>':''}</div>
+          <div style="font-size:12px;font-weight:700;color:#111">${p.handle} ${p.verified?'<span style="color:#1d9bf0;font-size:10px">✓</span>':''}</div>
           <div style="font-size:10px;color:#9ca3af">${p.time}</div>
         </div>
         <span style="background:${platBg};color:white;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;white-space:nowrap">${platLabel}</span>
@@ -1071,33 +1071,33 @@ function renderSeniorPosts() {
       <a href="${p.url||'#'}" target="_blank" rel="noopener" style="padding:8px 14px;background:#f0fdf4;display:flex;justify-content:space-between;align-items:center;text-decoration:none;cursor:pointer;border-top:1px solid #dcfce7">
         <div>
           <div style="font-size:11px;font-weight:700;color:#111;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#a7f3d0">${p.product}</div>
-          <div style="font-size:12px;font-weight:800;color:#7c3aed">${p.price} <span style="font-size:9px;color:#059669;font-weight:600">â Shop now</span></div>
+          <div style="font-size:12px;font-weight:800;color:#7c3aed">${p.price} <span style="font-size:9px;color:#059669;font-weight:600">→ Shop now</span></div>
         </div>
         <span style="background:${p.tagColor};color:white;font-size:9px;font-weight:700;padding:3px 8px;border-radius:8px">${p.tag}</span>
       </a>
       <!-- Engagement metrics -->
       <div style="padding:10px 14px;display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid #f3f4f6">
-        <span style="font-size:10px;color:#6b7280">â¤ï¸ <strong>${p.likes}</strong></span>
-        <span style="font-size:10px;color:#6b7280">ð¬ <strong>${p.comments}</strong></span>
-        <span style="font-size:10px;color:#6b7280">ð <strong>${p.shares}</strong></span>
-        <span style="font-size:10px;color:#6b7280">ð <strong>${p.clicks}</strong> clicks</span>
-        ${p.ctr!=='â'?`<span style="font-size:10px;background:#e0f2fe;color:#0369a1;padding:1px 6px;border-radius:6px;font-weight:700">CTR ${p.ctr}</span>`:''}
+        <span style="font-size:10px;color:#6b7280">❤️ <strong>${p.likes}</strong></span>
+        <span style="font-size:10px;color:#6b7280">💬 <strong>${p.comments}</strong></span>
+        <span style="font-size:10px;color:#6b7280">🔁 <strong>${p.shares}</strong></span>
+        <span style="font-size:10px;color:#6b7280">👆 <strong>${p.clicks}</strong> clicks</span>
+        ${p.ctr!=='—'?`<span style="font-size:10px;background:#e0f2fe;color:#0369a1;padding:1px 6px;border-radius:6px;font-weight:700">CTR ${p.ctr}</span>`:''}
         <span style="font-size:10px;background:#dcfce7;color:#166534;padding:1px 6px;border-radius:6px;font-weight:700">Eng ${p.engRate}</span>
       </div>
       <!-- Why it worked -->
       <div style="padding:8px 14px 12px;background:#fffbeb;border-top:1px solid #fde68a">
-        <span style="font-size:9px;font-weight:700;color:#92400e">ð¡ Why it worked: </span>
+        <span style="font-size:9px;font-weight:700;color:#92400e">💡 Why it worked: </span>
         <span style="font-size:10px;color:#78350f">${p.why}</span>
       </div>
     </div>`;
   }).join('');
 }
 
-// ââ Facebook & Instagram Trending Board ââ
+// ── Facebook & Instagram Trending Board ──
 function renderSocialBoard() {
   // Trending Hashtags
   const hashtags = [
-    { tag:'#jellyBra',          posts:'4.2M',  plat:'both',  trend:'+500% ð¥' },
+    { tag:'#jellyBra',          posts:'4.2M',  plat:'both',  trend:'+500% 🔥' },
     { tag:'#wirelessBra',       posts:'500K+', plat:'ig',    trend:'+145% (updated Jun 16)' },
     { tag:'#braHaul',           posts:'1.9M',  plat:'ig',    trend:'+88% (updated Jun 16)'  },
     { tag:'#comfortableBra',    posts:'1.4M',  plat:'both',  trend:'+72% (updated Jun 16)'  },
@@ -1135,17 +1135,17 @@ function renderSocialBoard() {
 
   // Viral Products
   const viral = [
-    { name:'OEAK Jelly Bra',         brand:'OEAK',       views:'8.3M', platform:'ig', desc:'Squeezable cup demos went viral', img:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', badge:'ð¥ Mega Viral', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
-    { name:'HoneyLove CrossOver',     brand:'HoneyLove',  views:'5.1M', platform:'ig', desc:'Celebrity & influencer try-ons', img:'https://cdn.shopify.com/s/files/1/0965/6676/files/crossover_bra-runway-34DD-nicki_0436_R1_front.jpg', badge:'â­ Brand Native', url:'https://www.honeylove.com/products/crossover-bra' },
-    { name:'SA Viral Jelly Bra',      brand:'Various',    views:'3.9M', platform:'fb', desc:'"Lift, shape & comfort" ad campaign', img:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg', badge:'ð FB Ad Hit', url:'https://www.facebook.com/61577213798333/videos/sas-viral-jelly-bra-lift-shape-comfort-finally-%EF%B8%8F/901459239043608/' },
-    { name:'Knix Catalyst Sports',    brand:'Knix',       views:'2.7M', platform:'ig', desc:'Sports performance Reels content', img:'https://knix.com/cdn/shop/files/CatalystSportsBra_Black_01_f13d06ec-7762-41ef-9706-15f41b5397d1.webp', badge:'ð Sports Viral', url:'https://knix.com/products/catalyst-sports-bra' },
-    { name:'COCOMARTS Scalloped',     brand:'COCOMARTS',  views:'2.4M', platform:'ig', desc:'Aesthetic unboxing & try-on hauls', img:'https://m.media-amazon.com/images/I/61fg6AeoFlL._AC_UY300_.jpg', badge:'â¨ Haul Viral', url:'https://www.amazon.com/dp/B0FS1GXDPX' },
-    { name:'ThirdLove 24/7',          brand:'ThirdLove',  views:'1.8M', platform:'fb', desc:'"Find your perfect fit" FB campaign', img:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg', badge:'ð¡ Education Ad', url:'https://www.thirdlove.com/collections/24-7-bras' },
+    { name:'OEAK Jelly Bra',         brand:'OEAK',       views:'8.3M', platform:'ig', desc:'Squeezable cup demos went viral', img:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', badge:'🔥 Mega Viral', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
+    { name:'HoneyLove CrossOver',     brand:'HoneyLove',  views:'5.1M', platform:'ig', desc:'Celebrity & influencer try-ons', img:'https://cdn.shopify.com/s/files/1/0965/6676/files/crossover_bra-runway-34DD-nicki_0436_R1_front.jpg', badge:'⭐ Brand Native', url:'https://www.honeylove.com/products/crossover-bra' },
+    { name:'SA Viral Jelly Bra',      brand:'Various',    views:'3.9M', platform:'fb', desc:'"Lift, shape & comfort" ad campaign', img:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg', badge:'📘 FB Ad Hit', url:'https://www.facebook.com/61577213798333/videos/sas-viral-jelly-bra-lift-shape-comfort-finally-%EF%B8%8F/901459239043608/' },
+    { name:'Knix Catalyst Sports',    brand:'Knix',       views:'2.7M', platform:'ig', desc:'Sports performance Reels content', img:'https://knix.com/cdn/shop/files/CatalystSportsBra_Black_01_f13d06ec-7762-41ef-9706-15f41b5397d1.webp', badge:'🏃 Sports Viral', url:'https://knix.com/products/catalyst-sports-bra' },
+    { name:'COCOMARTS Scalloped',     brand:'COCOMARTS',  views:'2.4M', platform:'ig', desc:'Aesthetic unboxing & try-on hauls', img:'https://m.media-amazon.com/images/I/61fg6AeoFlL._AC_UY300_.jpg', badge:'✨ Haul Viral', url:'https://www.amazon.com/dp/B0FS1GXDPX' },
+    { name:'ThirdLove 24/7',          brand:'ThirdLove',  views:'1.8M', platform:'fb', desc:'"Find your perfect fit" FB campaign', img:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg', badge:'💡 Education Ad', url:'https://www.thirdlove.com/collections/24-7-bras' },
   ];
   document.getElementById('viralProducts').innerHTML = viral.map(v => {
     const platColor = v.platform==='ig' ? '#7e22ce' : '#1d4ed8';
     const platBg = v.platform==='ig' ? '#fdf4ff' : '#eff6ff';
-    const platLabel = v.platform==='ig' ? 'ð· Instagram' : 'ð Facebook';
+    const platLabel = v.platform==='ig' ? '📷 Instagram' : '📘 Facebook';
     return `<a href="${v.url}" target="_blank" rel="noopener" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f3f4f6;text-decoration:none;color:inherit;cursor:pointer;transition:background .1s;border-radius:8px;padding:6px">
       <img src="${v.img}" style="width:48px;height:48px;object-fit:contain;background:#f8f5f9;border-radius:8px;flex-shrink:0" onerror="this.style.background='#e5e7eb'">
       <div style="flex:1;min-width:0">
@@ -1153,7 +1153,7 @@ function renderSocialBoard() {
         <div style="font-size:10px;color:#9ca3af;margin-bottom:3px">${v.desc}</div>
         <div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap">
           <span style="background:${platBg};color:${platColor};font-size:9px;font-weight:600;padding:1px 6px;border-radius:4px">${platLabel}</span>
-          <span style="background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:1px 6px;border-radius:4px">ð ${v.views} views</span>
+          <span style="background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:1px 6px;border-radius:4px">👁 ${v.views} views</span>
           <span style="font-size:9px;color:#059669;font-weight:600">${v.badge}</span>
         </div>
       </div>
@@ -1178,20 +1178,20 @@ function renderSocialBoard() {
         <span style="font-size:11px;font-weight:600;color:#111">${b.name}</span>
       </div>
       <div style="display:flex;gap:8px;font-size:10px">
-        <span style="color:#7e22ce">ð· ${b.ig}</span>
-        <span style="color:#1d4ed8">ð ${b.fb}</span>
+        <span style="color:#7e22ce">📷 ${b.ig}</span>
+        <span style="color:#1d4ed8">📘 ${b.fb}</span>
         <span style="color:#059669;font-weight:700">${b.eng}</span>
       </div>
     </div>`).join('');
 
   // Instagram Insights
   const instaInsights = [
-    { icon:'ð¬', title:'Reels dominate discovery', note:'Bra try-on/unboxing Reels get 3.5Ã more reach than static posts' },
-    { icon:'ð¯', title:'3 hashtags = sweet spot', note:'Posts with 1â3 niche hashtags outperform broad tag spam' },
-    { icon:'ð¤³', title:'UGC drives conversions', note:'"Honest review" UGC converts 68% better than branded content' },
-    { icon:'ð', title:'Nano-influencers win', note:'Accounts 5Kâ50K followers: 5.2% engagement vs 2.3% macro' },
-    { icon:'ð', title:'Size inclusivity = shares', note:'Posts showing diverse bodies get 2.1Ã more saves & shares' },
-    { icon:'â°', title:'Best posting time', note:'TueâThu 6â9pm EST for lingerie/fashion content' },
+    { icon:'🎬', title:'Reels dominate discovery', note:'Bra try-on/unboxing Reels get 3.5× more reach than static posts' },
+    { icon:'🎯', title:'3 hashtags = sweet spot', note:'Posts with 1–3 niche hashtags outperform broad tag spam' },
+    { icon:'🤳', title:'UGC drives conversions', note:'"Honest review" UGC converts 68% better than branded content' },
+    { icon:'🌟', title:'Nano-influencers win', note:'Accounts 5K–50K followers: 5.2% engagement vs 2.3% macro' },
+    { icon:'📐', title:'Size inclusivity = shares', note:'Posts showing diverse bodies get 2.1× more saves & shares' },
+    { icon:'⏰', title:'Best posting time', note:'Tue–Thu 6–9pm EST for lingerie/fashion content' },
   ];
   document.getElementById('instaInsights').innerHTML = instaInsights.map(i => `
     <div style="display:flex;gap:8px;margin-bottom:8px;align-items:flex-start">
@@ -1204,12 +1204,12 @@ function renderSocialBoard() {
 
   // Facebook Insights
   const fbInsights = [
-    { icon:'ð¥', title:'Video ads outperform static', note:'Facebook video bra ads: 4.2Ã CTR vs image ads in 2026' },
-    { icon:'ð¥', title:'Facebook Groups are key', note:'"Bra recommendations" groups have 2M+ combined members' },
-    { icon:'ð', title:'Social commerce rising', note:'FB Shop integration drives direct purchase without leaving app' },
-    { icon:'ð¯', title:'45â55 age group = high value', note:'Older women search for support/comfort bras with high intent' },
-    { icon:'ð¬', title:'Comment engagement wins', note:'Posts asking "which is your style?" get 8Ã more comments' },
-    { icon:'ð£', title:'SA Jelly Bra viral pattern', note:'African market viral FB campaigns spreading to global audiences' },
+    { icon:'🎥', title:'Video ads outperform static', note:'Facebook video bra ads: 4.2× CTR vs image ads in 2026' },
+    { icon:'👥', title:'Facebook Groups are key', note:'"Bra recommendations" groups have 2M+ combined members' },
+    { icon:'🛒', title:'Social commerce rising', note:'FB Shop integration drives direct purchase without leaving app' },
+    { icon:'🎯', title:'45–55 age group = high value', note:'Older women search for support/comfort bras with high intent' },
+    { icon:'💬', title:'Comment engagement wins', note:'Posts asking "which is your style?" get 8× more comments' },
+    { icon:'📣', title:'SA Jelly Bra viral pattern', note:'African market viral FB campaigns spreading to global audiences' },
   ];
   document.getElementById('fbInsights').innerHTML = fbInsights.map(i => `
     <div style="display:flex;gap:8px;margin-bottom:8px;align-items:flex-start">
@@ -1224,67 +1224,67 @@ function renderSocialBoard() {
   renderSeniorPosts();
 }
 
-// ââ Category-Feature Market Insight ââ
+// ── Category-Feature Market Insight ──
 function renderCategoryInsight() {
   const categories = [
     {
-      icon:'ð', name:'Active Bra', col:'#0ea5e9', bg:'#e0f2fe',
+      icon:'🏃', name:'Active Bra', col:'#0ea5e9', bg:'#e0f2fe',
       desc:'Performance-focused, high-impact support for fitness & sports',
       features:[
-        { tag:'Wireless Support',    pct:68, trend:'â +22%' },
-        { tag:'High Impact',         pct:76, trend:'â +31%' },
-        { tag:'Racerback',           pct:55, trend:'â Stable' },
-        { tag:'Breathable',          pct:62, trend:'â +18%' },
-        { tag:'Posture Support',     pct:43, trend:'â +28%' },
-        { tag:'Full Coverage',       pct:58, trend:'â +12%' },
+        { tag:'Wireless Support',    pct:68, trend:'↑ +22%' },
+        { tag:'High Impact',         pct:76, trend:'↑ +31%' },
+        { tag:'Racerback',           pct:55, trend:'→ Stable' },
+        { tag:'Breathable',          pct:62, trend:'↑ +18%' },
+        { tag:'Posture Support',     pct:43, trend:'↑ +28%' },
+        { tag:'Full Coverage',       pct:58, trend:'↑ +12%' },
       ]
     },
     {
-      icon:'ð', name:'Comfort Bra', col:'#7c3aed', bg:'#ede9fe',
+      icon:'😊', name:'Comfort Bra', col:'#7c3aed', bg:'#ede9fe',
       desc:'All-day wear bras prioritising ease, comfort & minimal feel',
       features:[
-        { tag:'Wireless',             pct:92, trend:'â +45%' },
-        { tag:'Seamless',             pct:88, trend:'â +38%' },
-        { tag:'Full Coverage',        pct:74, trend:'â +14%' },
-        { tag:'Ease of Wearing',      pct:67, trend:'â +33%' },
-        { tag:'Adjustable Lifting',   pct:63, trend:'â +41%' },
-        { tag:'Back Smoothing',       pct:48, trend:'â +19%' },
+        { tag:'Wireless',             pct:92, trend:'↑ +45%' },
+        { tag:'Seamless',             pct:88, trend:'↑ +38%' },
+        { tag:'Full Coverage',        pct:74, trend:'↑ +14%' },
+        { tag:'Ease of Wearing',      pct:67, trend:'↑ +33%' },
+        { tag:'Adjustable Lifting',   pct:63, trend:'↑ +41%' },
+        { tag:'Back Smoothing',       pct:48, trend:'↑ +19%' },
       ]
     },
     {
-      icon:'ðª', name:'Support Bra', col:'#db2777', bg:'#fce7f3',
+      icon:'💪', name:'Support Bra', col:'#db2777', bg:'#fce7f3',
       desc:'Shape-focused bras with lift, side-shaping & back control',
       features:[
-        { tag:'Lifting',              pct:85, trend:'â +27%' },
-        { tag:'Shaping',              pct:78, trend:'â +22%' },
-        { tag:'Back Smoothing',       pct:72, trend:'â +34%' },
-        { tag:'Side Shaping',         pct:64, trend:'â +29%' },
-        { tag:'Wireless',             pct:58, trend:'â +52%' },
-        { tag:'Minimizer',            pct:44, trend:'â Stable' },
+        { tag:'Lifting',              pct:85, trend:'↑ +27%' },
+        { tag:'Shaping',              pct:78, trend:'↑ +22%' },
+        { tag:'Back Smoothing',       pct:72, trend:'↑ +34%' },
+        { tag:'Side Shaping',         pct:64, trend:'↑ +29%' },
+        { tag:'Wireless',             pct:58, trend:'↑ +52%' },
+        { tag:'Minimizer',            pct:44, trend:'→ Stable' },
       ]
     },
     {
-      icon:'â¨', name:'Specialty Bra', col:'#059669', bg:'#d1fae5',
+      icon:'✨', name:'Specialty Bra', col:'#059669', bg:'#d1fae5',
       desc:'Occasion & function-specific bras for special use cases',
       features:[
-        { tag:'Strapless',            pct:68, trend:'â Stable' },
-        { tag:'Front Closure',        pct:55, trend:'â +44%' },
-        { tag:'Multiway / Low-Back',  pct:38, trend:'â +61%' },
-        { tag:'Nursing / Maternity',  pct:34, trend:'â +18%' },
-        { tag:'Adhesive / Backless',  pct:28, trend:'â +87%' },
-        { tag:'Convertible Straps',   pct:32, trend:'â +25%' },
+        { tag:'Strapless',            pct:68, trend:'→ Stable' },
+        { tag:'Front Closure',        pct:55, trend:'↑ +44%' },
+        { tag:'Multiway / Low-Back',  pct:38, trend:'↑ +61%' },
+        { tag:'Nursing / Maternity',  pct:34, trend:'↑ +18%' },
+        { tag:'Adhesive / Backless',  pct:28, trend:'↑ +87%' },
+        { tag:'Convertible Straps',   pct:32, trend:'↑ +25%' },
       ]
     },
     {
-      icon:'ð©±', name:'General Trending', col:'#d97706', bg:'#fef3c7',
+      icon:'🩱', name:'General Trending', col:'#d97706', bg:'#fef3c7',
       desc:'Cross-category features seeing the biggest market momentum',
       features:[
-        { tag:'Jelly Technology',     pct:41, trend:'â +312%' },
-        { tag:'Push-Up',              pct:55, trend:'â +38%' },
-        { tag:'Plus Size',            pct:48, trend:'â +89%' },
-        { tag:'Deep V Plunge',        pct:37, trend:'â +56%' },
-        { tag:'Nude-Feel / Skin-Tone',pct:29, trend:'â +74%' },
-        { tag:'Posture Corrector',    pct:22, trend:'â +78%' },
+        { tag:'Jelly Technology',     pct:41, trend:'↑ +312%' },
+        { tag:'Push-Up',              pct:55, trend:'↑ +38%' },
+        { tag:'Plus Size',            pct:48, trend:'↑ +89%' },
+        { tag:'Deep V Plunge',        pct:37, trend:'↑ +56%' },
+        { tag:'Nude-Feel / Skin-Tone',pct:29, trend:'↑ +74%' },
+        { tag:'Posture Corrector',    pct:22, trend:'↑ +78%' },
       ]
     }
   ];
@@ -1298,7 +1298,7 @@ function renderCategoryInsight() {
           <div style="flex:1">
             <div style="display:flex;justify-content:space-between;margin-bottom:2px">
               <span style="font-size:11px;font-weight:600;color:#374151">${f.tag}</span>
-              <span style="font-size:10px;color:${f.trend.includes('â')?'#059669':f.trend.includes('â')?'#dc2626':'#6b7280'};font-weight:700">${f.trend}</span>
+              <span style="font-size:10px;color:${f.trend.includes('↑')?'#059669':f.trend.includes('↓')?'#dc2626':'#6b7280'};font-weight:700">${f.trend}</span>
             </div>
             <div style="height:7px;background:rgba(255,255,255,0.7);border-radius:4px;overflow:hidden">
               <div style="height:100%;width:${f.pct}%;background:${cat.col};border-radius:4px;opacity:0.85"></div>
@@ -1310,14 +1310,14 @@ function renderCategoryInsight() {
 
   // Cross-category trend signals
   const signals = [
-    { icon:'ð®', label:'Jelly / Seamless Technology', note:'Fastest growing feature 2024â2026', delta:'+312%', hot:true },
-    { icon:'ð¡', label:'Wireless (No Underwire)', note:'Dominant across all categories', delta:'+145%', hot:true },
-    { icon:'ð', label:'Plus Size Coverage', note:'89% market growth â key size gap', delta:'+89%', hot:true },
-    { icon:'ð¼', label:'Adjustable Lifting', note:'Replacing fixed-cup designs', delta:'+41%', hot:false },
-    { icon:'ð', label:'Sports-Comfort Fusion', note:'Active meets everyday wear', delta:'+63%', hot:false },
-    { icon:'ð', label:'Front Closure / Easy-Wear', note:'Driven by seniors & accessibility', delta:'+44%', hot:false },
-    { icon:'ð', label:'Adhesive / Backless', note:'Occasion wear surging TikTok', delta:'+87%', hot:true },
-    { icon:'ð¬ï¸', label:'Breathability Features', note:'Post-pandemic comfort priority', delta:'+28%', hot:false },
+    { icon:'🍮', label:'Jelly / Seamless Technology', note:'Fastest growing feature 2024→2026', delta:'+312%', hot:true },
+    { icon:'📡', label:'Wireless (No Underwire)', note:'Dominant across all categories', delta:'+145%', hot:true },
+    { icon:'📏', label:'Plus Size Coverage', note:'89% market growth — key size gap', delta:'+89%', hot:true },
+    { icon:'🔼', label:'Adjustable Lifting', note:'Replacing fixed-cup designs', delta:'+41%', hot:false },
+    { icon:'🏃', label:'Sports-Comfort Fusion', note:'Active meets everyday wear', delta:'+63%', hot:false },
+    { icon:'🔒', label:'Front Closure / Easy-Wear', note:'Driven by seniors & accessibility', delta:'+44%', hot:false },
+    { icon:'💋', label:'Adhesive / Backless', note:'Occasion wear surging TikTok', delta:'+87%', hot:true },
+    { icon:'🌬️', label:'Breathability Features', note:'Post-pandemic comfort priority', delta:'+28%', hot:false },
   ];
 
   document.getElementById('crossTrendSignals').innerHTML = signals.map(s => `
