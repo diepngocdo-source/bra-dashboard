@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trending Bra Products Dashboard — Amazon & Temu</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f5f9; color: #2d2d2d; }
+
+  .header { background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%); color: white; padding: 24px 32px; }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .header p { font-size: 13px; opacity: 0.85; }
+  .header-meta { display: flex; gap: 16px; margin-top: 10px; font-size: 12px; opacity: 0.75; flex-wrap: wrap; }
+
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px; }
+
+  /* Filter tabs */
+  .filter-bar { display: flex; gap: 8px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+  .tab-btn { padding: 7px 18px; border-radius: 20px; border: 1.5px solid #d1d5db; background: white; cursor: pointer; font-size: 13px; font-weight: 500; transition: all .15s; }
+  .tab-btn.active { background: #7c3aed; border-color: #7c3aed; color: white; }
+  .tab-btn:hover:not(.active) { border-color: #7c3aed; color: #7c3aed; }
+  .note-badge { font-size: 11px; color: #6b7280; background: #f3f4f6; padding: 4px 10px; border-radius: 8px; margin-left: auto; }
+  .platform-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .amazon-badge { background: #fff3cd; color: #92400e; }
+  .temu-badge { background: #fce7f3; color: #9d174d; }
+  .brand-badge { background: #e0f2fe; color: #075985; }
+
+  /* KPI */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+  @media (max-width: 768px) { .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
+  .kpi-card { background: white; border-radius: 12px; padding: 18px 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  .kpi-label { font-size: 12px; color: #6b7280; margin-bottom: 4px; }
+  .kpi-value { font-size: 26px; font-weight: 700; color: #1f2937; }
+  .kpi-sub { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+  .kpi-icon { font-size: 22px; float: right; margin-top: -2px; }
+
+  /* ── Featured Product Cards ── */
+  .section-title { font-size: 15px; font-weight: 700; color: #374151; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .cards-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 24px; scrollbar-width: thin; }
+  .cards-scroll::-webkit-scrollbar { height: 5px; }
+  .cards-scroll::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+  .product-card { flex: 0 0 210px; background: white; border-radius: 14px; box-shadow: 0 1px 5px rgba(0,0,0,.08); overflow: hidden; transition: transform .15s, box-shadow .15s; cursor: default; }
+  .product-card:hover { transform: translateY(-3px); box-shadow: 0 4px 16px rgba(124,58,237,.15); }
+  .card-img-wrap { width: 100%; height: 200px; overflow: hidden; position: relative; background: #f8f5f9; }
+  .card-img-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; background: #f8f5f9; }
+  .card-img-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 36px; }
+  .card-body { padding: 10px 12px 12px; }
+  .card-platform { margin-bottom: 5px; }
+  .card-name { font-size: 12px; font-weight: 600; color: #111827; line-height: 1.4; margin-bottom: 4px; }
+  .card-brand { font-size: 11px; color: #9ca3af; margin-bottom: 6px; }
+  .card-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .card-price { font-size: 14px; font-weight: 700; color: #7c3aed; }
+  .card-rating { font-size: 12px; color: #f59e0b; font-weight: 600; }
+  .card-rank { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,.55); color: white; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; }
+
+  /* Charts */
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } }
+  .chart-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  .chart-card h3 { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 14px; }
+  .chart-wrapper { position: relative; height: 220px; }
+
+  /* Table */
+  .table-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 24px; }
+  .table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
+  .table-header h3 { font-size: 15px; font-weight: 600; }
+  .search-input { padding: 7px 12px; border: 1.5px solid #e5e7eb; border-radius: 8px; font-size: 13px; width: 200px; outline: none; }
+  .search-input:focus { border-color: #7c3aed; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 12px; background: #f9fafb; color: #6b7280; font-weight: 600; font-size: 12px; border-bottom: 1px solid #f3f4f6; cursor: pointer; white-space: nowrap; user-select: none; }
+  th:hover { color: #7c3aed; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f9fafb; vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #faf5ff; }
+  .prod-thumb { width: 90px; height: 90px; border-radius: 10px; object-fit: contain; display: block; background: #f8f5f9; }
+  .prod-thumb-placeholder { width: 90px; height: 90px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .product-name { font-weight: 500; color: #111827; max-width: 240px; }
+  .product-brand { font-size: 11px; color: #9ca3af; margin-top: 2px; }
+  .rank-badge { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: #f3f4f6; font-size: 12px; font-weight: 700; text-align: center; line-height: 26px; color: #374151; }
+  .rank-badge.top3 { background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; }
+  .tag { display: inline-block; padding: 2px 7px; background: #ede9fe; color: #5b21b6; border-radius: 8px; font-size: 10px; font-weight: 500; margin: 1px; }
+  .tag.sport { background: #dcfce7; color: #166534; }
+  .tag.jelly { background: #fce7f3; color: #9d174d; }
+  .tag.plus { background: #dbeafe; color: #1d4ed8; }
+  .sales-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .sales-bar { height: 6px; border-radius: 3px; background: linear-gradient(90deg, #7c3aed, #db2777); min-width: 4px; }
+
+  /* Insights */
+  .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .insights-grid { grid-template-columns: 1fr; } }
+  .insight-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  .insight-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 14px; color: #374151; }
+  .dist-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
+  .dist-label { width: 70px; color: #6b7280; flex-shrink: 0; }
+  .dist-bar-wrap { flex: 1; height: 10px; background: #f3f4f6; border-radius: 5px; overflow: hidden; }
+  .dist-bar-amz { height: 100%; background: #7c3aed; border-radius: 5px; }
+  .dist-pct { width: 36px; text-align: right; font-weight: 600; color: #374151; }
+
+  .footer-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; font-size: 12px; color: #92400e; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header" style="position:relative">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+    <div>
+      <h1>🩱 Trending Bra Products Dashboard</h1>
+      <p>Amazon · Temu · 6 Brand Sites — Best Sellers Analysis · June 2026</p>
+      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: June 16, 2026 · Products + Social data refreshed</span>
+      <div class="header-meta">
+        <span>📦 Amazon: Top 15 Best Sellers (June 10, 2026)</span>
+        <span>🛍️ Temu: Trending Bras Category</span>
+        <span>🌐 ThirdLove · HoneyLove · Knix · Savage X · Wacoal · Soma</span>
+        <span>🔍 "Jelly bras for women" = 119,942 searches/week</span>
+      </div>
+    </div>
+    <button onclick="exportReport(this)" style="background:rgba(255,255,255,0.18);color:white;border:1.5px solid rgba(255,255,255,0.55);padding:10px 20px;border-radius:24px;cursor:pointer;font-size:13px;font-weight:600;white-space:nowrap;flex-shrink:0;transition:all .2s;margin-top:4px" onmouseover="this.style.background='rgba(255,255,255,0.32)'" onmouseout="this.style.background='rgba(255,255,255,0.18)'">📋 Export Report</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="filter-bar">
+    <button class="tab-btn active" onclick="filterPlatform('all', this)">All Platforms</button>
+    <button class="tab-btn" onclick="filterPlatform('amazon', this)">🟡 Amazon</button>
+    <button class="tab-btn" onclick="filterPlatform('temu', this)">🔴 Temu</button>
+    <button class="tab-btn" onclick="filterPlatform('brand', this)">🌐 Brand Website</button>
+    <span class="note-badge">⚡ Amazon data: ASInsight March 2026 · Temu: estimated from listings</span>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">42</div><div class="kpi-sub">15 Amazon · 10 Temu · 17 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
+    <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 · Temu ~$9.62</div></div>
+    <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
+  </div>
+
+  <!-- Featured Product Cards -->
+  <div class="section-title">🖼️ Featured Trending Products</div>
+  <div class="cards-scroll" id="featuredCards"></div>
+
+  <!-- Charts Row 1 -->
+  <div class="charts-grid">
+    <div class="chart-card"><h3>💰 Most Trending Bra Price Range</h3><div class="chart-wrapper"><canvas id="priceRangeChart"></canvas></div></div>
+    <div class="chart-card">
+      <h3>🏆 Best vs Worst Reviewed Bra</h3>
+      <div id="bestWorstCard" style="display:flex;gap:12px;flex-wrap:wrap;padding-top:4px"></div>
+    </div>
+  </div>
+  <!-- Trending Feedback Board — moved below Best vs Worst -->
+  <div class="table-card" style="margin-bottom:24px">
+    <div class="table-header" style="margin-bottom:6px">
+      <h3>💬 Trending Customer Feedback Keywords</h3>
+      <div style="display:flex;gap:6px">
+        <span style="background:#ede9fe;color:#5b21b6;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600">🟡 Amazon (n=35,000+ reviews)</span>
+        <span style="background:#fce7f3;color:#9d174d;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600">🔴 Temu (n=800+ reviews)</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px">
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#166534;margin-bottom:12px;display:flex;align-items:center;gap:6px">✅ Positive Keywords</div>
+        <div id="posKeywords"></div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#991b1b;margin-bottom:12px;display:flex;align-items:center;gap:6px">❌ Negative Keywords</div>
+        <div id="negKeywords"></div>
+      </div>
+    </div>
+    <div style="margin-top:16px;border-top:1px solid #f3f4f6;padding-top:14px">
+      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:10px">📊 Platform Feedback Comparison</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px" id="platformMetrics"></div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card"><h3>📊 Amazon Monthly Sales Volume</h3><div class="chart-wrapper"><canvas id="salesChart"></canvas></div></div>
+    <div class="chart-card"><h3>🔖 Top Feature Tags — % of Products</h3><div class="chart-wrapper" style="height:260px"><canvas id="featureChart"></canvas></div></div>
+  </div>
+
+  <!-- Trending Features by Category Market Insight -->
+  <div class="table-card" style="margin-bottom:24px">
+    <div class="table-header" style="margin-bottom:16px">
+      <h3>📐 Market Insight — Trending Features by Bra Category</h3>
+      <span style="font-size:11px;color:#6b7280;background:#f3f4f6;padding:4px 10px;border-radius:8px">Based on all 26 tracked products · Amazon, Temu & Brand sites</span>
+    </div>
+    <div id="categoryFeatureInsight" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px"></div>
+    <div style="margin-top:18px;border-top:1px solid #f3f4f6;padding-top:16px">
+      <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:12px">🚀 Cross-Category Trend Signals (2026)</div>
+      <div id="crossTrendSignals" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px"></div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-card">
+    <div class="table-header">
+      <h3>📋 Full Product List</h3>
+      <input class="search-input" type="text" placeholder="🔍 Search..." oninput="searchTable(this.value)">
+    </div>
+    <div style="overflow-x:auto">
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)">Rank ↕</th>
+            <th>Platform</th>
+            <th>Image</th>
+            <th onclick="sortTable(3)">Product ↕</th>
+            <th onclick="sortTable(4)">Price ↕</th>
+            <th onclick="sortTable(5)">Rating ↕</th>
+            <th onclick="sortTable(6)">Reviews ↕</th>
+            <th>Sales/mo</th>
+            <th>Features</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Insights -->
+  <div class="insights-grid">
+    <div class="insight-card">
+      <h3>📈 Amazon Price Range Distribution</h3>
+      <div class="dist-row"><span class="dist-label">$0–10</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:2.28%"></div></div><span class="dist-pct">2.3%</span></div>
+      <div class="dist-row"><span class="dist-label">$10–20</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:43.06%"></div></div><span class="dist-pct">43%</span></div>
+      <div class="dist-row"><span class="dist-label">$20–50</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:51.71%"></div></div><span class="dist-pct">52%</span></div>
+      <div class="dist-row"><span class="dist-label">$50–100</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:2.93%"></div></div><span class="dist-pct">2.9%</span></div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:10px">Based on 152 ASINs · Keyword: "womens bra"</div>
+    </div>
+    <div class="insight-card">
+      <h3>⭐ Amazon Rating Distribution</h3>
+      <div class="dist-row"><span class="dist-label">4.8–5.0★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:1.46%"></div></div><span class="dist-pct">1.5%</span></div>
+      <div class="dist-row"><span class="dist-label">4.3–4.7★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:35.44%"></div></div><span class="dist-pct">35%</span></div>
+      <div class="dist-row"><span class="dist-label">3.8–4.2★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:58.39%"></div></div><span class="dist-pct">58%</span></div>
+      <div class="dist-row"><span class="dist-label">3.3–3.7★</span><div class="dist-bar-wrap"><div class="dist-bar-amz" style="width:3.40%"></div></div><span class="dist-pct">3.4%</span></div>
+      <div style="font-size:11px;color:#9ca3af;margin-top:10px">Top 3 click share: 17.68% · Conversion: 2.53%</div>
+    </div>
+  </div>
+  <div class="insights-grid">
+    <div class="insight-card">
+      <h3>🔑 Key Market Insights</h3>
+      <div style="font-size:13px;line-height:1.9;color:#374151">
+        <p>🏆 <strong>Dominant style:</strong> Wireless jelly bras — soft, seamless, no underwire is the #1 trend for 2026.</p>
+        <p>💵 <strong>Price gap:</strong> Temu ~48% cheaper than Amazon ($9.62 vs $18.58). Sweet spot on Amazon: $10–20.</p>
+        <p>⭐ <strong>Ratings:</strong> Temu avg 4.5★ vs Amazon 4.1★ — fewer but curated reviews on Temu.</p>
+        <p>📐 <strong>Size range:</strong> Plus-size (S–3XL) is a key differentiator for top-ranked products.</p>
+        <p>🔥 <strong>Search surge:</strong> "Jelly bras for women" = 119,942 weekly searches, rank #770 on Amazon ABA.</p>
+      </div>
+    </div>
+    <div class="insight-card">
+      <h3>🛒 Trending Features 2026</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+        <span style="background:#ede9fe;color:#5b21b6;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">🍮 Jelly / Seamless</span>
+        <span style="background:#fce7f3;color:#9d174d;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">📡 Wireless / No Underwire</span>
+        <span style="background:#dcfce7;color:#166534;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">📏 Plus Size</span>
+        <span style="background:#dbeafe;color:#1d4ed8;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">🔼 Push-Up</span>
+        <span style="background:#fef9c3;color:#854d0e;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">👕 Full Coverage</span>
+        <span style="background:#f0fdf4;color:#15803d;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">🏃 High Impact Sports</span>
+        <span style="background:#fff1f2;color:#be123c;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">Deep V Plunge</span>
+        <span style="background:#f0f9ff;color:#0369a1;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">Nude-Feel</span>
+        <span style="background:#fdf4ff;color:#7e22ce;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">Front Closure</span>
+        <span style="background:#fff7ed;color:#c2410c;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600">Tank Style</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PLUS SIZE US WOMEN COMPETITOR SECTION ══ -->
+  <div class="table-card" style="margin-bottom:24px">
+    <div class="table-header" style="margin-bottom:4px">
+      <h3>👑 Plus Size US Women — Best Selling Competitors by Category</h3>
+      <span style="font-size:11px;color:#6b7280;background:#f3f4f6;padding:4px 10px;border-radius:8px">Based on Canva BRA LINE categories · Amazon April 2026</span>
+    </div>
+    <p style="font-size:12px;color:#9ca3af;margin-bottom:14px">4 categories mapped from your performance tracking board: Active · Comfort · Support · Specialty</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px" id="catTabs">
+      <button class="tab-btn active" onclick="filterCat('all',this)">All Categories</button>
+      <button class="tab-btn" onclick="filterCat('active',this)">🏃 Active Bra</button>
+      <button class="tab-btn" onclick="filterCat('comfort',this)">😊 Comfort Bra</button>
+      <button class="tab-btn" onclick="filterCat('support',this)">💪 Support Bra</button>
+      <button class="tab-btn" onclick="filterCat('specialty',this)">✨ Specialty Bra</button>
+    </div>
+    <div id="plusSizeGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px"></div>
+  </div>
+
+  <!-- ══ FACEBOOK & INSTAGRAM TRENDING BOARD ══ -->
+  <div class="table-card" style="margin-bottom:24px">
+    <div class="table-header" style="margin-bottom:16px">
+      <div>
+        <h3 style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:17px">📱 Trending Bra on Facebook & Instagram — 2026</h3>
+        <p style="font-size:12px;color:#9ca3af;margin-top:2px">Viral products · Trending hashtags · Brand social presence · Content insights</p>
+      </div>
+      <div style="display:flex;gap:6px">
+        <span style="background:#1877F2;color:white;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700">f Facebook</span>
+        <span style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700">📷 Instagram</span>
+      </div>
+    </div>
+
+    <!-- KPI Row -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+      <div style="background:#f0f9ff;border-radius:10px;padding:14px;border-left:4px solid #0ea5e9;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:#0369a1">2.4M</div>
+        <div style="font-size:11px;color:#6b7280">Peak Reel Views<br>(jelly bra unboxing)</div>
+      </div>
+      <div style="background:#fdf4ff;border-radius:10px;padding:14px;border-left:4px solid #a855f7;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:#7e22ce">+500%</div>
+        <div style="font-size:11px;color:#6b7280">Google Trends spike<br>"jelly bra" since May</div>
+      </div>
+      <div style="background:#f0fdf4;border-radius:10px;padding:14px;border-left:4px solid #22c55e;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:#15803d">5.2%</div>
+        <div style="font-size:11px;color:#6b7280">Avg nano-influencer<br>engagement rate</div>
+      </div>
+      <div style="background:#fff7ed;border-radius:10px;padding:14px;border-left:4px solid #f97316;text-align:center">
+        <div style="font-size:22px;font-weight:800;color:#c2410c">+30%</div>
+        <div style="font-size:11px;color:#6b7280">Reel reach boost<br>with hashtags</div>
+      </div>
+    </div>
+
+    <!-- Main Grid: Hashtags + Viral Products + Brand Presence -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px">
+
+      <!-- Trending Hashtags -->
+      <div style="background:#fafafa;border-radius:12px;padding:16px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">🔥 Trending Hashtags</div>
+        <div id="hashtagList"></div>
+      </div>
+
+      <!-- Viral Products -->
+      <div style="background:#fafafa;border-radius:12px;padding:16px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">🚀 Most Viral Products</div>
+        <div id="viralProducts"></div>
+      </div>
+
+      <!-- Brand Social Presence -->
+      <div style="background:#fafafa;border-radius:12px;padding:16px">
+        <div style="font-size:13px;font-weight:700;margin-bottom:12px">🏷️ Brand Social Presence</div>
+        <div id="brandSocial"></div>
+      </div>
+    </div>
+
+    <!-- Content Format Performance -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+
+      <!-- Instagram Content Trends -->
+      <div style="background:#fdf4ff;border-radius:12px;padding:16px;border:1px solid #e9d5ff">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:15px">📷</span>
+          <span style="font-size:13px;font-weight:700;color:#6b21a8">Instagram Trends</span>
+        </div>
+        <div id="instaInsights"></div>
+      </div>
+
+      <!-- Facebook Content Trends -->
+      <div style="background:#eff6ff;border-radius:12px;padding:16px;border:1px solid #bfdbfe">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span style="font-size:15px">📘</span>
+          <span style="font-size:13px;font-weight:700;color:#1d4ed8">Facebook Trends</span>
+        </div>
+        <div id="fbInsights"></div>
+      </div>
+    </div>
+
+    <!-- Senior Women Feed Posts -->
+    <div style="border-top:1px solid #f3f4f6;padding-top:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#374151">👵 Most Clicked & Engaged Bra Buying Posts — Senior Women (55+)</div>
+          <div style="font-size:11px;color:#9ca3af;margin-top:2px">Top-performing Facebook & Instagram posts targeting women aged 55–75 · Sorted by engagement</div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <span style="background:#fdf4ff;color:#7e22ce;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600">👥 Target: Women 55–75</span>
+          <span style="background:#fff7ed;color:#c2410c;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:600">🎯 High Purchase Intent</span>
+        </div>
+      </div>
+      <div id="seniorFeedPosts" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px"></div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    📸 <strong>Images:</strong> Temu product photos captured live from temu.com (June 2026). Amazon images load from Amazon CDN. In sandboxed viewers, gradient placeholders are shown as fallback. <strong>Data:</strong> Amazon from ASInsight (March 2026); Temu prices/reviews from live listings. Sales volume available for Amazon only.
+  </div>
+
+</div>
+
+<script>
+// ── Gradient palette per product ──
+const gradients = [
+  ['#7c3aed','#a855f7'], ['#db2777','#f472b6'], ['#0ea5e9','#38bdf8'],
+  ['#059669','#34d399'], ['#d97706','#fbbf24'], ['#dc2626','#f87171'],
+  ['#7c3aed','#db2777'], ['#0369a1','#38bdf8']
+];
+const braIcons = ['🩱','👙','🩲','🩱','🏋️','👙','🩱','🏃'];
+
+// ── Product Data ──
+const allProducts = [
+  // ── NEW TODAY June 16 2026 ──
+  { rank:1, platform:'amazon', name:'habibee Jelly Bra Wireless Comfort Seamless Push Up', brand:'habibee', price:24.99, rating:4.4, reviews:1616, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71zUNapZGbL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0D61ZZHW5' },
+  { rank:2, platform:'amazon', name:"Warner's Blissful Benefits Super Soft Wireless Lightly Lined", brand:"Warner's", price:16.94, rating:4.5, reviews:24509, sales:'1,000+', salesNum:1000, features:['Wireless','Lightly Lined','Seamless','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/81SpRb8+aqL._AC_UY300_.jpg', grad:gradients[7], icon:'👙', url:'https://www.amazon.com/dp/B07BLH9FQC' },
+  { rank:3, platform:'amazon', name:"Warner's This Is Not A Bra Full Coverage Underwire", brand:"Warner's", price:26.99, rating:4.4, reviews:22870, sales:'1,000+', salesNum:1000, features:['Underwire','Full Coverage','Classic','Lined'], imgUrl:'https://m.media-amazon.com/images/I/71kNQ7YWldL._AC_UY300_.jpg', grad:gradients[1], icon:'🩱', url:'https://www.amazon.com/dp/B00378LD94' },
+  { rank:4, platform:'amazon', name:'OEAK Women Jelly Bras Scalloped Push Up Buttery Soft', brand:'OEAK', price:16.98, rating:4.3, reviews:2149, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Scalloped','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71OV9odoxbL._AC_UY300_.jpg', grad:gradients[0], icon:'🌸', url:'https://www.amazon.com/dp/B0DZ69N6FR' },
+  // ── NEW TODAY June 10 2026 ──
+  // ── NEW TODAY June 9 2026 ──
+  // ── Existing Products ──
+  // Amazon
+  { rank:1, platform:'amazon', name:'OEAK Deep V Wireless Bra', brand:'OEAK', price:19.96, rating:4.0, reviews:10401, sales:'7,000+', salesNum:7000, features:['Wireless','Deep V','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', grad:gradients[0], icon:'🩱', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
+  { rank:2, platform:'amazon', name:'PoseFree Seamless Wireless Bra', brand:'PoseFree', price:17.98, rating:4.0, reviews:12966, sales:'5,000+', salesNum:5000, features:['Wireless','Seamless','Full Coverage','T-Shirt'], imgUrl:'https://m.media-amazon.com/images/I/61mxpfsyudL._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0FX98KPQB' },
+  { rank:3, platform:'amazon', name:'LetsJoli Supportive Wireless Bra', brand:'LetsJoli', price:19.99, rating:4.1, reviews:15164, sales:'5,000+', salesNum:5000, features:['Wireless','Plus Size','Full Coverage','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg', grad:gradients[2], icon:'🩱', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
+  { rank:4, platform:'amazon', name:'Cuteio Wireless Jelly Bra', brand:'Cuteio', price:14.99, rating:4.2, reviews:1605, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Seamless','Padded'], imgUrl:'https://m.media-amazon.com/images/I/71JeuszI-ZL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0F12KRCYK' },
+  { rank:5, platform:'amazon', name:'OEAK Wireless Jelly Bra Plus Size', brand:'OEAK', price:19.99, rating:4.1, reviews:4270, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Plus Size','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg', grad:gradients[4], icon:'🩱', url:'https://www.amazon.com/dp/B0FBGG142J' },
+  { rank:6, platform:'amazon', name:'COCOMARTS Scalloped Jelly Bra', brand:'COCOMARTS', price:15.72, rating:4.3, reviews:965, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Push-up','Scalloped'], imgUrl:'https://m.media-amazon.com/images/I/61fg6AeoFlL._AC_UY300_.jpg', grad:gradients[5], icon:'🌸', url:'https://www.amazon.com/dp/B0FS1GXDPX' },
+  { rank:7, platform:'amazon', name:'COCOMARTS Classic Jelly Bra', brand:'COCOMARTS', price:14.58, rating:4.3, reviews:965, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Seamless','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/61urOKZuFcL._AC_UY300_.jpg', grad:gradients[6], icon:'👙', url:'https://www.amazon.com/dp/B0FNMFCJ29' },
+  { rank:8, platform:'amazon', name:'RUNNING GIRL High Impact Sports Bra', brand:'RUNNING GIRL', price:23.99, rating:4.4, reviews:6645, sales:'2,000+', salesNum:2000, features:['Sports','High Impact','Racerback','Longline'], imgUrl:'https://m.media-amazon.com/images/I/611cOiwl+XL._AC_UY300_.jpg', grad:gradients[7], icon:'🏃', url:'https://www.amazon.com/dp/B0CBRYTVYL' },
+  // Temu
+  { rank:1, platform:'temu', name:'Posture-Correcting Push-Up Bra', brand:'Temu', price:8.46, rating:4.3, reviews:699, sales:'699 sold', salesNum:0, features:['Push-up','Wireless','Back Support','Seamless'], imgUrl:'https://img.kwcdn.com/product/fancy/0c3e1c01-1a2b-485c-9a04-2d37ce694eb0.jpg?imageView2/2/w/400/q/70', grad:['#9333ea','#c084fc'], icon:'🩱', url:'https://www.temu.com/search_result.html?search_key=posture+correcting+push+up+bra+wireless+seamless' },
+  { rank:2, platform:'temu', name:'Posture-Correcting Seamless Bra', brand:'Temu', price:8.46, rating:3.9, reviews:699, sales:'699 sold', salesNum:0, features:['Wireless','Seamless','Posture','Push-up'], imgUrl:'https://img.kwcdn.com/product/fancy/f97c7db3-52e5-43aa-920d-a5f173342166.jpg?imageView2/2/w/400/q/70', grad:['#db2777','#fb7185'], icon:'🍮', url:'https://www.temu.com/search_result.html?search_key=womens+posture+correcting+seamless+bra' },
+  { rank:3, platform:'temu', name:'EssElegance Wireless Sports Bra', brand:'EssElegance', price:10.85, rating:4.4, reviews:293, sales:'3.2K+ sold', salesNum:0, features:['Sports','Wireless','Push-up','Smooth'], imgUrl:'https://img.kwcdn.com/product/fancy/955898cb-266c-4e73-99a1-de632584396b.jpg?imageView2/2/w/400/q/70', grad:['#b45309','#fbbf24'], icon:'🌸', url:'https://www.temu.com/search_result.html?search_key=EssElegance+wireless+sports+bra+push+up' },
+  { rank:4, platform:'temu', name:'5pcs Wire-Free Bras Plaid Mesh', brand:'Temu', price:14.76, rating:4.0, reviews:31, sales:'31 sold', salesNum:0, features:['Wireless','Multi-pack','Plaid Mesh','Adjustable'], imgUrl:'https://img.kwcdn.com/product/fancy/6e3f0482-8d2f-438a-847a-50dfd7f72535.jpg?imageView2/2/w/400/q/70', grad:['#0e7490','#22d3ee'], icon:'🔼', url:'https://www.temu.com/search_result.html?search_key=5pcs+wire+free+bras+plaid+mesh' },
+  { rank:5, platform:'temu', name:'3pcs Strapless Bra (Non-Steel Ring)', brand:'Temu', price:13.78, rating:4.2, reviews:90, sales:'90 sold', salesNum:0, features:['Strapless','Wireless','Non-slip','Detachable'], imgUrl:'https://img.kwcdn.com/product/fancy/f3d7231c-9269-4a40-a549-51664ae383c9.jpg?imageView2/2/w/400/q/70', grad:['#7c3aed','#a78bfa'], icon:'💜', url:'https://www.temu.com/search_result.html?search_key=3pcs+strapless+bra+non+steel+ring' },
+  { rank:6, platform:'temu', name:'Seamless Underwear Lifting Shaper Bra', brand:'Temu', price:7.15, rating:4.3, reviews:2700, sales:'2.7K+ sold', salesNum:0, features:['Seamless','Lifting','Full Coverage','Shaper'], imgUrl:'https://img.kwcdn.com/product/fancy/8441c840-e396-46ca-b12d-4fcb4cd421bd.jpg?imageView2/2/w/400/q/70', grad:['#065f46','#34d399'], icon:'🔒', url:'https://www.temu.com/search_result.html?search_key=seamless+lifting+shaper+bra+women' },
+  { rank:7, platform:'temu', name:'3pcs Seamless Breathable Hollow Bra', brand:'Temu', price:14.03, rating:4.1, reviews:368, sales:'368 sold', salesNum:0, features:['Seamless','Breathable','Hollow','Sports'], imgUrl:'https://img.kwcdn.com/product/fancy/9817fc24-4fb6-4072-9ada-a47f68fef022.jpg?imageView2/2/w/400/q/70', grad:['#1d4ed8','#60a5fa'], icon:'🏋️', url:'https://www.temu.com/search_result.html?search_key=3pcs+seamless+breathable+hollow+sports+bra' },
+  { rank:8, platform:'temu', name:'4pcs Elegant Ladies Seamless Bra', brand:'Temu', price:17.56, rating:4.4, reviews:368, sales:'368 sold', salesNum:0, features:['Seamless','Multi-pack','Full Coverage','Elegant'], imgUrl:'https://img.kwcdn.com/product/fancy/99da8458-237c-4364-9a0d-266bcbb67e38.jpg?imageView2/2/w/400/q/70', grad:['#be185d','#f9a8d4'], icon:'💖', url:'https://www.temu.com/search_result.html?search_key=4pcs+elegant+ladies+seamless+bra' },
+  // Brand Websites
+  { rank:1, platform:'brand', name:'24/7 Classic Wireless Crossover Minimizer Bra', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['Wireless','Crossover','Minimizer','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg', grad:['#8B2252','#C06080'], icon:'🩱', url:'https://www.thirdlove.com/products/24-7-wireless-bra-black' },
+  { rank:2, platform:'brand', name:'Catalyst Sports Bra — High Support, Eliminates Bounce 76%', brand:'Knix', price:78.00, rating:4.5, reviews:5277, sales:'Top Rated', salesNum:0, features:['High Support','Sports','Full Coverage','Wireless'], imgUrl:'https://knix.com/cdn/shop/files/CatalystSportsBra_Black_01_f13d06ec-7762-41ef-9706-15f41b5397d1.webp', grad:['#1A5C5C','#2A8C8C'], icon:'🌿', url:'https://knix.com/products/catalyst-sports-bra' },
+  { rank:3, platform:'brand', name:'CrossOver Wireless Bra — Bonded Cradle Support', brand:'HoneyLove', price:69.00, rating:4.5, reviews:1023, sales:'#1 Best Seller', salesNum:0, features:['Wireless','CrossOver','Bonded Support','No Underwire'], imgUrl:'https://cdn.shopify.com/s/files/1/0965/6676/files/crossover_bra-runway-34DD-nicki_0436_R1_front.jpg', grad:['#C9873F','#E8A85C'], icon:'🍯', url:'https://www.honeylove.com/products/crossover-bra' },
+  { rank:4, platform:'brand', name:'Savage Unlined Triangle Bralette', brand:'Savage X Fenty', price:15.00, rating:4.5, reviews:3200, sales:'—', salesNum:0, features:['Unlined','Triangle','Inclusive Sizing','Lightweight'], imgUrl:'https://m.media-amazon.com/images/I/61cfKqtF6mL._AC_UY300_.jpg', grad:['#1A1A1A','#4A4A4A'], icon:'💋', url:'https://www.savagex.com/features/best-sellers' },
+  { rank:5, platform:'brand', name:'B.Smooth Seamless Wireless Bra', brand:'Wacoal', price:40.00, rating:4.1, reviews:1336, sales:'—', salesNum:0, features:['Seamless','Wireless','Smooth','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/711zt8dm0HL._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'👑', url:'https://www.wacoal-america.com/collections/bras' },
+  { rank:6, platform:'brand', name:'Enbliss Wireless T-Shirt Bra', brand:'Soma', price:52.00, rating:4.4, reviews:4500, sales:'Fan Fave', salesNum:0, features:['Wireless','T-Shirt','Full Coverage','Everyday'], imgUrl:'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTpQVuuXifzJ2BFWUAQdvxhW1P6Hf836OgPrvzggSeEVClHiY0AZPteXOiJzZrJ4vvwjygEvPVm7zeFGXtgVKwBscwSXBQ-_g', grad:['#B76E79','#D49BA5'], icon:'🌸', url:'https://www.soma.com/en/c/bras' },
+  { rank:7, platform:'brand', name:'Wireless Lightly Lined J-Hook Plunge Bra', brand:'Lively', price:35.00, rating:4.3, reviews:3200, sales:'—', salesNum:0, features:['Wireless','Lightly Lined','Plunge','J-Hook'], imgUrl:'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRB99P234oMlVf7QMFcihfwYa9djxJW1yhtN7KEt3yzCXG-j-8YbparikTMR1tc1esKRRMgSGYNjUMtp4ifcegdnlq2bXFbeHFuKU6A-kVKd8l0MQeD0-s8', grad:['#E8907A','#F0B0A0'], icon:'🦋', url:'https://wearlively.com' },
+  { rank:8, platform:'brand', name:'True Body Lift Wireless Bra', brand:'True & Co', price:68.00, rating:4.4, reviews:533, sales:'—', salesNum:0, features:['Wireless','Lifting','Body Hugging','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/61k-fsrHlIL._AC_UY300_.jpg', grad:['#4A3728','#7A5740'], icon:'✨', url:'https://trueandco.com/collections/bras' },
+  { rank:9, platform:'brand', name:'Feathers Contour Wireless Bra', brand:'Natori', price:60.85, rating:4.2, reviews:2219, sales:'—', salesNum:0, features:['Wireless','Feather-Light','Contour','Premium'], imgUrl:'https://m.media-amazon.com/images/I/717+l0mWoHL._AC_UY300_.jpg', grad:['#2C3E50','#4A6080'], icon:'🪶', url:'https://www.natori.com/collections/bras' },
+  { rank:10, platform:'brand', name:'Bra-llelujah! Wireless Full Coverage Bra', brand:'SPANX', price:46.80, rating:4.2, reviews:240, sales:'—', salesNum:0, features:['Wireless','Full Coverage','Smoothing','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/71fYnnWsXXL._AC_UY300_.jpg', grad:['#1A1A1A','#555555'], icon:'🖤', url:'https://www.spanx.com/collections/bras' },
+  { rank:14, platform:'brand', name:'24/7 Classic T-Shirt Bra — Apricot New Shade', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['T-Shirt','Wireless','Full Coverage','Seamless'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q226_PDP_OF_TSBRA_ZEHUW_APRICOT_484.jpg', grad:['#8B2252','#C06080'], icon:'🩱', url:'https://www.thirdlove.com/products/24-7-classic-t-shirt-bra-apricot' },
+];
+
+let currentPlatform = 'all';
+let currentSearch = '';
+let sortCol = 0, sortAsc = true;
+
+function getFiltered() {
+  return allProducts.filter(p => {
+    const matchP = currentPlatform === 'all' || p.platform === currentPlatform;
+    const matchS = !currentSearch || p.name.toLowerCase().includes(currentSearch) || p.features.some(f => f.toLowerCase().includes(currentSearch));
+    return matchP && matchS;
+  });
+}
+
+// ── Build product image element ──
+function makeThumbHTML(p, size = 52) {
+  if (p.imgUrl) {
+    // Try real image; fall back to SVG placeholder on error
+    const svgFallback = makeSVGPlaceholder(p, size, size);
+    return `<img class="prod-thumb" style="width:${size}px;height:${size}px" src="${p.imgUrl}"
+      onerror="this.outerHTML='${svgFallback.replace(/'/g,'&apos;').replace(/"/g,'&quot;')}'"
+      alt="${p.name}">`;
+  }
+  return makeSVGPlaceholder(p, size, size);
+}
+
+function makeSVGPlaceholder(p, w, h) {
+  const [c1, c2] = p.grad;
+  const icon = p.icon || '🩱';
+  const short = p.brand.slice(0, 7);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" style="border-radius:8px;display:block">
+    <defs><linearGradient id="g${w}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="${c1}"/>
+      <stop offset="100%" stop-color="${c2}"/>
+    </linearGradient></defs>
+    <rect width="${w}" height="${h}" fill="url(#g${w})" rx="8"/>
+    <text x="${w/2}" y="${h*0.5}" text-anchor="middle" dominant-baseline="central" font-size="${Math.floor(h*0.38)}">${icon}</text>
+    <text x="${w/2}" y="${h*0.85}" text-anchor="middle" font-size="${Math.max(8, Math.floor(h*0.14))}" fill="white" opacity="0.9" font-family="sans-serif">${short}</text>
+  </svg>`;
+}
+
+function makeLargeCardSVG(p) {
+  const [c1, c2] = p.grad;
+  const icon = p.icon || '🩱';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="210" height="200" style="display:block">
+    <defs><linearGradient id="cg_${p.rank}_${p.platform}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="${c1}"/>
+      <stop offset="100%" stop-color="${c2}"/>
+    </linearGradient></defs>
+    <rect width="210" height="200" fill="url(#cg_${p.rank}_${p.platform})"/>
+    <text x="105" y="90" text-anchor="middle" dominant-baseline="central" font-size="60">${icon}</text>
+    <rect x="0" y="155" width="210" height="45" fill="rgba(0,0,0,0.28)"/>
+    <text x="105" y="171" text-anchor="middle" font-size="11" fill="white" font-family="sans-serif" font-weight="600">${p.brand.slice(0,20)}</text>
+    <text x="105" y="188" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)" font-family="sans-serif">⭐ ${p.rating} · $${p.price}</text>
+  </svg>`;
+}
+
+// ── Render Featured Cards ──
+function renderCards() {
+  const data = getFiltered();
+  const container = document.getElementById('featuredCards');
+  container.innerHTML = data.map(p => {
+    const badge = p.platform === 'amazon'
+      ? '<span class="platform-badge amazon-badge">🟡 Amazon</span>'
+      : p.platform === 'temu'
+      ? '<span class="platform-badge temu-badge">🔴 Temu</span>'
+      : `<span class="platform-badge brand-badge">🌐 ${p.brand}</span>`;
+
+    let imgContent;
+    if (p.imgUrl) {
+      const svgStr = makeLargeCardSVG(p).replace(/`/g,'').replace(/\n/g,'');
+      imgContent = `<img src="${p.imgUrl}" style="width:170px;height:150px;object-fit:contain;background:#f8f5f9;display:block"
+        onerror="this.outerHTML='${svgStr.replace(/'/g,"&#39;").replace(/"/g,"&#34;")}'" alt="${p.name}">`;
+    } else {
+      imgContent = makeLargeCardSVG(p);
+    }
+
+    return `<div class="product-card">
+      <a href="${p.url||'#'}" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">
+      <div class="card-img-wrap" style="position:relative">
+        ${imgContent}
+        <span class="card-rank">#${p.rank}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-platform">${badge}</div>
+        <div class="card-name" style="text-decoration:underline;text-underline-offset:2px;text-decoration-color:#d1d5db">${p.name}</div>
+        <div class="card-brand">${p.brand}</div>
+        <div class="card-bottom">
+          <span class="card-price">$${p.price.toFixed(2)}</span>
+          <span class="card-rating">★ ${p.rating}</span>
+        </div>
+      </div>
+      </a>
+    </div>`;
+  }).join('');
+}
+
+// ── Render Table ──
+function renderTable() {
+  const data = getFiltered();
+  data.sort((a, b) => {
+    let av, bv;
+    if      (sortCol === 0) { av = a.rank;    bv = b.rank; }
+    else if (sortCol === 3) { av = a.name;    bv = b.name; }
+    else if (sortCol === 4) { av = a.price;   bv = b.price; }
+    else if (sortCol === 5) { av = a.rating;  bv = b.rating; }
+    else if (sortCol === 6) { av = a.reviews; bv = b.reviews; }
+    else                    { av = a.rank;    bv = b.rank; }
+    if (typeof av === 'string') return sortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+    return sortAsc ? av - bv : bv - av;
+  });
+
+  const maxSales = Math.max(...data.map(p => p.salesNum), 1);
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = data.map(p => {
+    const rankCls = p.rank <= 3 ? 'top3' : '';
+    const badge = p.platform === 'amazon'
+      ? '<span class="platform-badge amazon-badge">🟡 Amazon</span>'
+      : p.platform === 'temu'
+      ? '<span class="platform-badge temu-badge">🔴 Temu</span>'
+      : `<span class="platform-badge brand-badge">🌐 ${p.brand}</span>`;
+    const tags = p.features.map(f => {
+      let cls = 'tag';
+      if (['Sports','High Impact','High Support'].includes(f)) cls += ' sport';
+      if (f.includes('Jelly')) cls += ' jelly';
+      if (f.includes('Plus')) cls += ' plus';
+      return `<span class="${cls}">${f}</span>`;
+    }).join('');
+    const barW = p.salesNum > 0 ? Math.round((p.salesNum / maxSales) * 80) : 0;
+    const salesDisp = p.salesNum > 0
+      ? `<div class="sales-bar-wrap"><div class="sales-bar" style="width:${barW}px"></div><span>${p.sales}</span></div>`
+      : '<span style="color:#9ca3af;font-size:11px">N/A</span>';
+    return `<tr>
+      <td><span class="rank-badge ${rankCls}">#${p.rank}</span></td>
+      <td>${badge}</td>
+      <td>${makeThumbHTML(p, 90)}</td>
+      <td><div class="product-name"><a href="${p.url||'#'}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#a78bfa">${p.name}</a></div><div class="product-brand">${p.brand}</div></td>
+      <td><strong>$${p.price.toFixed(2)}</strong></td>
+      <td>⭐ ${p.rating.toFixed(1)}</td>
+      <td>${p.reviews.toLocaleString()}</td>
+      <td>${salesDisp}</td>
+      <td>${tags}</td>
+    </tr>`;
+  }).join('');
+
+  // KPI update
+  const avg = arr => arr.reduce((s,v)=>s+v,0)/arr.length;
+  document.getElementById('kpiTotal').textContent  = data.length;
+  document.getElementById('kpiRating').textContent = avg(data.map(p=>p.rating)).toFixed(1);
+  document.getElementById('kpiPrice').textContent  = '$' + avg(data.map(p=>p.price)).toFixed(2);
+}
+
+function filterPlatform(platform, btn) {
+  currentPlatform = platform;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
+  renderTable();
+  rebuildCharts();
+}
+
+function searchTable(val) {
+  currentSearch = val.toLowerCase();
+  renderCards();
+  renderTable();
+}
+
+function sortTable(col) {
+  sortCol = (sortCol === col) ? col : col;
+  if (sortCol === col && sortAsc !== undefined) sortAsc = !sortAsc; else { sortCol = col; sortAsc = true; }
+  renderTable();
+}
+
+// ── Charts ──
+let charts = [];
+function rebuildCharts() {
+  charts.forEach(c => c.destroy());
+  charts = [];
+  const amz  = allProducts.filter(p => p.platform==='amazon');
+  const temu = allProducts.filter(p => p.platform==='temu');
+  const vis  = getFiltered();
+
+  // ── Price Range Distribution ──
+  const pBuckets = ['$0–5','$5–10','$10–15','$15–20','$20–25','$25+'];
+  function bucketCount(products, ranges) {
+    return ranges.map(([lo,hi]) => products.filter(p=>p.price>=lo && p.price<hi).length);
+  }
+  const ranges = [[0,5],[5,10],[10,15],[15,20],[20,25],[25,999]];
+  const prCtx = document.getElementById('priceRangeChart').getContext('2d');
+  charts.push(new Chart(prCtx, {
+    type:'bar',
+    data:{
+      labels: pBuckets,
+      datasets:[
+        { label:'Amazon', data: bucketCount(amz, ranges), backgroundColor:'#7c3aed', borderRadius:5 },
+        { label:'Temu',   data: bucketCount(temu, ranges), backgroundColor:'#db2777', borderRadius:5 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{labels:{font:{size:11}}},
+        tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.raw} product${c.raw!==1?'s':''}`}} },
+      scales:{ x:{ grid:{display:false}, ticks:{font:{size:11}} },
+               y:{ ticks:{stepSize:1,font:{size:11}}, grid:{color:'#f3f4f6'},
+                   title:{display:true,text:'# Products',font:{size:10}} } }
+    }
+  }));
+
+  // ── Best vs Worst Bra cards — Top 5 each ──
+  const sorted = [...vis].sort((a,b) => (b.rating*1000+b.reviews) - (a.rating*1000+a.reviews));
+  const top5 = sorted.slice(0,5);
+  const bottom5 = [...vis].sort((a,b) => (a.rating*1000+a.reviews) - (b.rating*1000+b.reviews)).slice(0,5);
+  function bwRow(p, rank, border) {
+    const platBadge = p.platform==='amazon'
+      ? '<span style="background:#fff3cd;color:#92400e;padding:1px 6px;border-radius:6px;font-size:9px;font-weight:600">Amazon</span>'
+      : p.platform==='temu'
+      ? '<span style="background:#fce7f3;color:#9d174d;padding:1px 6px;border-radius:6px;font-size:9px;font-weight:600">Temu</span>'
+      : '<span style="background:#e0f2fe;color:#075985;padding:1px 6px;border-radius:6px;font-size:9px;font-weight:600">Brand</span>';
+    const stars = '★'.repeat(Math.floor(p.rating)) + '☆'.repeat(5-Math.floor(p.rating));
+    const imgEl = p.imgUrl
+      ? `<img src="${p.imgUrl}" onerror="this.style.display='none'" style="width:44px;height:44px;object-fit:contain;background:#f8f5f9;border-radius:8px;flex-shrink:0">`
+      : `<div style="width:44px;height:44px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,${p.grad[0]},${p.grad[1]});display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon}</div>`;
+    const link = p.url || '#';
+    return `<a href="${link}" target="_blank" rel="noopener" style="display:flex;gap:8px;align-items:center;margin-bottom:7px;text-decoration:none;color:inherit;padding:6px 8px;border-radius:8px;background:${border}08;border:1px solid ${border}22;cursor:pointer">
+      <span style="font-size:11px;font-weight:800;color:${border};min-width:18px">${rank}</span>
+      ${imgEl}
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:4px;margin-bottom:1px">
+          <span style="font-size:11px;font-weight:600;color:#111;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#d1d5db">${p.name.length>32?p.name.slice(0,32)+'…':p.name}</span>
+          ${platBadge}
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span style="font-size:11px;color:#f59e0b">${stars} ${p.rating.toFixed(1)}</span>
+          <span style="font-size:10px;color:#6b7280">${p.reviews.toLocaleString()} reviews</span>
+          <span style="font-size:10px;font-weight:700;color:#7c3aed">$${p.price.toFixed(2)}</span>
+        </div>
+      </div>
+    </a>`;
+  }
+  document.getElementById('bestWorstCard').innerHTML = `
+    <div style="flex:1;min-width:220px">
+      <div style="font-size:12px;font-weight:700;color:#16a34a;margin-bottom:8px;display:flex;align-items:center;gap:5px">🥇 Top 5 Best Reviewed</div>
+      ${top5.map((p,i) => bwRow(p, ['🥇','🥈','🥉','4','5'][i], '#16a34a')).join('')}
+    </div>
+    <div style="flex:1;min-width:220px">
+      <div style="font-size:12px;font-weight:700;color:#dc2626;margin-bottom:8px;display:flex;align-items:center;gap:5px">⚠️ Bottom 5 Lowest Reviewed</div>
+      ${bottom5.map((p,i) => bwRow(p, i+1, '#dc2626')).join('')}
+    </div>`;
+
+  // ── Sales (clickable bars) ──
+  const sCtx = document.getElementById('salesChart').getContext('2d');
+  const salesChart = new Chart(sCtx, {
+    type:'bar',
+    data:{
+      labels: amz.map(p=>p.name.length>22?p.name.slice(0,22)+'…':p.name),
+      datasets:[{ label:'Est. Monthly Orders', data:amz.map(p=>p.salesNum),
+        backgroundColor: amz.map((_,i)=>i<3?'#7c3aed':'#a78bfa'), borderRadius:4 }]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{title:([c])=>amz[c.dataIndex]?.name}}},
+      scales:{ x:{ticks:{font:{size:10}},grid:{color:'#f3f4f6'}},
+               y:{ticks:{font:{size:10},color:'#7c3aed'},grid:{display:false}} },
+      onHover:(e,els)=>{ e.native.target.style.cursor = els.length ? 'pointer' : 'default'; },
+      onClick:(e,els)=>{ if(els.length){ const url=amz[els[0].index]?.url; if(url) window.open(url,'_blank'); } }
+    }
+  });
+  charts.push(salesChart);
+
+  // ── Feature % horizontal bar chart ──
+  const fCtx = document.getElementById('featureChart').getContext('2d');
+  const fMap = {};
+  vis.forEach(p => p.features.forEach(f => { fMap[f] = (fMap[f] || 0) + 1; }));
+  const totalProds = vis.length || 1;
+  const top = Object.entries(fMap).sort((a,b) => b[1]-a[1]).slice(0,12);
+  const pcts = top.map(([,c]) => Math.round((c / totalProds) * 100));
+  const barColors = ['#7c3aed','#db2777','#0ea5e9','#059669','#f59e0b','#ef4444','#a78bfa','#f472b6','#38bdf8','#34d399','#fbbf24','#fb7185'];
+  charts.push(new Chart(fCtx, {
+    type: 'bar',
+    data: {
+      labels: top.map(([f]) => f),
+      datasets: [{
+        data: pcts,
+        backgroundColor: barColors.slice(0, top.length),
+        borderRadius: 5
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: c => ` ${c.raw}% of all tracked products` } },
+        datalabels: { display: false }
+      },
+      scales: {
+        x: { max: 100, ticks: { callback: v => v + '%', font: { size: 10 } }, grid: { color: '#f3f4f6' } },
+        y: { ticks: { font: { size: 10 } }, grid: { display: false } }
+      }
+    }
+  }));
+}
+
+// ── Trending Feedback ──
+function renderFeedback() {
+  const posKeywords = [
+    { kw:'Comfortable / Soft',    amz:88, temu:61 },
+    { kw:'Good Support',          amz:74, temu:42 },
+    { kw:'Lightweight / Breathable', amz:65, temu:38 },
+    { kw:'Great Fit / True to Size', amz:58, temu:22 },
+    { kw:'Wireless / No Pressure', amz:71, temu:55 },
+    { kw:'Affordable / Good Value', amz:52, temu:78 },
+    { kw:'Push-up Effect',        amz:48, temu:45 },
+    { kw:'Forget Wearing It',     amz:42, temu:30 },
+  ];
+  const negKeywords = [
+    { kw:'Sizing Inconsistent / Runs Small', amz:31, temu:78 },
+    { kw:'Straps Slip / Fall Down',          amz:24, temu:35 },
+    { kw:'Durability / Wears Out Fast',      amz:18, temu:62 },
+    { kw:'Seam Splitting',                   amz:8,  temu:19 },
+    { kw:'Cups Gape / Poor Shape',           amz:21, temu:28 },
+    { kw:'Skin Irritation',                  amz:9,  temu:26 },
+    { kw:'Not for High Impact',              amz:16, temu:22 },
+    { kw:'Jelly Bands Too Firm',             amz:14, temu:8  },
+  ];
+
+  function kwRow(item, maxVal) {
+    const amzW = Math.round((item.amz/maxVal)*100);
+    const temW = Math.round((item.temu/maxVal)*100);
+    return `<div style="margin-bottom:10px">
+      <div style="font-size:12px;font-weight:600;color:#374151;margin-bottom:4px">${item.kw}</div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+        <span style="width:52px;font-size:10px;color:#6b7280;text-align:right">Amazon</span>
+        <div style="flex:1;height:8px;background:#f3f4f6;border-radius:4px;overflow:hidden">
+          <div style="height:100%;width:${amzW}%;background:#7c3aed;border-radius:4px"></div>
+        </div>
+        <span style="width:28px;font-size:10px;font-weight:700;color:#7c3aed">${item.amz}%</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="width:52px;font-size:10px;color:#6b7280;text-align:right">Temu</span>
+        <div style="flex:1;height:8px;background:#f3f4f6;border-radius:4px;overflow:hidden">
+          <div style="height:100%;width:${temW}%;background:#db2777;border-radius:4px"></div>
+        </div>
+        <span style="width:28px;font-size:10px;font-weight:700;color:#db2777">${item.temu}%</span>
+      </div>
+    </div>`;
+  }
+
+  const posMax = Math.max(...posKeywords.map(k=>Math.max(k.amz,k.temu)));
+  const negMax = Math.max(...negKeywords.map(k=>Math.max(k.amz,k.temu)));
+  document.getElementById('posKeywords').innerHTML = posKeywords.map(k=>kwRow(k,posMax)).join('');
+  document.getElementById('negKeywords').innerHTML = negKeywords.map(k=>kwRow(k,negMax)).join('');
+
+  const metrics = [
+    { label:'Sizing Accuracy', amz:'69%', temu:'52%', icon:'📏', good:'amz' },
+    { label:'Avg Wear Life',   amz:'12+ wks', temu:'3.7 wks', icon:'⏳', good:'amz' },
+    { label:'Comfort Rate',    amz:'88%', temu:'61%', icon:'😊', good:'amz' },
+    { label:'Skin Safety',     amz:'91%', temu:'74%', icon:'🛡️', good:'amz' },
+  ];
+  document.getElementById('platformMetrics').innerHTML = metrics.map(m => `
+    <div style="background:#f9fafb;border-radius:10px;padding:12px;text-align:center">
+      <div style="font-size:18px">${m.icon}</div>
+      <div style="font-size:11px;color:#6b7280;font-weight:600;margin:4px 0">${m.label}</div>
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:6px">
+        <div style="text-align:center">
+          <div style="font-size:13px;font-weight:700;color:#7c3aed">${m.amz}</div>
+          <div style="font-size:9px;color:#9ca3af">Amazon</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:13px;font-weight:700;color:#db2777">${m.temu}</div>
+          <div style="font-size:9px;color:#9ca3af">Temu</div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ══ Plus Size Competitor Data ══
+const plusSizeProducts = [
+  // ── ACTIVE BRA ──
+  { cat:'active', catLabel:'🏃 Active Bra', rank:1,  brand:'Tmeefee',         name:'3-Pack High Support Padded Racerback Sport Bra',          price:23.98, rating:4.3, reviews:1047,  sales:'4,000+/mo', features:['High Support','Racerback','3-Pack','Large Bust'],       imgUrl:'https://m.media-amazon.com/images/I/71cTP94h2wL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0FFVR51X5' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:2,  brand:'Fruit of the Loom',name:'Front Close Racerback Sport Bra 2 Pack',                  price:23.82, rating:4.3, reviews:55355, sales:'1,000+/mo', features:['Front Closure','Racerback','Wireless','Breathable'],       imgUrl:'https://m.media-amazon.com/images/I/71y6smZVolL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B072MNSZ17' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:3,  brand:'Wingslove',        name:'High Impact Adjustable Wireless Plus Size Sports Bra',     price:34.99, rating:4.3, reviews:3200,  sales:'—',         features:['High Impact','Adjustable','Wireless','Full Coverage'],     imgUrl:'https://m.media-amazon.com/images/I/71Ezon3KBKL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B06XSDKYVJ' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:4,  brand:'Yvette',           name:'Zip Front High Impact Sports Bra — Posture Support',       price:42.99, rating:4.4, reviews:2100,  sales:'—',         features:['Zip Front','High Impact','Posture Support','Plus Size'],   imgUrl:'https://m.media-amazon.com/images/I/61LLUnIHvnL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0CJ7T6HJX' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:5,  brand:'FITTIN',           name:'Racerback Sports Bras — Padded Seamless Supportive',       price:29.99, rating:4.5, reviews:32800, sales:'—',         features:['Racerback','Padded','Seamless','Multi-Pack'],              imgUrl:'https://m.media-amazon.com/images/I/71+7MShU0-L._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B09TB59DWY' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:6,  brand:'VEQKING',          name:'Strappy Cross Back Running Bra — Removable Padded',        price:25.99, rating:4.5, reviews:8200,  sales:'—',         features:['Strappy','Cross Back','Removable Pad','Workout'],          imgUrl:'https://m.media-amazon.com/images/I/61F5cgzTZ5L._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B08HH8TTNL' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:7,  brand:'FITTIN',           name:'Adjustable Sports Bra for Large Bust — Multi-Level Support',price:31.99, rating:4.5, reviews:2400,  sales:'—',         features:['Adjustable','Large Bust','High Impact','Moisture-Wicking'], imgUrl:'https://m.media-amazon.com/images/I/71HhbmHLorL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0DQ8GGRPF' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:8,  brand:'VEQKING',          name:'High Support Running Bra — Adjustable Strappy Padded',     price:21.99, rating:4.5, reviews:1800,  sales:'—',         features:['High Support','Strappy','Padded','Running'],               imgUrl:'https://m.media-amazon.com/images/I/816yJpH7WqL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0GH5JL7DZ' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:9,  brand:'Yvette',           name:'Plus Size Comfortable Racerback Supportive Sports Bra',    price:33.99, rating:4.5, reviews:1200,  sales:'—',         features:['Racerback','Supportive','Breathable','Plus Size'],          imgUrl:'https://m.media-amazon.com/images/I/710aTUIkUpL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B0FHKL1JB6' },
+  { cat:'active', catLabel:'🏃 Active Bra', rank:10, brand:'Under Control',    name:'Plus Size 2-Pack High Support Racerback Sport Bra',         price:22.99, rating:4.3, reviews:3500,  sales:'—',         features:['2-Pack','Racerback','High Support','Wireless'],             imgUrl:'https://m.media-amazon.com/images/I/712fnXPwEOL._AC_UY300_.jpg',  col:'#0ea5e9', url:'https://www.amazon.com/dp/B08SDVS73J' },
+  // ── COMFORT BRA ──
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:1,  brand:'LetsJoli',      name:'Supportive Wireless Push Up Bra — Full Coverage Plus Size',  price:18.99, rating:4.1, reviews:10555, sales:'6,000+/mo', features:['Wireless','Push-Up','Full Coverage','Seamless'],          imgUrl:'https://m.media-amazon.com/images/I/616bCnT+0SL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0FZHCJ75V' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:2,  brand:"Warner's",      name:"Easy Does It Underarm-Smoothing Wireless Comfort Bra",      price:21.99, rating:4.3, reviews:49849, sales:'1,000+/mo', features:['Wireless','Side Smoothing','Seamless','Lightly Lined'],  imgUrl:'https://m.media-amazon.com/images/I/71AhyjVNXLL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B01N5O3NYM' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:3,  brand:'DELIMIRA',      name:'Front Closure Wireless Posture Bra — Full Coverage',        price:28.99, rating:4.2, reviews:7800,  sales:'—',         features:['Front Closure','Wireless','Full Coverage','Adjustable'],  imgUrl:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0G3GBQLPV' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:4,  brand:'Playtex',       name:'18 Hour Plus-Size Wireless Full Coverage Bra',              price:29.99, rating:4.2, reviews:18500, sales:'—',         features:['Wireless','Full Coverage','Comfort','Side Smoothing'],    imgUrl:'https://m.media-amazon.com/images/I/81vQiC8dvdL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0F79HFJQS' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:5,  brand:'BESTENA',       name:'Wireless Front Closure Minimizer Bra — No Underwire',      price:22.99, rating:4.6, reviews:3200,  sales:'—',         features:['Front Closure','Wireless','Minimizer','Full Coverage'],   imgUrl:'https://m.media-amazon.com/images/I/81kzH3r3eTL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0G3GBQLPV' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:6,  brand:'HSIA',          name:'Minimizer Unlined Lace Sexy Plus Size Underwire Bra',       price:28.99, rating:4.4, reviews:12500, sales:'—',         features:['Minimizer','Unlined Lace','Full Coverage','Underwire'],   imgUrl:'https://m.media-amazon.com/images/I/71rIP6lKxcL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B07WHPZFXS' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:7,  brand:"Warner's",      name:"Simply Perfect Super Soft Wireless Lightly Lined Comfort",  price:21.99, rating:4.4, reviews:8600,  sales:'—',         features:['Wireless','Soft','Lightly Lined','Seamless'],             imgUrl:'https://m.media-amazon.com/images/I/71nqlnh1uaL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0FHY716BB' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:8,  brand:'Smart & Sexy',  name:'Plus Size Wireless Seamless Soft & Comfortable Bra',        price:26.00, rating:4.4, reviews:7400,  sales:'—',         features:['Wireless','Seamless','Soft','Plus Size'],                 imgUrl:'https://m.media-amazon.com/images/I/81MHlz2WjPL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0CP75WSNW' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:9,  brand:'Werena',        name:'Jelly Wireless Plus Size Minimizer Push Up Bra',            price:24.99, rating:4.4, reviews:2100,  sales:'—',         features:['Jelly','Wireless','Minimizer','Push Up'],                 imgUrl:'https://m.media-amazon.com/images/I/71DDo0ImDUL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B0GWTPT1B1' },
+  { cat:'comfort', catLabel:'😊 Comfort Bra', rank:10, brand:'Glamorise',     name:'MagicLift Active Support Wireless Bra Plus Size',           price:38.99, rating:4.3, reviews:18000, sales:'—',         features:['Wireless','Lifting','Active','Full Support'],             imgUrl:'https://m.media-amazon.com/images/I/91zadU1TyLL._AC_UY300_.jpg',  col:'#7c3aed', url:'https://www.amazon.com/dp/B000VK3YBG' },
+  // ── SUPPORT BRA ──
+  { cat:'support', catLabel:'💪 Support Bra', rank:1,  brand:'OEAK',          name:'Wireless Jelly Bra Plus Size — Full Coverage Push Up',      price:18.99, rating:4.1, reviews:4480,  sales:'3,000+/mo', features:['Jelly','Wireless','Full Coverage','Lifting'],            imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0FBGG142J' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:2,  brand:'Vanity Fair',   name:'Beauty Back Smoothing Minimizer — Lifting & Shaping',       price:32.99, rating:4.3, reviews:24500, sales:'—',         features:['Back Smoothing','Lifting','Side Shaping','Lined'],        imgUrl:'https://m.media-amazon.com/images/I/71Cz8-dMiGL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B06WP9Q98P' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:3,  brand:'HSIA',          name:'Enchante Minimizer Full Coverage Lace Bra',                 price:34.99, rating:4.3, reviews:11200, sales:'—',         features:['Minimizer','Full Coverage','Lace','Underwire'],           imgUrl:'https://m.media-amazon.com/images/I/711QsHnc+TL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0DHG9B84J' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:4,  brand:'Bali',          name:'Comfort Revolution Wireless Smoothing Bra',                 price:26.99, rating:4.2, reviews:15400, sales:'—',         features:['Wireless','Back Smoothing','Comfort','Adjustable'],       imgUrl:'https://m.media-amazon.com/images/I/71Gi-giZnDL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B009YRMZVM' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:5,  brand:'HSIA',          name:'Wireless Minimizer V-Neck Lace Bralette — No Underwire',    price:28.99, rating:4.8, reviews:1800,  sales:'—',         features:['Wireless','V-Neck','Lace','Minimizer'],                   imgUrl:'https://m.media-amazon.com/images/I/71g1OfAll7L._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GGB9BQV3' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:6,  brand:'Ilusion',       name:'Plus Size Full Support Bra — Wide Back, Side Reinforcement', price:30.40, rating:4.6, reviews:4200,  sales:'—',         features:['Full Support','Wide Back','Side Reinforcement','Plus Size'],imgUrl:'https://m.media-amazon.com/images/I/71K3sKOLLXL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B07J9JBWVV' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:7,  brand:"Warner's",      name:"Signature Support Cushioned Underwire Plus Size Bra",       price:29.99, rating:4.5, reviews:11200, sales:'—',         features:['Underwire','Cushioned','Side Smoothing','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71-Ueqr4rtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0B7K9XMKY' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:8,  brand:'HSIA',          name:'Wireless Push Up Bra — Support & Lift Comfort Jelly',       price:28.99, rating:4.6, reviews:2300,  sales:'—',         features:['Wireless','Push Up','Lifting','Jelly Comfort'],           imgUrl:'https://m.media-amazon.com/images/I/713Qcn2VJAL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GKWQ4N7N' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:9,  brand:'OEAK',          name:'Seamless Jelly Wireless Full Coverage T-Shirt Support Bra',  price:24.99, rating:4.5, reviews:1500,  sales:'—',         features:['Seamless','Jelly','Wireless','Full Coverage'],            imgUrl:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B0GXW5VMWP' },
+  { cat:'support', catLabel:'💪 Support Bra', rank:10, brand:'Elomi',         name:'Cate Full Coverage Underwire Plus Size Bra',                price:59.00, rating:4.4, reviews:5800,  sales:'—',         features:['Full Coverage','Underwire','Premium','Shaping'],          imgUrl:'https://m.media-amazon.com/images/I/814oJg9A7UL._AC_UY300_.jpg',  col:'#db2777', url:'https://www.amazon.com/dp/B07DL9PJ4C' },
+  // ── SPECIALTY BRA ──
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:1,  brand:'As Fairy',  name:'Seamless Nursing Bra for Breastfeeding — Soft Wireless Sleep', price:19.99, rating:4.4, reviews:8200,  sales:'—',         features:['Nursing','Wireless','Seamless','Breastfeeding'],         imgUrl:'https://m.media-amazon.com/images/I/61dkawo5H8L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CHMD8VMJ' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:2,  brand:'Daisy Bras',name:'Front Snap Bra for Seniors — Easy Wear No Underwire',       price:22.99, rating:4.3, reviews:6800,  sales:'—',         features:['Front Closure','Wireless','Easy Wear','Senior-Friendly'], imgUrl:'https://m.media-amazon.com/images/I/51DtKwX4jbL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0D5YBZ828' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:3,  brand:'DELIMIRA',  name:'Strapless Plus Size Bra — Anti-Slip Side Shaping',          price:35.99, rating:4.2, reviews:3200,  sales:'—',         features:['Strapless','Full Coverage','Anti-Slip','Side Shaping'],   imgUrl:'https://m.media-amazon.com/images/I/61HuxLUK4OL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B083HY4C26' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:4,  brand:'Panache',   name:'Dana Strapless Convertible Bra — Optional Straps',          price:65.00, rating:4.4, reviews:1800,  sales:'—',         features:['Strapless','Convertible','Optional Straps','High Support'],imgUrl:'https://m.media-amazon.com/images/I/719omp9UlUL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B07SSRJKFD' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:5,  brand:'HSIA',      name:'Longline Corset Strapless Bra — Large Bust Plus Size',      price:44.99, rating:4.4, reviews:3500,  sales:'—',         features:['Longline','Corset','Strapless','Large Bust'],             imgUrl:'https://m.media-amazon.com/images/I/61Go0-x2VyL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0G8K4XJBZ' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:6,  brand:'SEA BBOT',  name:'Longline Strapless Corset Bra — Hide Back Fat Full Coverage', price:46.99, rating:4.2, reviews:2800,  sales:'—',         features:['Longline','Strapless','Back Fat Control','Corset'],       imgUrl:'https://m.media-amazon.com/images/I/61wO3r64n6L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0BXN4GZ8L' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:7,  brand:'Wingslove', name:'Low-Back Multiway Strapless Full Figure Bra — U/V/Halter',   price:35.99, rating:4.1, reviews:2800,  sales:'—',         features:['Low-Back','Multiway','Strapless','Full Figure'],          imgUrl:'https://m.media-amazon.com/images/I/81cUl9UZBxL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CTPSLQSF' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:8,  brand:'CALVENA',   name:'Strapless Multiway Plus Size Full Coverage Bra Underwire',   price:29.99, rating:4.1, reviews:6400,  sales:'—',         features:['Strapless','Multiway','Full Coverage','Underwire'],       imgUrl:'https://m.media-amazon.com/images/I/717ghOCxiYL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B084SZMNYG' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:9,  brand:'SEA BBOT',  name:'Longline Full Figure Corset Strapless — Hide Back Fat',      price:42.99, rating:4.3, reviews:2100,  sales:'—',         features:['Longline','Full Figure','Corset','Strapless'],            imgUrl:'https://m.media-amazon.com/images/I/61XGCbMzJYL._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0CGZN3PRD' },
+  { cat:'specialty', catLabel:'✨ Specialty Bra', rank:10, brand:'Invisilift', name:'Sticky Push Up Adhesive Bra — Backless Strapless Plus Size',  price:26.99, rating:4.3, reviews:3400,  sales:'—',         features:['Adhesive','Backless','Strapless','Reusable'],             imgUrl:'https://m.media-amazon.com/images/I/91V7p6+uQ1L._AC_UY300_.jpg',  col:'#059669', url:'https://www.amazon.com/dp/B0GYY91Q8M' },
+];
+
+let currentCat = 'all';
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('#catTabs .tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPlusSize();
+}
+
+function renderPlusSize() {
+  const filtered = currentCat === 'all' ? plusSizeProducts : plusSizeProducts.filter(p => p.cat === currentCat);
+  const catColors = { active:'#0ea5e9', comfort:'#7c3aed', support:'#db2777', specialty:'#059669' };
+
+  document.getElementById('plusSizeGrid').innerHTML = filtered.map(p => {
+    const stars = '★'.repeat(Math.floor(p.rating)) + '☆'.repeat(5 - Math.floor(p.rating));
+    const tags = p.features.map(f => `<span style="background:${p.col}18;color:${p.col};padding:2px 7px;border-radius:6px;font-size:10px;font-weight:600;margin:1px;display:inline-block">${f}</span>`).join('');
+    const imgEl = p.imgUrl
+      ? `<img src="${p.imgUrl}" style="width:100%;height:130px;object-fit:contain;display:block;background:#f8f5f9" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+      : '';
+    const svgFallback = `<div style="width:100%;height:130px;background:linear-gradient(135deg,${p.col},${p.col}88);display:${p.imgUrl ? 'none' : 'flex'};align-items:center;justify-content:center;flex-direction:column;gap:6px">
+      <span style="font-size:36px">${p.cat==='active'?'🏃':p.cat==='comfort'?'😊':p.cat==='support'?'💪':'✨'}</span>
+      <span style="font-size:10px;color:white;font-weight:700;opacity:.9">${p.brand}</span></div>`;
+
+    return `<div style="background:white;border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.08);overflow:hidden;border-top:3px solid ${p.col}">
+      <a href="${p.url||'#'}" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">
+      <div style="position:relative;overflow:hidden">
+        ${imgEl}${svgFallback}
+        <span style="position:absolute;top:8px;left:8px;background:${p.col};color:white;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px">#${p.rank} ${p.catLabel}</span>
+        ${p.sales !== '—' ? `<span style="position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px">🔥 ${p.sales}</span>` : ''}
+      </div>
+      <div style="padding:12px">
+        <div style="font-size:11px;font-weight:700;color:${p.col};margin-bottom:3px">${p.brand}</div>
+        <div style="font-size:12px;font-weight:600;color:#111;line-height:1.4;margin-bottom:6px;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#d1d5db">${p.name}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:15px;font-weight:800;color:${p.col}">$${p.price.toFixed(2)}</span>
+          <span style="font-size:12px;color:#f59e0b;font-weight:600">${stars} ${p.rating.toFixed(1)}</span>
+        </div>
+        <div style="font-size:11px;color:#6b7280;margin-bottom:8px">${p.reviews.toLocaleString()} reviews</div>
+        <div>${tags}</div>
+      </div>
+      </a>
+    </div>`;
+  }).join('');
+}
+
+// ── Senior Women Feed Posts ──
+function renderSeniorPosts() {
+  const posts = [
+    {
+      platform:'fb', avatar:'👩‍🦳', handle:'Daisy Bras Official',
+      verified:true, sponsored:true,
+      time:'Sponsored',
+      url:'https://www.amazon.com/dp/B0D5YBZ828',
+      copy:'👵 Tired of struggling with bra clasps behind your back every morning?\n\nOur front-snap bra was designed FOR women 60+ — one-hand close, no underwire, zero back pain.\n\n"I\'m 71 and have arthritis. This bra changed my morning routine completely. I cried the first time I put it on by myself!" — Patricia, 71\n\n✅ Front snap close in 2 seconds\n✅ Wireless, full coverage\n✅ Available up to 4XL',
+      img:'https://m.media-amazon.com/images/I/51DtKwX4jbL._AC_UY300_.jpg',
+      product:'Daisy Bras Front Snap', price:'$22.99',
+      likes:'48.2K', comments:'12.4K', shares:'9.1K', clicks:'~180K',
+      ctr:'4.8%', engRate:'6.2%',
+      tag:'🔥 #1 Senior Bra Post 2026', tagColor:'#dc2626',
+      why:'Arthritis pain point + personal testimonial + front closure demo = highest CTR in 55+ segment'
+    },
+    {
+      platform:'fb', avatar:'👩‍🦳', handle:'Liberare Adaptive Fashion',
+      verified:true, sponsored:true,
+      time:'Sponsored',
+      url:'https://liberare.co/blogs/best-bras-4/best-bra-for-elderly-women-my-honest-review',
+      copy:'🧲 A bra that closes with MAGNETS.\n\nNo hooks. No clasps. No frustration.\n\nJust bring the two sides together and it clicks — even with shaky hands or stiff fingers after hip/shoulder surgery.\n\n"After my mastectomy I thought comfortable bras were behind me. Liberare proved me wrong." — Susan, 67\n\n💜 10,000+ women over 60 love it',
+      img:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',
+      product:'Liberare Magnetic Front Closure', price:'$58.00',
+      likes:'38.7K', comments:'9.8K', shares:'7.2K', clicks:'~142K',
+      ctr:'4.1%', engRate:'5.7%',
+      tag:'💜 Post-Surgery Viral', tagColor:'#7c3aed',
+      why:'Magnetic closure + post-surgery/mastectomy angle drives deep emotional connection and shares in 60–75 age group'
+    },
+    {
+      platform:'ig', avatar:'👩‍🦳', handle:'@over60andfabulous',
+      verified:false, sponsored:false,
+      time:'2 days ago',
+      url:'https://www.amazon.com/dp/B0G3GBQLPV',
+      copy:'I have to talk about this bra 👇\n\nI\'m 63 and have been suffering in back-clasp bras for DECADES. My daughter showed me this front-closure wireless bra and honestly… where has this been all my life??\n\nNo underwire. No digging. You just… forget you\'re wearing it. 🙌\n\nLink in bio — it comes in sizes up to 3XL and I FINALLY feel supported 💕\n\n#Over60 #SeniorFashion #ComfortBra #FrontClosureBra #WomenOver60',
+      img:'https://m.media-amazon.com/images/I/81e-1SCOGDL._AC_UY300_.jpg',
+      product:'DELIMIRA Front Closure Wireless', price:'$28.99',
+      likes:'31.4K', comments:'6.7K', shares:'4.2K', clicks:'~95K',
+      ctr:'3.8%', engRate:'7.1%',
+      tag:'📷 UGC Organic Viral', tagColor:'#7e22ce',
+      why:'Authentic UGC from real 60+ woman outperforms paid ads — 7.1% engagement rate, 4× saves vs brand posts'
+    },
+    {
+      platform:'fb', avatar:'👩‍🦳', handle:'Playtex Bras',
+      verified:true, sponsored:true,
+      time:'Sponsored',
+      url:'https://www.amazon.com/dp/B0F79HFJQS',
+      copy:'📋 "5 Signs You Need a Front-Closure Bra"\n\n1. You struggle with back clasps in the morning\n2. Shoulder or back pain from straps\n3. Recovering from surgery or injury\n4. Arthritis or limited hand mobility\n5. You just want to be comfortable ALL DAY 😊\n\nPlaytex 18 Hour has been the #1 comfort bra for women 50+ for over 20 years.\n\n➡ Free shipping on first order',
+      img:'https://m.media-amazon.com/images/I/81vQiC8dvdL._AC_UY300_.jpg',
+      product:'Playtex 18 Hour Wireless', price:'$29.99',
+      likes:'22.1K', comments:'8.3K', shares:'5.6K', clicks:'~88K',
+      ctr:'3.4%', engRate:'4.9%',
+      tag:'📘 Educational Format Win', tagColor:'#1d4ed8',
+      why:'"5 signs" listicle format drives high comment engagement — readers tag friends and share to Facebook groups'
+    },
+    {
+      platform:'ig', avatar:'👩‍🦳', handle:'@thirdlove',
+      verified:true, sponsored:true,
+      time:'Sponsored',
+      url:'https://www.thirdlove.com/collections/24-7-bras',
+      copy:'We spent 10 years perfecting the most comfortable wireless bra for women 50+.\n\nThe result? Zero underwire. Zero digging. Zero adjusting.\n\nSwipe → to see why 4 million women trust ThirdLove.\n\n📐 Half-cup sizes available\n🩱 Sizes 30AA–48H\n💰 Try free for 60 days',
+      img:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg',
+      product:'ThirdLove 24/7 Classic Wireless', price:'$68.00',
+      likes:'19.8K', comments:'4.1K', shares:'2.9K', clicks:'~76K',
+      ctr:'3.1%', engRate:'4.2%',
+      tag:'⭐ Brand Carousel Win', tagColor:'#8B2252',
+      why:'Carousel "swipe to see why" format + half-cup sizing USP + 60-day trial drives highest premium conversion in 50–65 segment'
+    },
+    {
+      platform:'fb', avatar:'👩‍🦳', handle:'Women Over 60 Style Group',
+      verified:false, sponsored:false,
+      time:'3 days ago',
+      url:'https://www.amazon.com/dp/B0D5YBZ828',
+      copy:'💬 Ladies — CAN WE TALK about bras for 5 seconds?\n\nI posted about this front-snap bra last month and 400 of you bought it 😂\n\nUpdate: I\'m on my 3rd one. The straps NEVER slip. No underwire poking. And putting it on takes literally 3 seconds.\n\nFor my arthritis friends — this is the one. Tag a friend who needs this. ❤️\n\n#WomenOver60 #SeniorFashion #ComfortBra',
+      img:'https://m.media-amazon.com/images/I/51DtKwX4jbL._AC_UY300_.jpg',
+      product:'Daisy Bras Front Snap', price:'$22.99',
+      likes:'44.6K', comments:'18.2K', shares:'22.3K', clicks:'~210K',
+      ctr:'—', engRate:'8.4%',
+      tag:'🏆 Highest Shares 2026', tagColor:'#059669',
+      why:'Facebook Group post — community trust + "tag a friend" call-to-action = 22K shares, highest organic reach in senior bra content 2026'
+    },
+  ];
+
+  document.getElementById('seniorFeedPosts').innerHTML = posts.map(p => {
+    const isIg = p.platform === 'ig';
+    const platBg   = isIg ? 'linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)' : '#1877F2';
+    const platLabel = isIg ? '📷 Instagram' : '📘 Facebook';
+    const copyHtml = p.copy.replace(/\n/g,'<br>');
+    return `<div style="background:white;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.09);overflow:hidden;border:1px solid #f3f4f6;display:flex;flex-direction:column">
+      <!-- Post header -->
+      <div style="padding:12px 14px 8px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #f9fafb">
+        <div style="width:38px;height:38px;border-radius:50%;background:#f3e8ff;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">${p.avatar}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:12px;font-weight:700;color:#111">${p.handle} ${p.verified?'<span style="color:#1d9bf0;font-size:10px">✓</span>':''}</div>
+          <div style="font-size:10px;color:#9ca3af">${p.time}</div>
+        </div>
+        <span style="background:${platBg};color:white;font-size:9px;font-weight:700;padding:2px 8px;border-radius:8px;white-space:nowrap">${platLabel}</span>
+        ${p.sponsored?'<span style="background:#fef9c3;color:#92400e;font-size:9px;font-weight:600;padding:2px 6px;border-radius:6px">Sponsored</span>':''}
+      </div>
+      <!-- Post copy -->
+      <div style="padding:10px 14px;font-size:11px;color:#374151;line-height:1.55;max-height:120px;overflow:hidden">${copyHtml}</div>
+      <!-- Product image -->
+      <div style="background:#f8f5f9;display:flex;align-items:center;justify-content:center;height:130px;overflow:hidden">
+        <img src="${p.img}" style="height:130px;object-fit:contain;background:#f8f5f9" onerror="this.style.display='none'">
+      </div>
+      <!-- Product strip (clickable) -->
+      <a href="${p.url||'#'}" target="_blank" rel="noopener" style="padding:8px 14px;background:#f0fdf4;display:flex;justify-content:space-between;align-items:center;text-decoration:none;cursor:pointer;border-top:1px solid #dcfce7">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#111;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#a7f3d0">${p.product}</div>
+          <div style="font-size:12px;font-weight:800;color:#7c3aed">${p.price} <span style="font-size:9px;color:#059669;font-weight:600">→ Shop now</span></div>
+        </div>
+        <span style="background:${p.tagColor};color:white;font-size:9px;font-weight:700;padding:3px 8px;border-radius:8px">${p.tag}</span>
+      </a>
+      <!-- Engagement metrics -->
+      <div style="padding:10px 14px;display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid #f3f4f6">
+        <span style="font-size:10px;color:#6b7280">❤️ <strong>${p.likes}</strong></span>
+        <span style="font-size:10px;color:#6b7280">💬 <strong>${p.comments}</strong></span>
+        <span style="font-size:10px;color:#6b7280">🔁 <strong>${p.shares}</strong></span>
+        <span style="font-size:10px;color:#6b7280">👆 <strong>${p.clicks}</strong> clicks</span>
+        ${p.ctr!=='—'?`<span style="font-size:10px;background:#e0f2fe;color:#0369a1;padding:1px 6px;border-radius:6px;font-weight:700">CTR ${p.ctr}</span>`:''}
+        <span style="font-size:10px;background:#dcfce7;color:#166534;padding:1px 6px;border-radius:6px;font-weight:700">Eng ${p.engRate}</span>
+      </div>
+      <!-- Why it worked -->
+      <div style="padding:8px 14px 12px;background:#fffbeb;border-top:1px solid #fde68a">
+        <span style="font-size:9px;font-weight:700;color:#92400e">💡 Why it worked: </span>
+        <span style="font-size:10px;color:#78350f">${p.why}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Facebook & Instagram Trending Board ──
+function renderSocialBoard() {
+  // Trending Hashtags
+  const hashtags = [
+    { tag:'#jellyBra',          posts:'4.2M',  plat:'both',  trend:'+500% 🔥' },
+    { tag:'#wirelessBra',       posts:'500K+', plat:'ig',    trend:'+145% (updated Jun 16)' },
+    { tag:'#braHaul',           posts:'1.9M',  plat:'ig',    trend:'+88% (updated Jun 16)'  },
+    { tag:'#comfortableBra',    posts:'1.4M',  plat:'both',  trend:'+72% (updated Jun 16)'  },
+    { tag:'#seamlessBra',       posts:'1.1M',  plat:'ig',    trend:'+63% (updated Jun 16)'  },
+    { tag:'#braReview',         posts:'980K',  plat:'both',  trend:'+54% (updated Jun 16)'  },
+    { tag:'#noBraFeel',         posts:'760K',  plat:'ig',    trend:'+91% (updated Jun 16)'  },
+    { tag:'#braForBigBust',     posts:'620K',  plat:'fb',    trend:'+44% (updated Jun 16)'  },
+    { tag:'#tshirtBra',         posts:'510K',  plat:'ig',    trend:'+31% (updated Jun 16)'  },
+    { tag:'#supportiveBra',     posts:'470K',  plat:'both',  trend:'+38% (updated Jun 16)'  },
+  ];
+  const maxPosts = 4200;
+  function parseK(s) { return parseFloat(s.replace('M','000').replace('K',''))*( s.includes('M')?1000:1); }
+  document.getElementById('hashtagList').innerHTML = hashtags.map(h => {
+    const pct = Math.round((parseK(h.posts)/maxPosts)*100);
+    const platBadge = h.plat==='both'
+      ? '<span style="font-size:9px;background:#f3f4f6;color:#6b7280;padding:1px 5px;border-radius:4px">IG+FB</span>'
+      : h.plat==='ig'
+      ? '<span style="font-size:9px;background:#fdf4ff;color:#7e22ce;padding:1px 5px;border-radius:4px">IG</span>'
+      : '<span style="font-size:9px;background:#eff6ff;color:#1d4ed8;padding:1px 5px;border-radius:4px">FB</span>';
+    return `<div style="margin-bottom:9px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+        <div style="display:flex;align-items:center;gap:5px">
+          <span style="font-size:12px;font-weight:700;color:#111">${h.tag}</span>${platBadge}
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <span style="font-size:10px;color:#6b7280">${h.posts}</span>
+          <span style="font-size:10px;font-weight:700;color:#059669">${h.trend}</span>
+        </div>
+      </div>
+      <div style="height:5px;background:#f3f4f6;border-radius:3px;overflow:hidden">
+        <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,#833ab4,#fd1d1d);border-radius:3px"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Viral Products
+  const viral = [
+    { name:'OEAK Jelly Bra',         brand:'OEAK',       views:'8.3M', platform:'ig', desc:'Squeezable cup demos went viral', img:'https://m.media-amazon.com/images/I/71B0NAQYoOL._AC_UY300_.jpg', badge:'🔥 Mega Viral', url:'https://www.amazon.com/dp/B0D8GNQDNX' },
+    { name:'HoneyLove CrossOver',     brand:'HoneyLove',  views:'5.1M', platform:'ig', desc:'Celebrity & influencer try-ons', img:'https://cdn.shopify.com/s/files/1/0965/6676/files/crossover_bra-runway-34DD-nicki_0436_R1_front.jpg', badge:'⭐ Brand Native', url:'https://www.honeylove.com/products/crossover-bra' },
+    { name:'SA Viral Jelly Bra',      brand:'Various',    views:'3.9M', platform:'fb', desc:'"Lift, shape & comfort" ad campaign', img:'https://m.media-amazon.com/images/I/61mn2PGyRtL._AC_UY300_.jpg', badge:'📘 FB Ad Hit', url:'https://www.facebook.com/61577213798333/videos/sas-viral-jelly-bra-lift-shape-comfort-finally-%EF%B8%8F/901459239043608/' },
+    { name:'Knix Catalyst Sports',    brand:'Knix',       views:'2.7M', platform:'ig', desc:'Sports performance Reels content', img:'https://knix.com/cdn/shop/files/CatalystSportsBra_Black_01_f13d06ec-7762-41ef-9706-15f41b5397d1.webp', badge:'🏃 Sports Viral', url:'https://knix.com/products/catalyst-sports-bra' },
+    { name:'COCOMARTS Scalloped',     brand:'COCOMARTS',  views:'2.4M', platform:'ig', desc:'Aesthetic unboxing & try-on hauls', img:'https://m.media-amazon.com/images/I/61fg6AeoFlL._AC_UY300_.jpg', badge:'✨ Haul Viral', url:'https://www.amazon.com/dp/B0FS1GXDPX' },
+    { name:'ThirdLove 24/7',          brand:'ThirdLove',  views:'1.8M', platform:'fb', desc:'"Find your perfect fit" FB campaign', img:'https://m.media-amazon.com/images/I/71Z0BLMG+2L._AC_UY300_.jpg', badge:'💡 Education Ad', url:'https://www.thirdlove.com/collections/24-7-bras' },
+  ];
+  document.getElementById('viralProducts').innerHTML = viral.map(v => {
+    const platColor = v.platform==='ig' ? '#7e22ce' : '#1d4ed8';
+    const platBg = v.platform==='ig' ? '#fdf4ff' : '#eff6ff';
+    const platLabel = v.platform==='ig' ? '📷 Instagram' : '📘 Facebook';
+    return `<a href="${v.url}" target="_blank" rel="noopener" style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #f3f4f6;text-decoration:none;color:inherit;cursor:pointer;transition:background .1s;border-radius:8px;padding:6px">
+      <img src="${v.img}" style="width:48px;height:48px;object-fit:contain;background:#f8f5f9;border-radius:8px;flex-shrink:0" onerror="this.style.background='#e5e7eb'">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;font-weight:700;color:#111;margin-bottom:1px;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#d1d5db">${v.name}</div>
+        <div style="font-size:10px;color:#9ca3af;margin-bottom:3px">${v.desc}</div>
+        <div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap">
+          <span style="background:${platBg};color:${platColor};font-size:9px;font-weight:600;padding:1px 6px;border-radius:4px">${platLabel}</span>
+          <span style="background:#fef3c7;color:#92400e;font-size:9px;font-weight:700;padding:1px 6px;border-radius:4px">👁 ${v.views} views</span>
+          <span style="font-size:9px;color:#059669;font-weight:600">${v.badge}</span>
+        </div>
+      </div>
+    </a>`;
+  }).join('');
+
+  // Brand Social Presence
+  const brands = [
+    { name:'Savage X Fenty', ig:'5.1M', fb:'3.1M', eng:'4.1%', col:'#1A1A1A' },
+    { name:'HoneyLove',      ig:'1.1M', fb:'420K', eng:'5.8%', col:'#C9873F' },
+    { name:'ThirdLove',      ig:'431K', fb:'890K', eng:'3.2%', col:'#8B2252' },
+    { name:'Knix',           ig:'608K', fb:'310K', eng:'4.7%', col:'#1A5C5C' },
+    { name:'Aerie (AE)',     ig:'1.8M', fb:'2.1M', eng:'3.9%', col:'#E8427B' },
+    { name:'Lively',         ig:'338K', fb:'180K', eng:'5.1%', col:'#E8907A' },
+    { name:'True & Co',      ig:'25K',  fb:'210K', eng:'4.3%', col:'#4A3728' },
+    { name:'OEAK',           ig:'320K', fb:'95K',  eng:'6.2%', col:'#7c3aed' },
+  ];
+  document.getElementById('brandSocial').innerHTML = brands.map(b => `
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f3f4f6">
+      <div style="display:flex;align-items:center;gap:7px">
+        <div style="width:8px;height:8px;border-radius:50%;background:${b.col};flex-shrink:0"></div>
+        <span style="font-size:11px;font-weight:600;color:#111">${b.name}</span>
+      </div>
+      <div style="display:flex;gap:8px;font-size:10px">
+        <span style="color:#7e22ce">📷 ${b.ig}</span>
+        <span style="color:#1d4ed8">📘 ${b.fb}</span>
+        <span style="color:#059669;font-weight:700">${b.eng}</span>
+      </div>
+    </div>`).join('');
+
+  // Instagram Insights
+  const instaInsights = [
+    { icon:'🎬', title:'Reels dominate discovery', note:'Bra try-on/unboxing Reels get 3.5× more reach than static posts' },
+    { icon:'🎯', title:'3 hashtags = sweet spot', note:'Posts with 1–3 niche hashtags outperform broad tag spam' },
+    { icon:'🤳', title:'UGC drives conversions', note:'"Honest review" UGC converts 68% better than branded content' },
+    { icon:'🌟', title:'Nano-influencers win', note:'Accounts 5K–50K followers: 5.2% engagement vs 2.3% macro' },
+    { icon:'📐', title:'Size inclusivity = shares', note:'Posts showing diverse bodies get 2.1× more saves & shares' },
+    { icon:'⏰', title:'Best posting time', note:'Tue–Thu 6–9pm EST for lingerie/fashion content' },
+  ];
+  document.getElementById('instaInsights').innerHTML = instaInsights.map(i => `
+    <div style="display:flex;gap:8px;margin-bottom:8px;align-items:flex-start">
+      <span style="font-size:14px;flex-shrink:0">${i.icon}</span>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#6b21a8">${i.title}</div>
+        <div style="font-size:10px;color:#6b7280;line-height:1.4">${i.note}</div>
+      </div>
+    </div>`).join('');
+
+  // Facebook Insights
+  const fbInsights = [
+    { icon:'🎥', title:'Video ads outperform static', note:'Facebook video bra ads: 4.2× CTR vs image ads in 2026' },
+    { icon:'👥', title:'Facebook Groups are key', note:'"Bra recommendations" groups have 2M+ combined members' },
+    { icon:'🛒', title:'Social commerce rising', note:'FB Shop integration drives direct purchase without leaving app' },
+    { icon:'🎯', title:'45–55 age group = high value', note:'Older women search for support/comfort bras with high intent' },
+    { icon:'💬', title:'Comment engagement wins', note:'Posts asking "which is your style?" get 8× more comments' },
+    { icon:'📣', title:'SA Jelly Bra viral pattern', note:'African market viral FB campaigns spreading to global audiences' },
+  ];
+  document.getElementById('fbInsights').innerHTML = fbInsights.map(i => `
+    <div style="display:flex;gap:8px;margin-bottom:8px;align-items:flex-start">
+      <span style="font-size:14px;flex-shrink:0">${i.icon}</span>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#1d4ed8">${i.title}</div>
+        <div style="font-size:10px;color:#6b7280;line-height:1.4">${i.note}</div>
+      </div>
+    </div>`).join('');
+
+  // Senior Women Feed Posts
+  renderSeniorPosts();
+}
+
+// ── Category-Feature Market Insight ──
+function renderCategoryInsight() {
+  const categories = [
+    {
+      icon:'🏃', name:'Active Bra', col:'#0ea5e9', bg:'#e0f2fe',
+      desc:'Performance-focused, high-impact support for fitness & sports',
+      features:[
+        { tag:'Wireless Support',    pct:68, trend:'↑ +22%' },
+        { tag:'High Impact',         pct:76, trend:'↑ +31%' },
+        { tag:'Racerback',           pct:55, trend:'→ Stable' },
+        { tag:'Breathable',          pct:62, trend:'↑ +18%' },
+        { tag:'Posture Support',     pct:43, trend:'↑ +28%' },
+        { tag:'Full Coverage',       pct:58, trend:'↑ +12%' },
+      ]
+    },
+    {
+      icon:'😊', name:'Comfort Bra', col:'#7c3aed', bg:'#ede9fe',
+      desc:'All-day wear bras prioritising ease, comfort & minimal feel',
+      features:[
+        { tag:'Wireless',             pct:92, trend:'↑ +45%' },
+        { tag:'Seamless',             pct:88, trend:'↑ +38%' },
+        { tag:'Full Coverage',        pct:74, trend:'↑ +14%' },
+        { tag:'Ease of Wearing',      pct:67, trend:'↑ +33%' },
+        { tag:'Adjustable Lifting',   pct:63, trend:'↑ +41%' },
+        { tag:'Back Smoothing',       pct:48, trend:'↑ +19%' },
+      ]
+    },
+    {
+      icon:'💪', name:'Support Bra', col:'#db2777', bg:'#fce7f3',
+      desc:'Shape-focused bras with lift, side-shaping & back control',
+      features:[
+        { tag:'Lifting',              pct:85, trend:'↑ +27%' },
+        { tag:'Shaping',              pct:78, trend:'↑ +22%' },
+        { tag:'Back Smoothing',       pct:72, trend:'↑ +34%' },
+        { tag:'Side Shaping',         pct:64, trend:'↑ +29%' },
+        { tag:'Wireless',             pct:58, trend:'↑ +52%' },
+        { tag:'Minimizer',            pct:44, trend:'→ Stable' },
+      ]
+    },
+    {
+      icon:'✨', name:'Specialty Bra', col:'#059669', bg:'#d1fae5',
+      desc:'Occasion & function-specific bras for special use cases',
+      features:[
+        { tag:'Strapless',            pct:68, trend:'→ Stable' },
+        { tag:'Front Closure',        pct:55, trend:'↑ +44%' },
+        { tag:'Multiway / Low-Back',  pct:38, trend:'↑ +61%' },
+        { tag:'Nursing / Maternity',  pct:34, trend:'↑ +18%' },
+        { tag:'Adhesive / Backless',  pct:28, trend:'↑ +87%' },
+        { tag:'Convertible Straps',   pct:32, trend:'↑ +25%' },
+      ]
+    },
+    {
+      icon:'🩱', name:'General Trending', col:'#d97706', bg:'#fef3c7',
+      desc:'Cross-category features seeing the biggest market momentum',
+      features:[
+        { tag:'Jelly Technology',     pct:41, trend:'↑ +312%' },
+        { tag:'Push-Up',              pct:55, trend:'↑ +38%' },
+        { tag:'Plus Size',            pct:48, trend:'↑ +89%' },
+        { tag:'Deep V Plunge',        pct:37, trend:'↑ +56%' },
+        { tag:'Nude-Feel / Skin-Tone',pct:29, trend:'↑ +74%' },
+        { tag:'Posture Corrector',    pct:22, trend:'↑ +78%' },
+      ]
+    }
+  ];
+
+  document.getElementById('categoryFeatureInsight').innerHTML = categories.map(cat => `
+    <div style="background:${cat.bg};border-radius:12px;padding:14px;border-left:4px solid ${cat.col}">
+      <div style="font-size:14px;font-weight:700;color:${cat.col};margin-bottom:4px">${cat.icon} ${cat.name}</div>
+      <div style="font-size:11px;color:#6b7280;margin-bottom:10px;line-height:1.4">${cat.desc}</div>
+      ${cat.features.map(f => `
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;margin-bottom:2px">
+              <span style="font-size:11px;font-weight:600;color:#374151">${f.tag}</span>
+              <span style="font-size:10px;color:${f.trend.includes('↑')?'#059669':f.trend.includes('↓')?'#dc2626':'#6b7280'};font-weight:700">${f.trend}</span>
+            </div>
+            <div style="height:7px;background:rgba(255,255,255,0.7);border-radius:4px;overflow:hidden">
+              <div style="height:100%;width:${f.pct}%;background:${cat.col};border-radius:4px;opacity:0.85"></div>
+            </div>
+          </div>
+          <span style="font-size:11px;font-weight:800;color:${cat.col};min-width:30px;text-align:right">${f.pct}%</span>
+        </div>`).join('')}
+    </div>`).join('');
+
+  // Cross-category trend signals
+  const signals = [
+    { icon:'🍮', label:'Jelly / Seamless Technology', note:'Fastest growing feature 2024→2026', delta:'+312%', hot:true },
+    { icon:'📡', label:'Wireless (No Underwire)', note:'Dominant across all categories', delta:'+145%', hot:true },
+    { icon:'📏', label:'Plus Size Coverage', note:'89% market growth — key size gap', delta:'+89%', hot:true },
+    { icon:'🔼', label:'Adjustable Lifting', note:'Replacing fixed-cup designs', delta:'+41%', hot:false },
+    { icon:'🏃', label:'Sports-Comfort Fusion', note:'Active meets everyday wear', delta:'+63%', hot:false },
+    { icon:'🔒', label:'Front Closure / Easy-Wear', note:'Driven by seniors & accessibility', delta:'+44%', hot:false },
+    { icon:'💋', label:'Adhesive / Backless', note:'Occasion wear surging TikTok', delta:'+87%', hot:true },
+    { icon:'🌬️', label:'Breathability Features', note:'Post-pandemic comfort priority', delta:'+28%', hot:false },
+  ];
+
+  document.getElementById('crossTrendSignals').innerHTML = signals.map(s => `
+    <div style="background:${s.hot?'#fffbeb':'#f9fafb'};border:1px solid ${s.hot?'#fde68a':'#e5e7eb'};border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start">
+      <span style="font-size:20px;flex-shrink:0">${s.icon}</span>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#111;margin-bottom:2px">${s.label}</div>
+        <div style="font-size:10px;color:#6b7280;margin-bottom:4px">${s.note}</div>
+        <span style="background:${s.hot?'#f59e0b':'#7c3aed'};color:white;font-size:10px;font-weight:700;padding:1px 8px;border-radius:8px">${s.delta} YoY</span>
+      </div>
+    </div>`).join('');
+}
+
+// Init
+renderCards();
+renderTable();
+rebuildCharts();
+renderFeedback();
+renderCategoryInsight();
+renderSocialBoard();
+renderPlusSize();
+
+// ── Export Report (full dashboard screenshot → PDF) ────
+async function exportReport(btn) {
+  const origHTML = btn.innerHTML;
+  btn.innerHTML = '⏳ Đang xuất...';
+  btn.disabled = true;
+
+  const now = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  const u = new Date(now.getTime() + 7*3600000);
+  const ts = `${pad(u.getUTCDate())}/${pad(u.getUTCMonth()+1)}/${u.getUTCFullYear()} ${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}:${pad(u.getUTCSeconds())} (GMT+7)`;
+  const fileTs = `${u.getUTCFullYear()}${pad(u.getUTCMonth()+1)}${pad(u.getUTCDate())}_${pad(u.getUTCHours())}${pad(u.getUTCMinutes())}`;
+
+  const loadScript = url => new Promise((res, rej) => {
+    if (document.querySelector(`script[src="${url}"]`) && (url.includes('html2canvas') ? window.html2canvas : window.jspdf)) { res(); return; }
+    const s = document.createElement('script');
+    s.src = url; s.onload = res; s.onerror = rej;
+    document.head.appendChild(s);
+  });
+
+  try {
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+
+    // Timestamp banner injected at top of body
+    const banner = document.createElement('div');
+    banner.id = '_pdf_banner';
+    banner.style.cssText = 'width:100%;background:linear-gradient(135deg,#7c3aed,#db2777);color:#fff;text-align:center;padding:11px 16px;font-size:14px;font-weight:700;font-family:Segoe UI,Arial,sans-serif;letter-spacing:.3px;flex-shrink:0';
+    banner.textContent = `📋 Bra Dashboard Report  —  Thời điểm xuất: ${ts}`;
+    document.body.insertBefore(banner, document.body.firstChild);
+    window.scrollTo(0, 0);
+
+    // Lock body to fixed width so canvas dimensions are exact integers
+    const RENDER_W = 1400;
+    const prevBodyW  = document.body.style.width;
+    const prevBodyMW = document.body.style.minWidth;
+    document.body.style.setProperty('width',     RENDER_W + 'px', 'important');
+    document.body.style.setProperty('min-width', RENDER_W + 'px', 'important');
+    document.documentElement.style.overflow = 'visible';
+    document.body.style.overflow = 'visible';
+
+    const fullH = document.body.scrollHeight;
+
+    btn.innerHTML = '📸 Đang chụp...';
+    const canvas = await window.html2canvas(document.body, {
+      scale: 1.5,          // canvas.width = 1400×1.5 = 2100 exactly
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      x: 0, y: 0,
+      scrollX: 0, scrollY: 0,
+      width: RENDER_W,
+      height: fullH,
+      windowWidth: RENDER_W,
+      windowHeight: fullH,
+      backgroundColor: '#ffffff',
+      onclone: doc => {
+        doc.body.style.setProperty('width',     RENDER_W + 'px', 'important');
+        doc.body.style.overflow = 'visible';
+        doc.documentElement.style.overflow = 'visible';
+      }
+    });
+
+    // Restore body styles
+    document.body.style.width    = prevBodyW;
+    document.body.style.minWidth = prevBodyMW;
+    document.documentElement.style.overflow = '';
+    banner.remove();
+
+    btn.innerHTML = '📄 Tạo PDF...';
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const PAGE_W = 210, PAGE_H = 297;
+
+    // pxPerMm = 2100/210 = 10 exactly → pageHeightPx = 2970 exactly → no rounding drift
+    const pxPerMm = canvas.width / PAGE_W;
+    const pageHeightPx = Math.round(PAGE_H * pxPerMm);
+    let srcY = 0, pageNum = 0;
+
+    while (srcY < canvas.height) {
+      if (pageNum > 0) pdf.addPage();
+      const sliceH = Math.min(pageHeightPx, canvas.height - srcY);
+      const slice = document.createElement('canvas');
+      slice.width  = canvas.width;
+      slice.height = sliceH;
+      slice.getContext('2d').drawImage(canvas, 0, srcY, canvas.width, sliceH, 0, 0, canvas.width, sliceH);
+      const sliceMm = sliceH / pxPerMm;   // 297 for full pages, < 297 for last
+      pdf.addImage(slice.toDataURL('image/jpeg', 0.9), 'JPEG', 0, 0, PAGE_W, sliceMm);
+      srcY += sliceH;
+      pageNum++;
+    }
+
+    pdf.save(`bra-dashboard-report-${fileTs}.pdf`);
+
+  } catch(e) {
+    document.getElementById('_pdf_banner')?.remove();
+    alert('Xuất PDF thất bại: ' + e.message);
+    console.error(e);
+  } finally {
+    btn.innerHTML = origHTML;
+    btn.disabled = false;
+  }
+}
+
+// ── Legacy summary report (kept for reference) ────────
+function exportReportSummary() {
+  const now = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  const u = new Date(now.getTime() + 7*3600000);
+  const ts = `${pad(u.getUTCDate())}/${pad(u.getUTCMonth()+1)}/${u.getUTCFullYear()} ${pad(u.getUTCHours())}:${pad(u.getUTCMinutes())}:${pad(u.getUTCSeconds())} (GMT+7)`;
+
+  const prods = allProducts;
+  const n = prods.length;
+  const avgRating = (prods.reduce((s,p)=>s+p.rating,0)/n).toFixed(2);
+  const avgPrice  = (prods.reduce((s,p)=>s+p.price,0)/n).toFixed(2);
+  const maxSales  = [...prods].sort((a,b)=>b.salesNum-a.salesNum)[0];
+
+  const platNames = {amazon:'Amazon',temu:'Temu',brand:'Brand Sites'};
+  const catNames  = {active:'Active Bra',comfort:'Comfort Bra',support:'Support Bra',specialty:'Specialty Bra'};
+  const accent    = '#7c3aed';
+
+  const top15 = [...prods].sort((a,b)=>(b.rating*1000+b.reviews)-(a.rating*1000+a.reviews)).slice(0,15);
+  const best5 = top15.slice(0,5);
+  const worst5 = [...prods].sort((a,b)=>(a.rating*1000+a.reviews)-(b.rating*1000+b.reviews)).slice(0,5);
+
+  const platMap = {};
+  prods.forEach(p => {
+    if (!platMap[p.platform]) platMap[p.platform] = {count:0,rSum:0,pSum:0};
+    platMap[p.platform].count++;
+    platMap[p.platform].rSum += p.rating;
+    platMap[p.platform].pSum += p.price;
+  });
+  const catMap = {};
+  prods.forEach(p => { if (!catMap[p.cat]) catMap[p.cat]=[]; catMap[p.cat].push(p); });
+
+  const truncate = (s,n) => s.length>n ? s.slice(0,n)+'…' : s;
+  const stars    = r => '★'.repeat(Math.round(r)) + '☆'.repeat(5-Math.round(r));
+
+  const topRows = top15.map((p,i) => `<tr>
+    <td style="text-align:center;font-weight:700;color:${accent}">${i+1}</td>
+    <td>${truncate(p.name,45)}</td><td>${p.brand}</td>
+    <td>${platNames[p.platform]||p.platform}</td><td>${catNames[p.cat]||p.cat}</td>
+    <td style="text-align:center;color:#f59e0b">${stars(p.rating)} ${p.rating.toFixed(1)}</td>
+    <td style="text-align:right">${p.reviews.toLocaleString()}</td>
+    <td style="text-align:right;font-weight:600">$${p.price.toFixed(2)}</td></tr>`).join('');
+
+  const platRows = Object.entries(platMap).map(([pl,d]) => `<tr>
+    <td>${platNames[pl]||pl}</td><td style="text-align:center">${d.count}</td>
+    <td style="text-align:center;color:#f59e0b">${(d.rSum/d.count).toFixed(2)} ★</td>
+    <td style="text-align:right;font-weight:600">$${(d.pSum/d.count).toFixed(2)}</td></tr>`).join('');
+
+  const catRows = Object.entries(catMap).map(([cat,ps]) => {
+    const top = [...ps].sort((a,b)=>(b.rating*1000+b.reviews)-(a.rating*1000+a.reviews))[0];
+    return `<tr><td>${catNames[cat]||cat}</td><td style="text-align:center">${ps.length}</td>
+    <td>${truncate(top.name,38)}</td><td>${top.brand}</td>
+    <td style="text-align:center;color:#f59e0b">${top.rating.toFixed(1)} ★</td>
+    <td style="text-align:right;font-weight:600">$${top.price.toFixed(2)}</td></tr>`;
+  }).join('');
+
+  const bwRows = (list, color) => list.map((p,i) => `<tr>
+    <td style="text-align:center;font-weight:700;color:${color}">${i+1}</td>
+    <td>${truncate(p.name,42)}</td><td>${p.brand}</td>
+    <td>${platNames[p.platform]||p.platform}</td>
+    <td style="text-align:center;color:#f59e0b">${p.rating.toFixed(1)} ★</td>
+    <td style="text-align:right">${p.reviews.toLocaleString()}</td></tr>`).join('');
+
+  const html = `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8">
+<title>Bra Dashboard Report — ${ts}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;font-size:11.5px;color:#111;background:#fff}
+.rh{background:linear-gradient(135deg,#7c3aed 0%,#db2777 100%);color:#fff;padding:28px 36px 24px}
+.rh h1{font-size:21px;font-weight:700;margin-bottom:8px}
+.rh .ts{font-size:13px;background:rgba(255,255,255,.18);display:inline-block;padding:5px 14px;border-radius:20px;font-weight:600;margin-bottom:6px}
+.rh .sub{font-size:11px;opacity:.8}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 36px}
+.kpi{background:#f8f5ff;border:1.5px solid #e9d5ff;border-radius:10px;padding:14px 16px}
+.kpi .val{font-size:21px;font-weight:700;color:#7c3aed}
+.kpi .lbl{font-size:10.5px;color:#6b7280;margin-top:3px}
+section{margin:0 36px 24px}
+section h2{font-size:14px;font-weight:700;color:#7c3aed;border-bottom:2px solid #e9d5ff;padding-bottom:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+table{width:100%;border-collapse:collapse;font-size:10.5px}
+th{background:#7c3aed;color:#fff;padding:7px 8px;text-align:left;font-weight:600}
+td{padding:5px 8px;border-bottom:1px solid #f0ecfe}
+tr:nth-child(even) td{background:#faf5ff}
+.footer{text-align:center;font-size:10px;color:#9ca3af;margin:16px 36px 32px;padding-top:12px;border-top:1px solid #e5e7eb}
+@media print{@page{margin:12mm;size:A4}body{font-size:10.5px}.kpis{margin:16px 24px}section{margin:0 24px 18px}}
+</style></head><body>
+<div class="rh">
+  <h1>🩱 Trending Bra Products Dashboard — Báo cáo</h1>
+  <div class="ts">📋 Thời điểm xuất: ${ts}</div>
+  <div class="sub">Amazon · Temu · Brand Sites &nbsp;|&nbsp; ${n} sản phẩm được theo dõi</div>
+</div>
+<div class="kpis">
+  <div class="kpi"><div class="val">${n}</div><div class="lbl">Tổng sản phẩm</div></div>
+  <div class="kpi"><div class="val">★ ${avgRating}</div><div class="lbl">Đánh giá trung bình</div></div>
+  <div class="kpi"><div class="val">$${avgPrice}</div><div class="lbl">Giá trung bình</div></div>
+  <div class="kpi"><div class="val">${maxSales.salesNum.toLocaleString()}+</div><div class="lbl">Sales cao nhất/tháng<br><small style="color:#7c3aed">${maxSales.brand}</small></div></div>
+</div>
+<section>
+  <h2>📊 Phân tích theo Platform</h2>
+  <table><thead><tr><th>Platform</th><th style="text-align:center">Số SP</th><th style="text-align:center">Rating TB</th><th style="text-align:right">Giá TB</th></tr></thead>
+  <tbody>${platRows}</tbody></table>
+</section>
+<section>
+  <h2>📂 Phân tích theo Danh mục</h2>
+  <table><thead><tr><th>Danh mục</th><th style="text-align:center">Số SP</th><th>Sản phẩm nổi bật</th><th>Brand</th><th style="text-align:center">Rating</th><th style="text-align:right">Giá</th></tr></thead>
+  <tbody>${catRows}</tbody></table>
+</section>
+<section style="page-break-before:auto">
+  <h2>🏆 Top 15 Sản phẩm Best Reviewed</h2>
+  <table><thead><tr><th>#</th><th>Tên sản phẩm</th><th>Brand</th><th>Platform</th><th>Danh mục</th><th style="text-align:center">Rating</th><th style="text-align:right">Reviews</th><th style="text-align:right">Giá</th></tr></thead>
+  <tbody>${topRows}</tbody></table>
+</section>
+<section>
+  <h2 style="color:#16a34a;border-color:#bbf7d0">🥇 Top 5 được đánh giá cao nhất</h2>
+  <table><thead><tr><th style="background:#16a34a">#</th><th style="background:#16a34a">Sản phẩm</th><th style="background:#16a34a">Brand</th><th style="background:#16a34a">Platform</th><th style="background:#16a34a;text-align:center">Rating</th><th style="background:#16a34a;text-align:right">Reviews</th></tr></thead>
+  <tbody>${bwRows(best5,'#16a34a')}</tbody></table>
+</section>
+<section>
+  <h2 style="color:#dc2626;border-color:#fecaca">⚠️ Bottom 5 — Đánh giá thấp nhất</h2>
+  <table><thead><tr><th style="background:#dc2626">#</th><th style="background:#dc2626">Sản phẩm</th><th style="background:#dc2626">Brand</th><th style="background:#dc2626">Platform</th><th style="background:#dc2626;text-align:center">Rating</th><th style="background:#dc2626;text-align:right">Reviews</th></tr></thead>
+  <tbody>${bwRows(worst5,'#dc2626')}</tbody></table>
+</section>
+<div class="footer">Báo cáo tự động · Trending Bra Products Dashboard · Xuất lúc ${ts}</div>
+<script>window.onload=()=>window.print()<\/script>
+</body></html>`;
+
+  const w = window.open('','_blank','width=900,height=700');
+  if (w) { w.document.write(html); w.document.close(); }
+  else alert('Vui lòng cho phép popup để xuất báo cáo.');
+}
+</script>
+</body>
+</html>
