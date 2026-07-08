@@ -108,12 +108,12 @@
   <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
     <div>
       <h1>🩱 Trending Bra Products Dashboard</h1>
-      <p>Amazon · Temu · 6 Brand Sites — Best Sellers Analysis · June 2026</p>
-      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: June 16, 2026 · Products + Social data refreshed</span>
+      <p>Amazon · Temu · 14 Brand Sites — Best Sellers Analysis · July 2026</p>
+      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: July 8, 2026 · Added 8 new brand sites · 57 products tracked</span>
       <div class="header-meta">
-        <span>📦 Amazon: Top 15 Best Sellers (June 10, 2026)</span>
+        <span>📦 Amazon: Top 15 Best Sellers (June 2026)</span>
         <span>🛍️ Temu: Trending Bras Category</span>
-        <span>🌐 ThirdLove · HoneyLove · Knix · Savage X · Wacoal · Soma</span>
+        <span>🌐 ThirdLove · HoneyLove · Knix · Savage X · Wacoal · Soma · Glamorise · Bali · Vanity Fair · Playtex · Maidenform · Victoria's Secret · Torrid · Elomi</span>
         <span>🔍 "Jelly bras for women" = 119,942 searches/week</span>
       </div>
     </div>
@@ -133,7 +133,7 @@
 
   <!-- KPI -->
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">42</div><div class="kpi-sub">15 Amazon · 10 Temu · 17 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">46</div><div class="kpi-sub">12 Amazon · 8 Temu · 26 Brand Sites</div></div>
     <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
     <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 · Temu ~$9.62</div></div>
     <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
@@ -432,6 +432,22 @@ const allProducts = [
   { rank:9, platform:'brand', name:'Feathers Contour Wireless Bra', brand:'Natori', price:60.85, rating:4.2, reviews:2219, sales:'—', salesNum:0, features:['Wireless','Feather-Light','Contour','Premium'], imgUrl:'https://m.media-amazon.com/images/I/717+l0mWoHL._AC_UY300_.jpg', grad:['#2C3E50','#4A6080'], icon:'🪶', url:'https://www.natori.com/collections/bras' },
   { rank:10, platform:'brand', name:'Bra-llelujah! Wireless Full Coverage Bra', brand:'SPANX', price:46.80, rating:4.2, reviews:240, sales:'—', salesNum:0, features:['Wireless','Full Coverage','Smoothing','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/71fYnnWsXXL._AC_UY300_.jpg', grad:['#1A1A1A','#555555'], icon:'🖤', url:'https://www.spanx.com/collections/bras' },
   { rank:14, platform:'brand', name:'24/7 Classic T-Shirt Bra — Apricot New Shade', brand:'ThirdLove', price:68.00, rating:4.2, reviews:62000, sales:'Best Seller', salesNum:0, features:['T-Shirt','Wireless','Full Coverage','Seamless'], imgUrl:'https://www.thirdlove.com/cdn/shop/files/Q226_PDP_OF_TSBRA_ZEHUW_APRICOT_484.jpg', grad:['#8B2252','#C06080'], icon:'🩱', url:'https://www.thirdlove.com/products/24-7-classic-t-shirt-bra-apricot' },
+  // ── 8 New Brand Sites (July 2026) ──
+  { rank:15, platform:'brand', name:'Front-Closure WonderWire Bra #1245', brand:'Glamorise', price:46.50, rating:4.6, reviews:4643, sales:'Top Rated', salesNum:0, features:['Front Closure','WonderWire Underwire','Wide Padded Straps','Full Figure'], imgUrl:'https://glamorise.com/cdn/shop/files/1245_BLK_07_1022_1024x1024.jpg?v=1737030732', grad:['#7C3AED','#A855F7'], icon:'✨', url:'https://glamorise.com/products/front-closure-wonderwire-bra-black' },
+  { rank:16, platform:'brand', name:'MagicLift Original Support Bra #1000', brand:'Glamorise', price:41.30, rating:4.4, reviews:3145, sales:'Best Seller', salesNum:0, features:['Wire-Free','MagicLift Support','Full Coverage','Plus Size'], imgUrl:'https://glamorise.com/cdn/shop/files/1000_BLK_0424_05_1024x1024.jpg?v=1719830873', grad:['#7C3AED','#A855F7'], icon:'🌸', url:'https://glamorise.com/products/magiclift-original-support-bra-black' },
+  { rank:17, platform:'brand', name:'Double Support Wirefree Bra', brand:'Bali', price:38.00, rating:4.2, reviews:18735, sales:'#1 Best Seller', salesNum:0, features:['Wire-Free','Cool Comfort','Wide Stay-Put Straps','M-Frame Support'], imgUrl:'https://cdn.balibras.com/catalog/product/H/N/HNS_DF3820_Black_Front.jpg', grad:['#0EA5E9','#38BDF8'], icon:'💙', url:'https://www.balibras.com/products/double-support-reg-wirefree-bra/df3820' },
+  { rank:18, platform:'brand', name:'Flower Bali Underwire Bra', brand:'Bali', price:34.00, rating:4.2, reviews:1208, sales:'—', salesNum:0, features:['Underwire','Full Coverage','Scalloped Lace','Sizes to 50DDD'], imgUrl:'https://cdn.balibras.com/catalog/product/H/N/HNS_DF0180_White_Front.jpg', grad:['#0EA5E9','#38BDF8'], icon:'🌼', url:'https://www.balibras.com/products/flower-bali-reg-underwire-bra/df0180' },
+  { rank:19, platform:'brand', name:"Beauty Back Wireless Smoothing Bra", brand:'Vanity Fair', price:54.00, rating:4.5, reviews:1467, sales:'Best Seller', salesNum:0, features:['Wireless','4-Way Stretch','Back Smoothing','Seamless Cups'], imgUrl:'https://assets.fotlinc.com/transform/vanityfair-metadata/b3659d01-1853-4da0-be4b-d66bef6b5ee1/PI_71380_0941_36_C_0_0.png', grad:['#F43F5E','#FB7185'], icon:'👙', url:'https://www.vanityfairlingerie.com/p/beauty-back-wireless-smoothing-bra/71380' },
+  { rank:20, platform:'brand', name:"Beauty Back Underwire Smoothing Bra", brand:'Vanity Fair', price:54.00, rating:4.5, reviews:1119, sales:"America's #1", salesNum:0, features:['Underwire','Back Smoothing','4-Way Stretch','Seamless'], imgUrl:'https://assets.fotlinc.com/transform/03d3cdbf-459a-4912-8c84-ad2e355cedad/PI_76380_0392_46_C_0_0.png', grad:['#F43F5E','#FB7185'], icon:'🩱', url:'https://www.vanityfairlingerie.com/p/beauty-back-underwire-smoothing-bra/76380' },
+  { rank:21, platform:'brand', name:'18 Hour Ultimate Lift & Support Wireless Bra', brand:'Playtex', price:39.00, rating:4.2, reviews:9209, sales:'Top Rated', salesNum:0, features:['Wireless','18-Hour Comfort','Non-Foam Cups','Full Coverage'], imgUrl:'https://cdn.playtexbras.com/catalog/product/H/N/HNS_US4745_CrystalGrey_Front.jpg', grad:['#D97706','#FCD34D'], icon:'⏰', url:'https://www.playtexbras.com/products/playtex-womens-playtex-18-hour-ultimate-lift-amp-support-wireless-bra-us4745/us4745' },
+  { rank:22, platform:'brand', name:'Love My Curves Beautiful Lace & Lift Underwire Bra', brand:'Playtex', price:38.49, rating:4.2, reviews:1393, sales:'—', salesNum:0, features:['Underwire','Lace Cups','TruSupport','Balconette'], imgUrl:'https://www.apparelshopusa.com/assets/images/products/large/APSUSA-US4825-Gardenia-36DDD.webp', grad:['#D97706','#FCD34D'], icon:'💛', url:'https://www.playtexbras.com/products/playtex-womens-playtex-love-my-curves-beautiful-lace-with-lift-underwire-bra-us4825/us4825' },
+  { rank:23, platform:'brand', name:'One Fab Fit Everyday Modern Demi Underwire Bra', brand:'Maidenform', price:23.99, rating:4.1, reviews:1123, sales:'—', salesNum:0, features:['Demi Underwire','Convertible Straps','SmartZone Cups','Everyday'], imgUrl:'https://i5.walmartimages.com/seo/Maidenform-One-Fab-Fit-Everyday-Modern-Demi-Underwire-Bra-Womens-Convertible-DM7543_28e7dec3-e25a-4bca-bfad-6a1e4bee8b4a.a2aa3679a20af48fb42a448d213fda28.jpeg', grad:['#059669','#34D399'], icon:'💚', url:'https://www.walmart.com/ip/Maidenform-One-Fab-Fit-Everyday-Modern-Demi-Underwire-Bra-Womens-Convertible-DM7543/995909410' },
+  { rank:24, platform:'brand', name:'Love the Lift Plunging Push-Up Bra', brand:'Maidenform', price:48.00, rating:4.2, reviews:404, sales:'—', salesNum:0, features:['Push-Up','Plunge Neckline','Padded Cups','Smoothing Wings'], imgUrl:'https://media.kohlsimg.com/is/image/kohls/5983799_Pearl_Gold?wid=1000&hei=1000&op_sharpen=1', grad:['#059669','#34D399'], icon:'🌿', url:'https://www.kohls.com/product/prd-5983799/maidenform-love-the-lift-plunging-push-up-bra-dm9900.jsp' },
+  { rank:25, platform:'brand', name:"Wear Everywhere Lightly Lined Wireless Bra", brand:"Victoria's Secret PINK", price:36.95, rating:4.7, reviews:1326, sales:'600+ bought/day', salesNum:0, features:['Wireless','Lightly Lined','Adjustable Straps','Cotton Comfort'], imgUrl:'https://www.victoriassecret.com/p/760x1013/png/zz/23/12/23/06/1124172967MU_OM_F.jpg', grad:['#BE185D','#F472B6'], icon:'💗', url:'https://www.victoriassecret.com/us/pink/bras-catalog/5000006097' },
+  { rank:26, platform:'brand', name:'Dream Angels Wicked Unlined Lace Balconette Bra', brand:"Victoria's Secret", price:49.95, rating:4.7, reviews:2333, sales:'1K+ bought/day', salesNum:0, features:['Unlined Lace','Balconette','LYCRA ADAPTIV','ForeverStretch Lace'], imgUrl:'https://www.victoriassecret.com/p/760x1013/png/zz/24/12/21/04/1124534854A2_OM_F.jpg', grad:['#BE185D','#F472B6'], icon:'🌹', url:'https://www.victoriassecret.com/us/vs/bras-catalog/5000005210' },
+  { rank:27, platform:'brand', name:'Lightly Lined Microfiber Surplice Bralette', brand:'Torrid', price:39.90, rating:4.3, reviews:226, sales:'Top Seller', salesNum:0, features:['Wire-Free Bralette','Lightly Lined','Plus Size 0X-6X','Adjustable Straps'], imgUrl:'https://cdn.torrid.com/i/torrid/17451836_06580_hi.jpg', grad:['#DC2626','#F87171'], icon:'🔴', url:'https://www.torrid.com/product/lightly-lined-microfiber-surplice-bralette/17451836-06580.html' },
+  { rank:28, platform:'brand', name:'Matilda Underwired Plunge Bra', brand:'Elomi', price:75.00, rating:4.3, reviews:245, sales:'Most Loved', salesNum:0, features:['Underwire Plunge','DD-O Cup','J-Hook Racerback','Side Support Panels'], imgUrl:'https://media.elomilingerie.com/medias/110x154-pdp-thumb-EL8900-BLK-primary-Elomi-Lingerie-Matilda-Black-Underwired-Plunge-Bra.jpg', grad:['#0F172A','#334155'], icon:'👑', url:'https://www.elomilingerie.com/us/en/lingerie/bras/plunge-bras/matilda-uw-plunge-bra/p/el8900blk/' },
+  { rank:29, platform:'brand', name:'Cate Embroidered Full Cup Banded Underwire Bra', brand:'Elomi', price:69.00, rating:4.4, reviews:312, sales:'Most Loved', salesNum:0, features:['Full Cup','DD-K Cup','Embroidered Lace','Powernet Wings'], imgUrl:'https://media.elomilingerie.com/medias/110x154-pdp-thumb-EL4030-LAE-primary-Elomi-Lingerie-Cate-Latte-Full-Cup-Banded-Bra.jpeg', grad:['#0F172A','#334155'], icon:'🖤', url:'https://www.elomilingerie.com/us/en/lingerie/bras/full-cup-bras/cate-uw-bra/p/el4030lae/' },
 ];
 
 let currentPlatform = 'all';
@@ -1336,6 +1352,19 @@ async function exportReport(btn) {
         doc.body.style.setProperty('width',     RENDER_W + 'px', 'important');
         doc.body.style.overflow = 'visible';
         doc.documentElement.style.overflow = 'visible';
+        // Fix: html2canvas misapplies object-fit on cross-origin <img> elements.
+        // Swap each product image for an equivalent background-image <div> instead.
+        doc.querySelectorAll('img').forEach(img => {
+          const src = img.getAttribute('src') || '';
+          const w = img.style.width;
+          const h = img.style.height;
+          if (!src || src.startsWith('data:') || !w || !h) return;
+          const fit = img.style.objectFit || 'contain';
+          const div = doc.createElement('div');
+          div.style.cssText = 'width:'+w+';height:'+h+';background-size:'+(fit==='cover'?'cover':'contain')+';background-position:center center;background-repeat:no-repeat;background-color:#f8f5f9;display:block;flex-shrink:0;';
+          div.style.backgroundImage = 'url(' + JSON.stringify(src) + ')';
+          img.parentNode.replaceChild(div, img);
+        });
       }
     });
 
