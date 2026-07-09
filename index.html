@@ -108,8 +108,8 @@
   <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
     <div>
       <h1>🩱 Trending Bra Products Dashboard</h1>
-      <p>Amazon · Temu · 20+ Brand Sites — Best Sellers Analysis · July 2026</p>
-      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: July 8, 2026 · Added 17 new brand sites · 56 products tracked</span>
+      <p>Amazon · Temu · 30+ Brand Sites — Best Sellers Analysis · July 2026</p>
+      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: July 9, 2026 · Added 30 brand sites · 66 products tracked</span>
       <div class="header-meta">
         <span>📦 Amazon: Top 15 Best Sellers (June 2026)</span>
         <span>🛍️ Temu: Trending Bras Category</span>
@@ -133,7 +133,7 @@
 
   <!-- KPI -->
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">56</div><div class="kpi-sub">12 Amazon · 8 Temu · 36 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">66</div><div class="kpi-sub">12 Amazon · 8 Temu · 46 Brand Sites</div></div>
     <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
     <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 · Temu ~$9.62</div></div>
     <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
@@ -461,6 +461,18 @@ const allProducts = [
   { rank:38, platform:'brand', name:'Essentials All Day Every Day Wireless Bra', brand:'Shapermint', price:34.00, rating:4.3, reviews:8600, sales:'8K+ Reviews', salesNum:0, features:['Wire-Free','Smoothing','Full Coverage','XS-4X'], imgUrl:'https://m.media-amazon.com/images/I/61ZIztFRuWL._AC_UY300_.jpg', grad:['#92400E','#FCD34D'], icon:'🌟', url:'https://shapermint.com/collections/bras' },
   { rank:39, platform:'brand', name:"Ciao Bella Push-Up Bra", brand:"b.tempt'd", price:47.00, rating:4.3, reviews:870, sales:'—', salesNum:0, features:['Push-Up','Lace','Underwire','Add-A-Size'], imgUrl:'https://m.media-amazon.com/images/I/91dXI1+qLPL._AC_UY300_.jpg', grad:['#1E293B','#64748B'], icon:'🖤', url:'https://www.btemptd.com/collections/push-up-bras' },
   { rank:40, platform:'brand', name:'Easy Does It No Bulge Wireless Contour Bra', brand:'Warners', price:29.99, rating:4.2, reviews:12300, sales:'12K Reviews', salesNum:0, features:['Wire-Free','Contour','No-Bulge Back','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/61OaA3mgANL._AC_UY300_.jpg', grad:['#374151','#9CA3AF'], icon:'💙', url:'https://www.warnerslingerie.com/collections/wireless-bras' },
+
+  // ── 10 More Brand Sites (July 2026 Vol.3) ──
+  { rank:41, platform:'brand', name:'Good to Go Seamless Wireless Bralette', brand:'Knix', price:48.00, rating:4.4, reviews:1200, sales:'Top Rated', salesNum:0, features:['Wireless','Seamless','Lightly Lined','Everyday Comfort'], imgUrl:'https://m.media-amazon.com/images/I/41ZFBXxleoL._AC_UY300_.jpg', grad:['#1A5C5C','#2A8C8C'], icon:'🌿', url:'https://www.amazon.com/dp/B0DJCJK963' },
+  { rank:42, platform:'brand', name:'Silhouette Wireless Bra', brand:'HoneyLove', price:69.00, rating:4.5, reviews:520, sales:'New Bestseller', salesNum:0, features:['Wireless','No Underwire','Silhouette Fit','Comfortable'], imgUrl:'https://m.media-amazon.com/images/I/716Pj' + '+pPvlL._AC_UY300_.jpg', grad:['#C9873F','#E8A85C'], icon:'🍯', url:'https://www.amazon.com/dp/B0FDZVLPNB' },
+  { rank:43, platform:'brand', name:'Bra-Llelujah! Plunge Wireless Lift Softcup Bra', brand:'SPANX', price:68.00, rating:4.3, reviews:1580, sales:'—', salesNum:0, features:['Wireless','Plunge','Lifting','Hosiery Back'], imgUrl:'https://m.media-amazon.com/images/I/71f2n99v1jL._AC_UY300_.jpg', grad:['#1A1A1A','#555555'], icon:'🖤', url:'https://www.amazon.com/dp/B0C4ZNYDCD' },
+  { rank:44, platform:'brand', name:'How Perfect Wire Free T-Shirt Bra', brand:'Wacoal', price:42.00, rating:4.3, reviews:3100, sales:'Top Rated', salesNum:0, features:['Wire-Free','T-Shirt','Seamless','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/711qu' + '+jVl1L._AC_UY300_.jpg', grad:['#6B1F3F','#9B3F60'], icon:'👑', url:'https://www.amazon.com/dp/B0D64PFN7G' },
+  { rank:45, platform:'brand', name:'Bliss Perfection Contour Underwire Bra', brand:'Natori', price:52.00, rating:4.3, reviews:1820, sales:'—', salesNum:0, features:['Underwire','Contour','Bliss Collection','Premium'], imgUrl:'https://m.media-amazon.com/images/I/7188k5gcvvL._AC_UY300_.jpg', grad:['#2C3E50','#4A6080'], icon:'�DD4E', url:'https://www.amazon.com/dp/B06WWPNL4S' },
+  { rank:46, platform:'brand', name:'Minimizer Full Coverage Convertible Bra', brand:'HSIA', price:29.99, rating:4.4, reviews:8200, sales:'8K+ Reviews', salesNum:0, features:['Minimizer','Full Coverage','Convertible','Plus Size'], imgUrl:'https://m.media-amazon.com/images/I/71Elz3nVxHL._AC_UY300_.jpg', grad:['#0369A1','#38BDF8'], icon:'💎', url:'https://www.amazon.com/dp/B0G33JT47Y' },
+  { rank:47, platform:'brand', name:'Revele Moi Underwire Bra', brand:'Chantelle', price:89.00, rating:4.4, reviews:650, sales:'Luxury Pick', salesNum:0, features:['Underwire','Plunge','Premium French','Lace'], imgUrl:'https://m.media-amazon.com/images/I/91wVwGWGw7L._AC_UY300_.jpg', grad:['#831843','#F472B6'], icon:'🌹', url:'https://www.amazon.com/dp/B01IYLN6RA' },
+  { rank:48, platform:'brand', name:'Fully Front Close Posture Bra', brand:'Exquisite Form', price:42.00, rating:4.4, reviews:3200, sales:'Top Rated', salesNum:0, features:['Front Closure','Posture Support','Wire-Free','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71hRBY8TY2L._AC_UY300_.jpg', grad:['#065F46','#34D399'], icon:'🌟', url:'https://www.amazon.com/dp/B00BG9HIEU' },
+  { rank:49, platform:'brand', name:'Isabella Lace Full Coverage Bra 2311', brand:'Elila', price:56.00, rating:4.3, reviews:820, sales:'—', salesNum:0, features:['Full Coverage','Lace','Underwire','Plus Sizes'], imgUrl:'https://m.media-amazon.com/images/I/712zbTY6nxL._AC_UY300_.jpg', grad:['#7C3AED','#C084FC'], icon:'💜', url:'https://www.amazon.com/dp/B01N00Y2YX' },
+  { rank:50, platform:'brand', name:"b.wow'd Wirefree Deep Plunge Bra", brand:"b.tempt'd", price:35.00, rating:4.2, reviews:480, sales:'—', salesNum:0, features:['Wire-Free','Deep Plunge','Foam Cups','Convertible'], imgUrl:'https://m.media-amazon.com/images/I/91m0tmrsDZL._AC_UY300_.jpg', grad:['#1E293B','#64748B'], icon:'🖤', url:'https://www.amazon.com/dp/B07K67VFWX' },
 ];
 
 let currentPlatform = 'all';
