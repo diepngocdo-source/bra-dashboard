@@ -109,7 +109,7 @@
     <div>
       <h1>🩱 Trending Bra Products Dashboard</h1>
       <p>Amazon � Temu � 30+ Brand Sites — Best Sellers Analysis � July 2026</p>
-      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: July 16, 2026 � Added 47 brand sites � 76 products tracked</span>
+      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: July 20, 2026 � Added 47 brand sites � 87 products tracked</span>
       <div class="header-meta">
         <span>📦 Amazon: Top 15 Best Sellers (June 2026)</span>
         <span>🛍️ Temu: Trending Bras Category</span>
@@ -133,7 +133,7 @@
 
   <!-- KPI -->
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">76</div><div class="kpi-sub">21 Amazon � 8 Temu � 47 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">87</div><div class="kpi-sub">32 Amazon � 8 Temu � 47 Brand Sites</div></div>
     <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
     <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 � Temu ~$9.62</div></div>
     <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
@@ -394,6 +394,18 @@ const braIcons = ['🩱','👙','🩲','🩱','🏋️','👙','🩱','🏃'];
 
 // ── Product Data ──
 const allProducts = [
+  // ── NEW TODAY July 20 2026 ──
+  { rank:1, platform:'amazon', name:'Elomi Women\'s Brianna Underwired Plunge Bra', brand:'Elomi', price:40.5, rating:4.6, reviews:513, sales:'500+', salesNum:500, features:['Underwire','Plunge','Full Coverage','Support'], imgUrl:'https://m.media-amazon.com/images/I/611SJAiu3bL._AC_UY300_.jpg', grad:gradients[0], icon:'👙', url:'https://www.amazon.com/dp/B0BQ1GYGC8' },
+  { rank:2, platform:'amazon', name:'COCOMARTS Jelly Bras for Women No Underwire Scalloped Push Up', brand:'COCOMARTS', price:15.7, rating:4.4, reviews:3259, sales:'3,000+', salesNum:3000, features:['Jelly','Wireless','Scalloped','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/61x9ObTvtDL._AC_UY300_.jpg', grad:gradients[1], icon:'🍮', url:'https://www.amazon.com/dp/B0FNMBQVXB' },
+  { rank:3, platform:'amazon', name:'Fruit of the Loom Women\'s Smooth Cotton T-Shirt Bra', brand:'Fruit of the Loom', price:27.99, rating:4, reviews:59829, sales:'50,000+', salesNum:50000, features:['Cotton','T-Shirt','Smooth','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/61HjqhC3WWL._AC_UY300_.jpg', grad:gradients[2], icon:'👙', url:'https://www.amazon.com/dp/B099Z2L5WH' },
+  { rank:4, platform:'amazon', name:'Warner\'s Blissful Benefits Super Soft Wireless Lightly Lined', brand:'Warner\'s', price:13.98, rating:4.5, reviews:24689, sales:'20,000+', salesNum:20000, features:['Wireless','Super Soft','Lightly Lined','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/81SpRb8+aqL._AC_UY300_.jpg', grad:gradients[3], icon:'👙', url:'https://www.amazon.com/dp/B07BLH6XJG' },
+  { rank:5, platform:'amazon', name:'PoseFree Jelly Bras for Women No Underwire, Supportive Wireless', brand:'PoseFree', price:17.99, rating:4.1, reviews:5125, sales:'5,000+', salesNum:5000, features:['Jelly','Wireless','Supportive','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/716v2LSa5+L._AC_UY300_.jpg', grad:gradients[4], icon:'🍮', url:'https://www.amazon.com/dp/B0DGFPBV3Y' },
+  { rank:6, platform:'amazon', name:'Bali Women\'s Everyday Bras - One Smooth U Underwire', brand:'Bali', price:25.99, rating:4.3, reviews:42787, sales:'40,000+', salesNum:40000, features:['Underwire','Smoothing','Full Coverage','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/71wsipDxxwL._AC_UY300_.jpg', grad:gradients[5], icon:'👙', url:'https://www.amazon.com/dp/B07MNHHXNC' },
+  { rank:7, platform:'amazon', name:'Warner\'s Blissful Benefits Side Smoothing Underwire', brand:'Warner\'s', price:13.98, rating:4.4, reviews:13805, sales:'10,000+', salesNum:10000, features:['Underwire','Side Smoothing','Comfort','Everyday'], imgUrl:'https://m.media-amazon.com/images/I/81x-OrWFVAL._AC_UY300_.jpg', grad:gradients[6], icon:'👙', url:'https://www.amazon.com/dp/B076GZ7L4W' },
+  { rank:8, platform:'amazon', name:'Avidlove Jelly Bras for Women No Underwire Seamless Bralette', brand:'Avidlove', price:8.99, rating:4.4, reviews:225, sales:'200+', salesNum:200, features:['Jelly','Wireless','Seamless','Bralette'], imgUrl:'https://m.media-amazon.com/images/I/71dCEwRgFEL._AC_UY300_.jpg', grad:gradients[7], icon:'🍮', url:'https://www.amazon.com/dp/B0G19QYB2V' },
+  { rank:9, platform:'amazon', name:'Warner\'s Womens Signature Support Cushioned Underwire', brand:'Warner\'s', price:24.99, rating:4.5, reviews:1241, sales:'1,000+', salesNum:1000, features:['Underwire','Cushioned','Support','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71cFV+PWLAL._AC_UY300_.jpg', grad:gradients[0], icon:'👙', url:'https://www.amazon.com/dp/B0B7K8PXV8' },
+  { rank:10, platform:'amazon', name:'Vanity Fair Women\'s Beauty Back Smoothing Simple Sizing Wire', brand:'Vanity Fair', price:30, rating:4.5, reviews:939, sales:'900+', salesNum:900, features:['Underwire','Back Smoothing','Simple Sizing','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/71xwMxuVU5L._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0G452NP2C' },
+  { rank:11, platform:'amazon', name:'Curvy Couture Women\'s Sheer Unlined Underwire Plunge Bra', brand:'Curvy Couture', price:34.96, rating:4.5, reviews:417, sales:'400+', salesNum:400, features:['Underwire','Sheer','Unlined','Plunge'], imgUrl:'https://m.media-amazon.com/images/I/71e0UuAFR4L._AC_UY300_.jpg', grad:gradients[2], icon:'👙', url:'https://www.amazon.com/dp/B0D3NLWL6F' },
   // ── NEW TODAY June 16 2026 ──
   { rank:1, platform:'amazon', name:'habibee Jelly Bra Wireless Comfort Seamless Push Up', brand:'habibee', price:24.99, rating:4.4, reviews:1616, sales:'2,000+', salesNum:2000, features:['Jelly','Wireless','Seamless','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/71zUNapZGbL._AC_UY300_.jpg', grad:gradients[3], icon:'🍮', url:'https://www.amazon.com/dp/B0D61ZZHW5' },
   { rank:2, platform:'amazon', name:"Warner's Blissful Benefits Super Soft Wireless Lightly Lined", brand:"Warner's", price:16.94, rating:4.5, reviews:24509, sales:'1,000+', salesNum:1000, features:['Wireless','Lightly Lined','Seamless','Comfort'], imgUrl:'https://m.media-amazon.com/images/I/81SpRb8+aqL._AC_UY300_.jpg', grad:gradients[7], icon:'👙', url:'https://www.amazon.com/dp/B07BLH9FQC' },
