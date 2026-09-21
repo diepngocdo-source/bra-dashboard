@@ -109,7 +109,7 @@
     <div>
       <h1>🩱 Trending Bra Products Dashboard</h1>
       <p>Amazon • Temu • 30+ Brand Sites — Best Sellers Analysis • September 2026</p>
-      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: September 14, 2026 • Weekly Amazon + Temu refresh • 159 products tracked</span>
+      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: September 21, 2026 • Weekly Amazon refresh (Temu skipped — login wall) • 169 products tracked</span>
       <div class="header-meta">
         <span>📦 Amazon: Top 15 Best Sellers (June 2026)</span>
         <span>🛍️ Temu: Trending Bras Category</span>
@@ -133,7 +133,7 @@
 
   <!-- KPI -->
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">164</div><div class="kpi-sub">99 Amazon • 12 Temu • 53 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">169</div><div class="kpi-sub">104 Amazon • 12 Temu • 53 Brand Sites</div></div>
     <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
     <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 • Temu ~$9.62</div></div>
     <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
@@ -578,7 +578,14 @@ const allProducts = [
   { rank:113, platform:'amazon', name:'HSIA Minimizer Bra Enchante Lace Underwire for Heavy Breast', brand:'HSIA', price:26.99, rating:4.2, reviews:17229, sales:'200+', salesNum:200, features:['Minimizer','Lace','Underwire','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/71CLhLklQAL._AC_UY300_.jpg', grad:gradients[0], icon:'🩱', url:'https://www.amazon.com/dp/B07F6F2P3D' },
   { rank:114, platform:'amazon', name:'OEAK Womens Jelly Bras Wireless Deep V Bralette Push Up', brand:'OEAK', price:27.99, rating:3.9, reviews:16026, sales:'4K+', salesNum:4000, features:['Jelly','Wireless','Deep V','Push-up'], imgUrl:'https://m.media-amazon.com/images/I/710iPqFducL._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0D8DZN778' },
   { rank:115, platform:'amazon', name:'Caramel Cantina 4 Pack Nursing Maternity Sleep Bralette', brand:'Caramel Cantina', price:44.99, rating:4.1, reviews:14162, sales:'800+', salesNum:800, features:['Nursing','Maternity','Multipack','Wireless'], imgUrl:'https://m.media-amazon.com/images/I/61eCzjpoxqL._AC_UY300_.jpg', grad:gradients[2], icon:'🩲', url:'https://www.amazon.com/dp/B01ICEKU7I' },
-  { rank:116, platform:'amazon', name:'WANAYOU Women\'s Zip Front Sports Bra Wireless Post-Surgery', brand:'WANAYOU', price:29.99, rating:4.2, reviews:11540, sales:'1K+', salesNum:1000, features:['Zip Front','Sports','Wireless','Post-Surgery'], imgUrl:'https://m.media-amazon.com/images/I/71wCLKcgfvL._AC_UY300_.jpg', grad:gradients[3], icon:'🩱', url:'https://www.amazon.com/dp/B078HZV198' }
+  { rank:116, platform:'amazon', name:'WANAYOU Women\'s Zip Front Sports Bra Wireless Post-Surgery', brand:'WANAYOU', price:29.99, rating:4.2, reviews:11540, sales:'1K+', salesNum:1000, features:['Zip Front','Sports','Wireless','Post-Surgery'], imgUrl:'https://m.media-amazon.com/images/I/71wCLKcgfvL._AC_UY300_.jpg', grad:gradients[3], icon:'🩱', url:'https://www.amazon.com/dp/B078HZV198' },
+
+  // ── NEW September 21 2026 ──
+  { rank:117, platform:'amazon', name:'Wireless and Seamless Jelly Bra - No Underwire Push Up Deep V Back Support Bralette', brand:'Generic', price:9.98, rating:4.2, reviews:311, sales:'N/A', salesNum:0, features:['Wireless','Jelly','Deep V','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/71QkF1UKSCL._AC_UY300_.jpg', grad:gradients[0], icon:'👙', url:'https://www.amazon.com/dp/B0GHN84ZL6' },
+  { rank:118, platform:'amazon', name:'OEAK Womens Jelly Bras Wireless Deep V Bralette Comfy Push Up Tshirt Bras', brand:'OEAK', price:24.99, rating:3.9, reviews:0, sales:'N/A', salesNum:0, features:['Best Seller','Jelly','Wireless','Push Up'], imgUrl:'https://m.media-amazon.com/images/I/71NFPTCXWeL._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0D8GMXL23' },
+  { rank:119, platform:'amazon', name:'Vanity Fair Women\'s Full Figure Beauty Back Smoothing Bra, 4 Way Stretch, Cups up to H', brand:'Vanity Fair', price:27.99, rating:4.6, reviews:386, sales:'N/A', salesNum:0, features:['Plus Size','Full Figure','Back Smoothing','Lightly Lined'], imgUrl:'https://m.media-amazon.com/images/I/81wEaaBQpmL._AC_UY300_.jpg', grad:gradients[2], icon:'👙', url:'https://www.amazon.com/dp/B09R2L3SX2' },
+  { rank:120, platform:'amazon', name:'Lusait Women Wireless Jelly Bra Seamless Lace Racerback Everyday Tshirt Bra', brand:'Lusait', price:19.87, rating:0, reviews:261, sales:'N/A', salesNum:0, features:['Wireless','Jelly','Lace','Racerback'], imgUrl:'https://m.media-amazon.com/images/I/81XrVFqSHeL._AC_UY300_.jpg', grad:gradients[3], icon:'👙', url:'https://www.amazon.com/dp/B0GCY3PDPQ' },
+  { rank:121, platform:'amazon', name:'Anita Women\'s 5400 Rosa Faia Essentials Soft Cup Bra', brand:'Anita / Rosa Faia', price:83, rating:4.5, reviews:225, sales:'N/A', salesNum:0, features:['Soft Cup','Wireless','Full Support','Premium'], imgUrl:'https://m.media-amazon.com/images/I/51acR3UMEbL._AC_UY300_.jpg', grad:gradients[4], icon:'👙', url:'https://www.amazon.com/dp/B0D5JB26CZ' }
 
 ];
 
