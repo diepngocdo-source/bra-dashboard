@@ -109,7 +109,7 @@
     <div>
       <h1>🩱 Trending Bra Products Dashboard</h1>
       <p>Amazon • Temu • 30+ Brand Sites — Best Sellers Analysis • September 2026</p>
-      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: October 26, 2026 • Weekly refresh (Amazon only; Temu skipped)</span>
+      <span style="font-size:11px;opacity:0.75;display:block;margin-top:4px">🔄 Updated: November 02, 2026 • Weekly refresh (Amazon only; Temu skipped)</span>
       <div class="header-meta">
         <span>📦 Amazon: Top 15 Best Sellers (June 2026)</span>
         <span>🛍️ Temu: Trending Bras Category</span>
@@ -133,7 +133,7 @@
 
   <!-- KPI -->
   <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">202</div><div class="kpi-sub">137 Amazon • 12 Temu • 53 Brand Sites</div></div>
+    <div class="kpi-card"><div class="kpi-icon">📦</div><div class="kpi-label">Products Tracked</div><div class="kpi-value" id="kpiTotal">206</div><div class="kpi-sub">141 Amazon • 12 Temu • 53 Brand Sites</div></div>
     <div class="kpi-card"><div class="kpi-icon">⭐</div><div class="kpi-label">Avg Rating</div><div class="kpi-value" id="kpiRating">4.3</div><div class="kpi-sub">Across all products</div></div>
     <div class="kpi-card"><div class="kpi-icon">💰</div><div class="kpi-label">Avg Price</div><div class="kpi-value" id="kpiPrice">$15.42</div><div class="kpi-sub">Amazon ~$18.58 • Temu ~$9.62</div></div>
     <div class="kpi-card"><div class="kpi-icon">🔥</div><div class="kpi-label">Top Sales/Month</div><div class="kpi-value">7,000+</div><div class="kpi-sub">OEAK Deep V Bra (Amazon #1)</div></div>
@@ -621,7 +621,11 @@ const allProducts = [
   { rank:151, platform:'amazon', name:'Bali Women\'s Wireless Bras - Comfort Revolution', brand:'Bali', price:21.99, rating:4.3, reviews:25400, sales:'N/A', salesNum:0, features:['Wireless','Comfort','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/81It8RBw55L._AC_UY300_.jpg', grad:gradients[2], icon:'👙', url:'https://www.amazon.com/dp/B0GZ4V64P9' },
   { rank:152, platform:'amazon', name:'Playtex Women\'s Secrets Love My Curves Signature Floral Underwire Bra', brand:'Playtex', price:19.99, rating:4.3, reviews:7400, sales:'N/A', salesNum:0, features:['Underwire','Floral','Plus Size'], imgUrl:'https://m.media-amazon.com/images/I/81rE6TK-tLL._AC_UY300_.jpg', grad:gradients[3], icon:'👙', url:'https://www.amazon.com/dp/B0007YXUVK' },
   { rank:153, platform:'amazon', name:'TELIMUSSTO Women\'s Floral Lace Bra Plus Size Firm Hold Non Wired', brand:'TELIMUSSTO', price:19.98, rating:4.3, reviews:1500, sales:'N/A', salesNum:0, features:['Lace','Plus Size','Wireless'], imgUrl:'https://m.media-amazon.com/images/I/71pw4L9sYcS._AC_UY300_.jpg', grad:gradients[4], icon:'👙', url:'https://www.amazon.com/dp/B0DHTSZV2B' },
-  { rank:154, platform:'amazon', name:'Warner\'s Women\'s Simply Perfect Underarm Smoothing Underwire Bra', brand:'Warner\'s', price:21.77, rating:4.3, reviews:1300, sales:'N/A', salesNum:0, features:['Underwire','Smoothing'], imgUrl:'https://m.media-amazon.com/images/I/71sqKKabxgL._AC_UY300_.jpg', grad:gradients[0], icon:'👙', url:'https://www.amazon.com/dp/B0FHY4MQTF' }
+  { rank:154, platform:'amazon', name:'Warner\'s Women\'s Simply Perfect Underarm Smoothing Underwire Bra', brand:'Warner\'s', price:21.77, rating:4.3, reviews:1300, sales:'N/A', salesNum:0, features:['Underwire','Smoothing'], imgUrl:'https://m.media-amazon.com/images/I/71sqKKabxgL._AC_UY300_.jpg', grad:gradients[0], icon:'👙', url:'https://www.amazon.com/dp/B0FHY4MQTF' },
+  { rank:155, platform:'amazon', name:'Warners Easy Does It Underarm-Smoothing Seamless Stretch Wireless Lightly Lined Comfort Bra', brand:'Warners', price:21.99, rating:4.3, reviews:51100, sales:'50,000+', salesNum:50000, features:['Wireless','Smoothing','Lightly Lined','Seamless'], imgUrl:'https://m.media-amazon.com/images/I/712ksirkHrL._AC_UY300_.jpg', grad:gradients[0], icon:'👙', url:'https://www.amazon.com/dp/B01N0ZLDW0' },
+  { rank:156, platform:'amazon', name:'Warner\'s Signature Support Cushioned Underwire Unlined Full-Coverage Bra', brand:'Warner\'s', price:29.99, rating:4.5, reviews:1400, sales:'N/A', salesNum:0, features:['Underwire','Unlined','Full Coverage','Support'], imgUrl:'https://m.media-amazon.com/images/I/71vlnM+p2sL._AC_UY300_.jpg', grad:gradients[1], icon:'👙', url:'https://www.amazon.com/dp/B0B7KCMFMG' },
+  { rank:157, platform:'amazon', name:'HSIA Strapless Bra, Full Coverage Non-Slip Underwire for Large Breasts', brand:'HSIA', price:39.99, rating:4.4, reviews:533, sales:'N/A', salesNum:0, features:['Strapless','Underwire','Full Coverage','Non-Slip'], imgUrl:'https://m.media-amazon.com/images/I/71UWm9txl8L._AC_UY300_.jpg', grad:gradients[2], icon:'👙', url:'https://www.amazon.com/dp/B0GFKHQQGH' },
+  { rank:158, platform:'amazon', name:'Gailife Wireless Push Up Bra No Underwire Seamless Full Coverage T-Shirt Bra', brand:'Gailife', price:8.99, rating:4.4, reviews:221, sales:'N/A', salesNum:0, features:['Wireless','Push Up','Seamless','Full Coverage'], imgUrl:'https://m.media-amazon.com/images/I/717Pk9-cEQL._AC_UY300_.jpg', grad:gradients[3], icon:'👙', url:'https://www.amazon.com/dp/B0DRRR13S7' }
 
 ];
 
